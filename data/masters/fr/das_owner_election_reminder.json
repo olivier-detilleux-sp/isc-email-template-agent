@@ -1,0 +1,14 @@
+{
+  "key": "das_owner_election_reminder",
+  "name": "Data Access Security Data Owner Election New Task",
+  "description": "Sent to voters and reviewers who still have outstanding work in a running data owner election, on the election's configured reminder schedule or on demand by an administrator.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Une tâche d'élection de propriétaire de données attend votre intervention",
+  "body": "<h2 style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;font-family:Calibri,sans-serif;font-size:18px;margin:0 0 16px 0;\">Rappel – élection de propriétaire de données</h2>\n<p style=\"font-family:Calibri,sans-serif;font-size:14px;line-height:1.5;margin:0 0 12px 0;\">Bonjour $__recipient.name,</p>\n<p style=\"font-family:Calibri,sans-serif;font-size:14px;line-height:1.5;margin:0 0 12px 0;\">Vous avez actuellement <strong style=\"color:__ISC_BRAND_ACTION_COLOR__;\">$election.taskCount</strong> tâche(s) d'élection de propriétaire de données en attente de votre intervention.</p>\n<div style=\"border-left:4px solid __ISC_BRAND_ACTION_COLOR__;padding:12px 16px;margin:0 0 16px 0;background-color:#f7f7f7;\">\n<p style=\"font-family:Calibri,sans-serif;font-size:14px;line-height:1.5;margin:0;\">Pour consulter vos tâches d'élection de propriété des données dans Data Access Security, utilisez le lien suivant : <a href=\"$election.taskUrl\" style=\"color:__ISC_BRAND_ACTION_COLOR__;text-decoration:underline;\">Voir les tâches d'élection de propriété des données en attente</a></p>\n</div>\n<p style=\"font-family:Calibri,sans-serif;font-size:14px;line-height:1.5;margin:0 0 12px 0;\">Merci de votre collaboration,<br />L'équipe Data Access Security</p>\n<p style=\"font-family:Calibri,sans-serif;font-size:11px;line-height:1.4;color:gray;margin:0;\">Ceci est un message automatique envoyé par <b>Data Access Security</b>. Merci de ne pas y répondre.</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "2dd1a1809f75d07001f7baad0fb20848717ad61adc1711649289dcbdfe33c80f"
+}

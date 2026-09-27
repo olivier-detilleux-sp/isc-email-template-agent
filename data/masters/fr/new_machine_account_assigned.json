@@ -1,0 +1,14 @@
+{
+  "key": "new_machine_account_assigned",
+  "name": "New Machine Account Assigned",
+  "description": "Sent to notify a user that they have been assigned as the owner of a machine account.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Vous êtes désormais propriétaire du compte machine – $data.accountName",
+  "body": "<h2 style=\"color: __ISC_BRAND_NAVIGATION_COLOR__; margin: 0 0 16px 0; font-size: 20px; font-weight: 600;\">Nouveau propriétaire de compte machine</h2>\n<p style=\"margin: 0 0 12px 0; font-size: 14px; line-height: 1.5; color: #333333;\">Bonjour $data.ownerName,</p>\n<p style=\"margin: 0 0 16px 0; font-size: 14px; line-height: 1.5; color: #333333;\">Vous êtes désormais propriétaire du compte machine suivant.</p>\n<div style=\"border-left: 4px solid __ISC_BRAND_ACTION_COLOR__; background-color: #f7f9fc; padding: 12px 16px; margin: 0 0 16px 0;\">\n<p style=\"margin: 0 0 8px 0; font-size: 14px; line-height: 1.5; color: #333333;\"><strong style=\"color: __ISC_BRAND_NAVIGATION_COLOR__;\">Compte machine :</strong> $data.accountName</p>\n<p style=\"margin: 0; font-size: 14px; line-height: 1.5; color: #333333;\"><strong style=\"color: __ISC_BRAND_NAVIGATION_COLOR__;\">Source :</strong> $data.sourceName</p>\n</div>\n<p style=\"margin: 0 0 12px 0; font-size: 14px; line-height: 1.5; color: #333333;\">Vous êtes responsable de la gestion de ce compte et de sa mise à jour. Pour toute question, contactez votre administrateur.</p>\n<p style=\"margin: 16px 0 0 0; font-size: 14px; line-height: 1.5; color: #333333;\">Cordialement,<br/>L'équipe $__global.productName</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "a6a628637e41f83d59d364d6af2cc0bfc465b639b58956824bcca2e4d849c09b"
+}

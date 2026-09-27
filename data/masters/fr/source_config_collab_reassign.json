@@ -1,0 +1,14 @@
+{
+  "key": "source_config_collab_reassign",
+  "name": "Source Collaboration Reassigned",
+  "description": "Notifies the assignee when a source that has been assigned to them for configuration is reassigned to another user.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "La configuration de $referenceName a été réaffectée à un autre utilisateur",
+  "body": "<h2 style=\"color: __ISC_BRAND_NAVIGATION_COLOR__; margin: 0 0 16px 0; font-size: 20px; font-weight: 600;\">Configuration de source réaffectée</h2><p style=\"margin: 0 0 12px 0; line-height: 1.5; color: #333333;\">Bonjour $__recipient.name,</p><p style=\"margin: 0 0 12px 0; line-height: 1.5; color: #333333;\">Votre administrateur a réaffecté l'intégration de $referenceName à un autre utilisateur. Vous n'avez plus accès à cette source.</p><div style=\"border-left: 4px solid __ISC_BRAND_ACTION_COLOR__; padding: 12px 16px; margin: 16px 0; background-color: #f5f7fa;\"><p style=\"margin: 0; line-height: 1.5; color: #333333;\">Contactez $owner si vous avez des questions.</p></div><p style=\"margin: 16px 0 0 0; line-height: 1.5; color: #333333;\">Cordialement,<br>L'équipe $__global.productName</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "c526f7cbbedb29f53e4a6fe75fab3afe1e51795e485e5d67fa73f1ea5b054348"
+}

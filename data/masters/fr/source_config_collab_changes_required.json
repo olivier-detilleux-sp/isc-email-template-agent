@@ -1,0 +1,14 @@
+{
+  "key": "source_config_collab_changes_required",
+  "name": "Source Collaboration Changes Required",
+  "description": "Notifies the assignee when the administrator requests additional changes to a source that is in review",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Modifications requises pour la source $referenceName",
+  "body": "<h2 style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;margin:0 0 16px 0;font-size:20px;font-weight:600;\">Modifications complémentaires requises</h2>\n<p style=\"margin:0 0 16px 0;font-size:14px;line-height:1.5;\">Bonjour $__recipient.name,</p>\n<p style=\"margin:0 0 16px 0;font-size:14px;line-height:1.5;\">$owner a examiné vos modifications sur la source $referenceName et vous a confié des changements supplémentaires à apporter.</p>\n<div style=\"border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f7f7f7;padding:12px 16px;margin:0 0 16px 0;\">\n<p style=\"margin:0;font-size:14px;line-height:1.5;\">Accédez à la <a href=\"$deepLink\" style=\"color:__ISC_BRAND_ACTION_COLOR__;text-decoration:underline;\">page de configuration de $referenceName</a> pour poursuivre l'intégration de cette source.</p>\n</div>\n<p style=\"margin:0;font-size:14px;line-height:1.5;\">Cordialement,<br/>L'équipe $__global.productName</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "c96732d81f0e2040354bd150a94d58cfe2e6c200b51dd9cd751e5bd8aca02aaa"
+}

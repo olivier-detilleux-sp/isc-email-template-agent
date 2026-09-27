@@ -1,0 +1,14 @@
+{
+  "key": "cloud_user_unlocked",
+  "name": "User Unlocked",
+  "description": "Sent after the Unlock User Code email to confirm that the account was unlocked successfully.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "ATTENTION : votre compte ${PRODUCT_NAME} a été déverrouillé",
+  "body": "<h2 style=\"margin:0 0 16px 0;font-size:20px;line-height:1.3;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Compte déverrouillé</h2>\n<p style=\"margin:0 0 12px 0;font-size:14px;line-height:1.5;color:#333333;\">Bonjour ${user.name},</p>\n<p style=\"margin:0 0 16px 0;font-size:14px;line-height:1.5;color:#333333;\">Votre compte ${PRODUCT_NAME} a bien été déverrouillé.</p>\n<div style=\"margin:0 0 16px 0;padding:12px 16px;border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f7f7f7;\">\n<p style=\"margin:0;font-size:14px;line-height:1.5;color:#333333;\">Si vous pensez que quelqu’un d’autre a tenté d’utiliser votre compte, contactez immédiatement votre administrateur.</p>\n</div>\n<p style=\"margin:0;font-size:14px;line-height:1.5;color:#333333;\">Cordialement,<br/>L’équipe ${PRODUCT_NAME}</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "9084b2bc0f1686a6a7df36c87142000d8847d9381aee96d5ee4454c515ea4e27"
+}

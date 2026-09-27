@@ -1,0 +1,14 @@
+{
+  "key": "saf_onboarding_source_assigned",
+  "name": "Agentic Fabric Source Assignment for Onboarding",
+  "description": "Sent to an assignee when an admin assigns them a source to onboard.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "$data.adminName vous a assigné une source pour l'onboarding",
+  "body": "<h2 style=\"color: __ISC_BRAND_NAVIGATION_COLOR__; margin: 0 0 16px 0; font-size: 20px; font-weight: 600;\">Source assignée pour l'onboarding</h2>\n<p style=\"margin: 0 0 12px 0; line-height: 1.5;\">Bonjour $data.userName,</p>\n<p style=\"margin: 0 0 16px 0; line-height: 1.5;\">$data.adminName vous a assigné la source <strong style=\"color: __ISC_BRAND_NAVIGATION_COLOR__;\">$data.sourceName</strong> afin que vous procédiez à son onboarding au sein de $__global.productName.</p>\n<div style=\"border-left: 4px solid __ISC_BRAND_ACTION_COLOR__; padding: 12px 16px; margin: 0 0 16px 0; background-color: #f7f7f7;\">\n<p style=\"margin: 0 0 8px 0; line-height: 1.5;\">L'onboarding de $data.sourceName permet à votre organisation de configurer et de gérer les données issues de cette source.</p>\n<p style=\"margin: 0; line-height: 1.5;\">Lorsque vous aurez terminé la configuration de $data.sourceName, soumettez-la pour finaliser la mise en place.</p>\n</div>\n<p style=\"margin: 0 0 16px 0; line-height: 1.5;\">Rendez-vous sur vos <a href=\"$data.deepLink\" style=\"color: __ISC_BRAND_ACTION_COLOR__; text-decoration: underline;\">sources assignées</a> pour commencer la configuration de la source $data.sourceName. Pour toute question, contactez votre administrateur ou consultez la <a href=\"https://documentation.sailpoint.com/saas/help/\" style=\"color: __ISC_BRAND_ACTION_COLOR__; text-decoration: underline;\">documentation $__global.productName</a>.</p>\n<p style=\"margin: 0; line-height: 1.5;\">Cordialement,<br/>L'équipe $__global.productName</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "bf385cc0a27dbb6db818ee2080681ebe782f8056e5ea9ce6c10a76d2f9b35ab3"
+}

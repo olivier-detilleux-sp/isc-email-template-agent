@@ -1,0 +1,14 @@
+{
+  "key": "source_config_collab_pending_access",
+  "name": "Source Collaboration Access Request",
+  "description": "Notifies an administrator when they have a pending access request for a collaborator who is configuring a source",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "$owner a demandé le niveau d'utilisateur Source Configuration Assignee pour $assignedUser",
+  "body": "<h2 style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;margin:0 0 16px 0;font-size:20px;font-weight:600;\">Demande de niveau d'utilisateur en attente</h2>\n<p style=\"margin:0 0 12px 0;line-height:1.5;\">Bonjour $adminUser,</p>\n<p style=\"margin:0 0 16px 0;line-height:1.5;\">$owner a demandé le niveau d'utilisateur Source Configuration Assignee pour $assignedUser afin de pouvoir intégrer la source $referenceName.</p>\n<div style=\"border-left:4px solid __ISC_BRAND_ACTION_COLOR__;padding:12px 16px;margin:0 0 16px 0;background-color:#f8f9fa;\">\n<p style=\"margin:0 0 8px 0;line-height:1.5;font-weight:600;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Action requise</p>\n<p style=\"margin:0;line-height:1.5;\">Pour attribuer ce niveau d'utilisateur à $assignedUser, accédez à son <a href=\"$deepLink\" style=\"color:__ISC_BRAND_ACTION_COLOR__;\">identité</a> et activez le <a href=\"https://documentation.sailpoint.com/saas/help/accounts/identities.html#setting-user-level-permissions\" style=\"color:__ISC_BRAND_ACTION_COLOR__;\">niveau d'utilisateur</a> Source Configuration Assignee.</p>\n</div>\n<p style=\"margin:0 0 16px 0;line-height:1.5;\">Ce niveau d'utilisateur doit être attribué avant que la personne puisse commencer l'intégration de cette source. Pour toute question concernant cette source ou la personne désignée, contactez $owner.</p>\n<p style=\"margin:0;line-height:1.5;\">Cordialement,<br>L'équipe $__global.productName</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "2de12a44ab1a7654fac510bcf7af61c8c07aa7a93c337ac63affae49d17e15a8"
+}

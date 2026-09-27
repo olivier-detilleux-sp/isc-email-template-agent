@@ -1,0 +1,14 @@
+{
+  "key": "das_owner_election_invite",
+  "name": "Data Access Security Data Owner Election Campaign Task Waiting",
+  "description": "Sent to each voter when a data owner election configured to send invitations starts, telling them how many resources are waiting for their vote.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Vous avez une nouvelle tâche de campagne d'élection de propriétaire de données",
+  "body": "<h2 style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;margin:0 0 16px 0;font-family:Calibri,Arial,sans-serif;font-size:18px;\">Élection de propriétaire de données</h2>\n<p style=\"font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;margin:0 0 12px 0;\">Bonjour $__recipient.name,</p>\n<p style=\"font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;margin:0 0 12px 0;\">Dans le cadre de nos initiatives visant à renforcer la posture de sécurité des données de notre organisation et la gouvernance des accès aux données sensibles, nous avons lancé une campagne afin d'identifier les propriétaires des actifs de données sensibles.</p>\n<p style=\"font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;margin:0 0 16px 0;\">Vous avez été identifié(e) comme l'une des parties prenantes métier les plus actives sur un ou plusieurs de ces actifs de données.</p>\n<div style=\"border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f7f7f7;padding:12px 16px;margin:0 0 16px 0;\">\n<p style=\"font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;margin:0;\">Vous avez actuellement <strong style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;\">$election.taskCount</strong> activité(s) en attente de votre contribution.</p>\n</div>\n<p style=\"font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;margin:0 0 8px 0;\">Veuillez utiliser le lien suivant pour consulter vos tâches d'élection de propriété des données dans Data Access Security :</p>\n<p style=\"font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;margin:0 0 16px 0;\"><a href=\"$election.taskUrl\" style=\"color:__ISC_BRAND_ACTION_COLOR__;font-weight:bold;text-decoration:underline;\">Tâches d'élection de propriété des données en attente</a></p>\n<p style=\"font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;margin:0;\">Merci !<br/>L'équipe <strong>Data Access Security</strong></p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "ad784f42617b2bf14769ed0d03f7c217fa73f30e41cb1730b567cb981e371bf6"
+}

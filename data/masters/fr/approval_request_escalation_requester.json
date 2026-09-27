@@ -1,0 +1,14 @@
+{
+  "key": "approval_request_escalation_requester",
+  "name": "Approval Request Escalated (Requester)",
+  "description": "Sent to the approval requester when an approver (or approvers) have not actioned on an approval request for an admin-configured amount of time.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Une demande d'approbation#if($requestee.name && $requestee.name != '' && $requester.identityID  != $__recipient.id) soumise en votre nom#{else} soumise par vous#{end} a été escaladée",
+  "body": "<h2 style=\"color: __ISC_BRAND_NAVIGATION_COLOR__; margin: 0 0 16px 0; font-size: 20px; font-weight: 600;\">Demande d'approbation escaladée</h2>\n<p style=\"margin: 0 0 12px 0; font-size: 14px; line-height: 1.5; color: #333333;\">Bonjour ${__recipient.name},</p>\n<p style=\"margin: 0 0 12px 0; font-size: 14px; line-height: 1.5; color: #333333;\">Une demande d'approbation concernant $approvalName a été soumise #if($requestee.name && $requestee.name != '' && $requester.identityID != $__recipient.id) en votre nom par $requester.name #{else} par vous #{end} et n'a pas été traitée depuis $escalationDelay.</p>\n<div style=\"border-left: 4px solid __ISC_BRAND_ACTION_COLOR__; padding: 12px 16px; margin: 0 0 16px 0; background-color: #f5f5f5;\">\n<p style=\"margin: 0 0 8px 0; font-size: 14px; line-height: 1.5; color: #333333;\"><strong style=\"color: __ISC_BRAND_NAVIGATION_COLOR__;\">Escalade</strong></p>\n<p style=\"margin: 0; font-size: 14px; line-height: 1.5; color: #333333;\">Cette demande d'approbation a désormais été escaladée #if($previousApprover.name && $previousApprover.name != '') de $previousApprover.name #{end} à $escalatedApprover.name.</p>\n</div>\n<p style=\"margin: 0 0 16px 0; font-size: 14px; line-height: 1.5; color: #333333;\">Pour traiter vos demandes d'approbation ou en consulter le statut, rendez-vous sur : <span style=\"color: __ISC_BRAND_ACTION_COLOR__;\">$__global.productUrl/ui/d/$requesterPath</span>.</p>\n<p style=\"margin: 0; font-size: 14px; line-height: 1.5; color: #333333;\">Cordialement,<br/>L'équipe ${__global.productName}</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "15ae5d3bcd3f8d8f24ba827d48710d2d48b3e65dd5ef7b1ba66514279b4e4fca"
+}

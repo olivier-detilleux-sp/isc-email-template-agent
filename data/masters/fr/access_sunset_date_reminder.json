@@ -1,0 +1,14 @@
+{
+  "key": "access_sunset_date_reminder",
+  "name": "Access Sunset Date Reminder",
+  "description": "Sent to a user to remind them that their access to an item is coming to an end.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Rappel : date de fin d'accès proche",
+  "body": "<h2 style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;margin:0 0 16px 0;font-size:20px;font-weight:600;\">Date de fin d'accès proche</h2>\n<p style=\"margin:0 0 12px 0;line-height:1.5;\">Bonjour ${recipientName},</p>\n<p style=\"margin:0 0 12px 0;line-height:1.5;\">Nous vous rappelons que votre accès arrive bientôt à échéance.</p>\n<div style=\"border-left:4px solid __ISC_BRAND_ACTION_COLOR__;padding:12px 16px;margin:0 0 16px 0;background-color:#f7f7f7;\">\n<p style=\"margin:0 0 8px 0;line-height:1.5;\"><strong style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;\">Élément concerné :</strong> « ${accessItemName} » (${accessItemType})</p>\n<p style=\"margin:0;line-height:1.5;\"><strong style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;\">Date de fin prévue :</strong> ${scheduledSunsetDate}</p>\n</div>\n<p style=\"margin:0 0 12px 0;line-height:1.5;\">Si vous avez encore besoin d'accéder à « ${accessItemName} », vous devez prolonger la durée de cet accès en modifiant sa date d'expiration.</p>\n<p style=\"margin:0 0 16px 0;line-height:1.5;\">Pour toute question, veuillez contacter l'administrateur ${PRODUCT_NAME}.</p>\n<p style=\"margin:0;line-height:1.5;\">Cordialement,<br/>L'équipe ${PRODUCT_NAME}</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "1288c0afabeeb8c4582a1d3df2058ce777397a5792e7e9d71e4c1e06015c14ad"
+}

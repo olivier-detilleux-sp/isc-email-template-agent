@@ -1,0 +1,14 @@
+{
+  "key": "campaign_activated_notification",
+  "name": "Certification Campaign Started",
+  "description": "Notify user that a certification campaign has been activated.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Veuillez examiner l'accès de vos collaborateurs",
+  "body": "<h2 style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;margin:0 0 16px 0;font-size:20px;font-weight:600;\">Campagne de certification démarrée</h2>\n<p style=\"margin:0 0 12px 0;line-height:1.5;\">Bonjour $__recipient.name,</p>\n<p style=\"margin:0 0 12px 0;line-height:1.5;\">La campagne de certification <strong style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;\">$campaignName</strong> a été lancée par votre administrateur système. Elle permet à chaque réviseur de vérifier que les utilisateurs disposent des droits appropriés.</p>\n<p style=\"margin:0 0 12px 0;line-height:1.5;\">Pour chaque utilisateur de votre certification, vous verrez les droits qui lui sont attribués. Vous pourrez également consulter les sources dont ces droits proviennent, ou les applications accessibles grâce à ceux-ci.</p>\n<div style=\"border-left:4px solid __ISC_BRAND_ACTION_COLOR__;padding:12px 16px;margin:0 0 16px 0;background-color:#f7f7f7;\">\n<p style=\"margin:0 0 8px 0;line-height:1.5;\"><strong>Échéance :</strong> vous avez jusqu'au $campaignDeadline pour examiner l'accès de chaque utilisateur, puis l'approuver, le modifier ou le révoquer.</p>\n</div>\n<p style=\"margin:0 0 16px 0;line-height:1.5;\">Pour examiner la certification, cliquez sur le lien suivant : <a href=\"$identityNowUrl/ui/d/certifications-review/certification/gov_${certificationId}\" style=\"color:__ISC_BRAND_ACTION_COLOR__;font-weight:600;text-decoration:underline;\">accéder à la certification</a>.</p>\n<p style=\"margin:0;line-height:1.5;\">Cordialement,</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "ba27bec0521d62c386125f9a0af1864a2315e4feee7cc5f2b4fd39be597992d2"
+}

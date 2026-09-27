@@ -1,0 +1,14 @@
+{
+  "key": "new_applications_discovered_notification",
+  "name": "New Applications Discovered",
+  "description": "Notify source owners that new applications have been discovered from a discovery source.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "$AppCount nouvelles applications découvertes depuis $DiscoverySourceName",
+  "body": "<h2 style=\"color: __ISC_BRAND_NAVIGATION_COLOR__; margin: 0 0 16px 0; font-size: 20px; font-weight: 600;\">Nouvelles applications découvertes</h2>\n<p style=\"margin: 0 0 12px 0; line-height: 1.5; color: #333333;\">Bonjour $__recipient.name,</p>\n<p style=\"margin: 0 0 16px 0; line-height: 1.5; color: #333333;\">$AppCount nouvelles applications ont été découvertes depuis la source <strong style=\"color: __ISC_BRAND_NAVIGATION_COLOR__;\">$DiscoverySourceName</strong>.</p>\n<div style=\"border-left: 4px solid __ISC_BRAND_ACTION_COLOR__; background-color: #f7f8fa; padding: 12px 16px; margin: 0 0 20px 0;\">\n<p style=\"margin: 0 0 10px 0; font-weight: 600; color: __ISC_BRAND_NAVIGATION_COLOR__;\">Applications concernées</p>\n<table style=\"width: 100%; border-collapse: collapse; font-size: 14px;\">\n<tr>\n<th style=\"text-align: left; padding: 8px; border-bottom: 2px solid __ISC_BRAND_NAVIGATION_COLOR__; color: __ISC_BRAND_NAVIGATION_COLOR__;\">Application</th>\n<th style=\"text-align: center; padding: 8px; border-bottom: 2px solid __ISC_BRAND_NAVIGATION_COLOR__; color: __ISC_BRAND_NAVIGATION_COLOR__;\">Source de découverte</th>\n<th style=\"text-align: center; padding: 8px; border-bottom: 2px solid __ISC_BRAND_NAVIGATION_COLOR__; color: __ISC_BRAND_NAVIGATION_COLOR__;\">Type de source de découverte</th>\n</tr>\n#foreach($app in $AppNames)\n<tr>\n<td style=\"padding: 8px; border-bottom: 1px solid #e0e0e0; color: #333333;\">$app</td>\n<td style=\"text-align: center; padding: 8px; border-bottom: 1px solid #e0e0e0; color: #333333;\">$DiscoverySourceName</td>\n<td style=\"text-align: center; padding: 8px; border-bottom: 1px solid #e0e0e0; color: #333333;\">$DiscoverySource</td>\n</tr>\n#{end}\n</table>\n</div>\n<p style=\"margin: 0 0 20px 0; line-height: 1.5; color: #333333;\">Consultez les <a href=\"${__global.productUrl}${DeepLinkSuffix}\" style=\"color: __ISC_BRAND_ACTION_COLOR__; text-decoration: underline;\">applications découvertes</a>.</p>\n<p style=\"margin: 0; line-height: 1.5; color: #333333;\">Cordialement,<br/>L'équipe $__global.productName</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "0d6cef79217d127c56247ccdd3a2d443231d341caafcca5770f6193b51e521a3"
+}

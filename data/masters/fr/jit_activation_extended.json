@@ -1,0 +1,14 @@
+{
+  "key": "jit_activation_extended",
+  "name": "Just-In-Time Activation Extended",
+  "description": "Notifies the identity whose Just-In-Time activation window was extended that the active JIT window has been extended.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Votre accès Just-In-Time pour ${entitlementName} a été prolongé",
+  "body": "<h2 style=\"color: __ISC_BRAND_NAVIGATION_COLOR__; margin: 0 0 16px 0; font-size: 20px; font-weight: 600;\">Accès Just-In-Time prolongé</h2>\n<p style=\"margin: 0 0 16px 0; line-height: 1.5;\">Bonjour $__recipient.name,</p>\n<p style=\"margin: 0 0 12px 0; line-height: 1.5;\">La fenêtre Just-In-Time que vous avez prolongée pour le droit suivant a été étendue.</p>\n<div style=\"border-left: 4px solid __ISC_BRAND_ACTION_COLOR__; padding: 12px 16px; margin: 0 0 16px 0; background-color: #f5f7fa;\">\n<p style=\"margin: 0 0 8px 0; line-height: 1.5;\"><strong style=\"color: __ISC_BRAND_NAVIGATION_COLOR__;\">Droit concerné :</strong> ${entitlementName}</p>\n<p style=\"margin: 0; line-height: 1.5;\"><strong style=\"color: __ISC_BRAND_NAVIGATION_COLOR__;\">Prolongation supplémentaire :</strong> ${extensionDuration}</p>\n</div>\n#if($activationUrl)\n<p style=\"margin: 0 0 16px 0; line-height: 1.5;\">Vous pouvez retourner dans $__global.productName <a href=\"$activationUrl\" target=\"_blank\" style=\"color: __ISC_BRAND_ACTION_COLOR__; text-decoration: underline;\">ici</a> pour consulter vos options de prolongation ou de désactivation anticipée de ce droit.</p>\n#{end}\n<p style=\"margin: 0 0 16px 0; line-height: 1.5;\">Pour toute question, veuillez contacter ${ownerName}.</p>\n<p style=\"margin: 0; line-height: 1.5;\">Cordialement,<br/>L'équipe $__global.productName</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "b5281ca8142afd3fcc77737c7d3d92110c0269fbf3c6daeb66a70088ba4318ea"
+}

@@ -1,0 +1,14 @@
+{
+  "key": "source_config_collab_revoke_user_level",
+  "name": "Remove Assignee User Level",
+  "description": "Notifies an administrator to remove Source Configuration Assignee user level.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "$requesterUser a demandé que vous révoquiez le niveau d'utilisateur Source Configuration Assignee de $user",
+  "body": "<h2 style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;margin:0 0 16px 0;font-size:20px;font-weight:600;\">Révocation du niveau d'utilisateur Source Configuration Assignee</h2>\n<p style=\"margin:0 0 12px 0;line-height:1.5;\">Bonjour $adminUser,</p>\n<p style=\"margin:0 0 16px 0;line-height:1.5;\">$requesterUser a demandé le retrait du niveau d'utilisateur Source Configuration Assignee de $user, car cette personne a terminé l'intégration des sources qui lui étaient assignées.</p>\n<div style=\"border-left:4px solid __ISC_BRAND_NAVIGATION_COLOR__;padding:12px 16px;margin:0 0 16px 0;background-color:#f7f7f7;\">\n<p style=\"margin:0 0 8px 0;line-height:1.5;font-weight:600;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Action requise</p>\n<p style=\"margin:0;line-height:1.5;\">Pour révoquer ce niveau d'utilisateur de $user, accédez à son <a href=\"$userLink\" style=\"color:__ISC_BRAND_ACTION_COLOR__;text-decoration:underline;\">identité</a> et retirez le <a href=\"https://documentation.sailpoint.com/saas/help/accounts/identities.html#setting-user-level-permissions\" style=\"color:__ISC_BRAND_ACTION_COLOR__;text-decoration:underline;\">niveau d'utilisateur</a> Source Configuration Assignee.</p>\n</div>\n<p style=\"margin:0;line-height:1.5;\">Cordialement,<br>L'équipe $__global.productName</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "8e225dd29cc4896ff5de4db1e0912c3f1c14fd66f54cbe9e74045c261431417b"
+}

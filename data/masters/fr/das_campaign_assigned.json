@@ -1,0 +1,14 @@
+{
+  "key": "das_campaign_assigned",
+  "name": "Data Access Security Campaign Assigned To Reviewers",
+  "description": "Sent to a reviewer when a Data Access Security certification campaign configured to notify its assignees starts, and again when the campaign advances to a review level that first asks them to respond.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Vous avez une nouvelle tâche de revue de certification pour $campaignAssigned.name",
+  "body": "<h2 style=\"margin:0 0 16px 0;font-family:Calibri,Arial,sans-serif;font-size:20px;font-weight:bold;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Nouvelle tâche de revue de certification</h2>\n<p style=\"margin:0 0 12px 0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Bonjour,</p>\n<p style=\"margin:0 0 12px 0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Une tâche de revue de certification vous attend. La date d’échéance finale de cette tâche est le <strong style=\"color:__ISC_BRAND_ACTION_COLOR__;\">$campaignAssigned.dueDate</strong>.</p>\n<p style=\"margin:0 0 16px 0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Veuillez suivre le <a href=\"$campaignAssigned.url\" style=\"color:__ISC_BRAND_ACTION_COLOR__;text-decoration:underline;\">lien</a> pour consulter la tâche.</p>\n<div style=\"margin:0 0 16px 0;padding:12px 16px;border-left:4px solid __ISC_BRAND_NAVIGATION_COLOR__;background-color:#f5f5f5;\">\n<p style=\"margin:0 0 8px 0;font-family:Calibri,Arial,sans-serif;font-size:14px;font-weight:bold;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Détails supplémentaires de la tâche</p>\n<ul style=\"margin:0;padding-left:18px;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.6;color:#333333;\">\n<li style=\"margin-bottom:6px;\"><strong>Nom de la campagne :</strong> $campaignAssigned.name</li>\n<li style=\"margin-bottom:6px;\"><strong>Description :</strong> $campaignAssigned.description</li>\n<li style=\"margin-bottom:0;\"><strong>Instructions :</strong> $campaignAssigned.instructions</li>\n</ul>\n</div>\n<p style=\"margin:0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Cordialement,<br/>Data Access Security</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "e2fb9efd90cbc4083121def6989a1ca0d9cf591547932fa95f3256e5bbb35fab"
+}

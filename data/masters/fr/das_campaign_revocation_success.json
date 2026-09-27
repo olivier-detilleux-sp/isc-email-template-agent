@@ -1,0 +1,14 @@
+{
+  "key": "das_campaign_revocation_success",
+  "name": "Data Access Security Campaign Revocation Successful",
+  "description": "Sent to a Data Access Security campaign's owner when its revocation processing finishes and every access item marked for removal was revoked successfully.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Les permissions rejetées ont été révoquées avec succès",
+  "body": "<h2 style=\"color: __ISC_BRAND_NAVIGATION_COLOR__; font-family: Calibri, Arial, sans-serif; font-size: 18px; font-weight: bold; margin: 0 0 16px 0;\">Révocation des permissions réussie</h2>\n<p style=\"font-family: Calibri, Arial, sans-serif; font-size: 14px; color: #333333; line-height: 1.5; margin: 0 0 12px 0;\">Bonjour $__recipient.name,</p>\n<p style=\"font-family: Calibri, Arial, sans-serif; font-size: 14px; color: #333333; line-height: 1.5; margin: 0 0 12px 0;\">Nous vous informons que la révocation automatique a été activée sur $campaign.campaignName. Tous les enregistrements éligibles à la révocation ont été révoqués avec succès.</p>\n<div style=\"border-left: 4px solid __ISC_BRAND_ACTION_COLOR__; background-color: #f7f7f7; padding: 12px 16px; margin: 0 0 16px 0;\">\n<p style=\"font-family: Calibri, Arial, sans-serif; font-size: 14px; color: #333333; line-height: 1.5; margin: 0;\">Les détails de la révocation de la campagne sont disponibles ici : <a href=\"$campaign.url\" style=\"color: __ISC_BRAND_ACTION_COLOR__; text-decoration: underline;\">Consulter les détails de la campagne</a></p>\n</div>\n<p style=\"font-family: Calibri, Arial, sans-serif; font-size: 14px; color: #333333; line-height: 1.5; margin: 0 0 4px 0;\">Cordialement,</p>\n<p style=\"font-family: Calibri, Arial, sans-serif; font-size: 14px; color: #333333; line-height: 1.5; margin: 0;\"><strong>L'équipe SailPoint</strong></p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "782117f4395de9f3d5ea65bdcd7614e0517d6d90d90afdaab506b12a413ed73a"
+}

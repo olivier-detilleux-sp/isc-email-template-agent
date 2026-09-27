@@ -1,0 +1,14 @@
+{
+  "key": "das_owner_election_reviewer_invite",
+  "name": "Data Access Security Data Owner Election Review Task",
+  "description": "Sent to a resource's reviewers when voting on it closes, for data owner elections configured to require manual review and to send invitations.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Vous avez une nouvelle tâche de revue d'élection de propriétaire de données",
+  "body": "<h2 style=\"margin:0 0 16px 0;font-family:Calibri,Arial,sans-serif;font-size:18px;font-weight:bold;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Revue d'élection de propriétaire de données</h2>\n<p style=\"margin:0 0 12px 0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Bonjour $__recipient.name,</p>\n<p style=\"margin:0 0 12px 0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Dans le cadre de nos efforts visant à renforcer la posture de sécurité des données de notre organisation et la gouvernance des accès aux données sensibles, nous avons lancé une campagne afin d'identifier les propriétaires des actifs de données sensibles.</p>\n<div style=\"margin:0 0 16px 0;padding:12px 16px;border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f7f7f7;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Le processus d'élection des propriétaires de données est terminé et nécessite votre <strong style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;\">approbation</strong> pour être finalisé.</div>\n<p style=\"margin:0 0 8px 0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Veuillez utiliser le lien suivant pour consulter vos tâches de revue d'élection de propriétaire de données dans Data Access Security :</p>\n<p style=\"margin:0 0 16px 0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;\"><a href=\"$election.taskUrl\" style=\"color:__ISC_BRAND_ACTION_COLOR__;font-weight:bold;text-decoration:underline;\">Consulter les tâches d'élection de propriétaire de données</a></p>\n<p style=\"margin:0 0 4px 0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Merci&nbsp;!</p>\n<p style=\"margin:0 0 12px 0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Cordialement,<br />Data Access Security</p>\n<p style=\"margin:0;font-family:Calibri,Arial,sans-serif;font-size:12px;line-height:1.4;color:#666666;\">Ceci est un message automatique envoyé par <strong>Data Access Security</strong>. Merci de ne pas y répondre.</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "fc56dceb6de6bcb212156fdb26cd31aed8904db2a2e124af116e7fab49e4dd96"
+}

@@ -1,0 +1,14 @@
+{
+  "key": "campaign_template_pregen_notification",
+  "name": "Campaign Template Pre-Generation Notification",
+  "description": "Sent out one week prior to Campaign Template generation.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Rappel : votre campagne de certification démarre dans 7 jours",
+  "body": "<h2 style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;margin:0 0 16px 0;font-size:20px;font-weight:600;\">Rappel : génération de campagne dans 7 jours</h2>\n<p style=\"margin:0 0 12px 0;line-height:1.5;\">Bonjour ${__recipient.name},</p>\n<p style=\"margin:0 0 16px 0;line-height:1.5;\">La certification <strong style=\"color:__ISC_BRAND_ACTION_COLOR__;\">$campaignTemplateName</strong> est planifiée pour générer une campagne dans 7 jours.</p>\n<div style=\"border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f7f7f7;padding:12px 16px;margin:0 0 16px 0;\">\n<p style=\"margin:0;line-height:1.5;\">Si vous devez modifier le contenu de cette campagne, effectuez vos mises à jour <strong>avant le ${generationDate}</strong>.</p>\n</div>\n<p style=\"margin:0;line-height:1.5;\">Cordialement,<br/>L'équipe $__global.productName</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "bd243343a7db397ea51b78f0ee5800927245c1f8255ed5e3194f3f6d0869f825"
+}

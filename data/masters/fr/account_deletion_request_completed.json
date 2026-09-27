@@ -1,0 +1,14 @@
+{
+  "key": "account_deletion_request_completed",
+  "name": "Account Deletion Request Completed",
+  "description": "Sent to a requester to confirm that their account delete request has been completed successfully.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "$data.sourceName – Demande $data.operationType traitée avec succès pour $data.accountName",
+  "body": "<h2 style=\"color: __ISC_BRAND_NAVIGATION_COLOR__; font-size: 20px; margin: 0 0 16px 0; font-weight: 600;\">Demande de suppression de compte terminée</h2>\n<p style=\"margin: 0 0 12px 0; font-size: 14px; line-height: 1.5; color: #333333;\">Bonjour $data.requesterName,</p>\n<p style=\"margin: 0 0 16px 0; font-size: 14px; line-height: 1.5; color: #333333;\">Votre demande visant à $data.operationType.toLowerCase() le compte <strong>$data.accountName</strong> sur <strong>$data.sourceName</strong> a été traitée avec succès.</p>\n<div style=\"border-left: 4px solid __ISC_BRAND_ACTION_COLOR__; background-color: #f5f7fa; padding: 12px 16px; margin: 0 0 16px 0;\">\n<p style=\"margin: 0 0 8px 0; font-size: 14px; line-height: 1.5; color: #333333;\"><strong style=\"color: __ISC_BRAND_NAVIGATION_COLOR__;\">Compte :</strong> $data.accountName</p>\n<p style=\"margin: 0; font-size: 14px; line-height: 1.5; color: #333333;\"><strong style=\"color: __ISC_BRAND_NAVIGATION_COLOR__;\">Source :</strong> $data.sourceName</p>\n</div>\n<p style=\"margin: 0 0 16px 0; font-size: 14px; line-height: 1.5; color: #333333;\">Le compte a été retiré de la source.</p>\n<p style=\"margin: 0; font-size: 14px; line-height: 1.5; color: #333333;\">Cordialement,<br/>L'équipe $__global.productName</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "0eec628bf1d479c7d7258b4e5602692c3b2e81d3b605af5fc625aa043833e5f4"
+}

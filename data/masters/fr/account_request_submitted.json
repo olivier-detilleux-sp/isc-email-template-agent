@@ -1,0 +1,14 @@
+{
+  "key": "account_request_submitted",
+  "name": "Account Request Submitted",
+  "description": "Sent to a requester to confirm that their account request has been submitted successfully.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "$data.sourceName – Demande $data.operationType soumise pour $data.accountName",
+  "body": "<h2 style=\"color: __ISC_BRAND_NAVIGATION_COLOR__; margin: 0 0 16px 0; font-size: 20px;\">Demande de compte soumise</h2>\n<p style=\"margin: 0 0 12px 0;\">Bonjour $data.requesterName,</p>\n<p style=\"margin: 0 0 16px 0;\">Votre demande visant à $data.operationType.toLowerCase() le compte $data.accountName sur $data.sourceName a bien été soumise.</p>\n<div style=\"border-left: 4px solid __ISC_BRAND_ACTION_COLOR__; padding: 12px 16px; margin: 0 0 16px 0; background-color: #f8f9fa;\">\n<p style=\"margin: 0 0 8px 0;\"><strong>Suivi de votre demande</strong></p>\n<p style=\"margin: 0;\">Pour consulter l'état de votre demande, rendez-vous sur : <a href=\"${__global.productUrl}/ui/d/my-requests/account-requests\" target=\"_blank\" style=\"color: __ISC_BRAND_ACTION_COLOR__;\">${__global.productUrl}/ui/d/my-requests/account-requests</a>.</p>\n</div>\n<p style=\"margin: 0 0 16px 0;\">Vous recevrez une notification une fois cette demande terminée.</p>\n<p style=\"margin: 0;\">Cordialement,<br/>L'équipe $__global.productName</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "b44f946d90fbcdc90669a724923d99f5eb3818d4907713b10a76835a8671b7fa"
+}

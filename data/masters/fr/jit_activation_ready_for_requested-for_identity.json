@@ -1,0 +1,14 @@
+{
+  "key": "jit_activation_ready_for_requested-for_identity",
+  "name": "Just-In-Time Activation Ready for Requested-For Identity",
+  "description": "Notifies a manager, owner, or other interested party that a Just-In-Time activation window initiated by another identity is now active.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "L'accès Just-In-Time pour ${requestedForIdentityName} est prêt",
+  "body": "<h2 style=\"color: __ISC_BRAND_NAVIGATION_COLOR__; margin: 0 0 16px 0; font-size: 20px; font-weight: 600;\">Activation Just-In-Time prête</h2>\n<p style=\"margin: 0 0 16px 0; line-height: 1.5;\">Bonjour $__recipient.name,</p>\n<p style=\"margin: 0 0 16px 0; line-height: 1.5;\">La fenêtre de durée Just-In-Time est désormais activée.</p>\n<div style=\"border-left: 4px solid __ISC_BRAND_ACTION_COLOR__; padding: 12px 16px; margin: 0 0 16px 0;\">\n<p style=\"margin: 0 0 8px 0; line-height: 1.5;\"><strong style=\"color: __ISC_BRAND_NAVIGATION_COLOR__;\">Fenêtre :</strong> ${requestedForIdentityName}</p>\n<p style=\"margin: 0 0 8px 0; line-height: 1.5;\"><strong style=\"color: __ISC_BRAND_NAVIGATION_COLOR__;\">Initiée pour :</strong> ${entitlementName}</p>\n<p style=\"margin: 0; line-height: 1.5;\"><strong style=\"color: __ISC_BRAND_NAVIGATION_COLOR__;\">Activée pour :</strong> ${activationDuration}</p>\n</div>\n#if($activationUrl)<p style=\"margin: 0 0 16px 0; line-height: 1.5;\">Vous pouvez revenir à $__global.productName <a href=\"$activationUrl\" target=\"_blank\" style=\"color: __ISC_BRAND_ACTION_COLOR__; text-decoration: underline;\">ici</a> pour consulter cette activation.</p>#{end}\n<p style=\"margin: 0 0 16px 0; line-height: 1.5;\">Pour toute question, veuillez contacter ${ownerName}.</p>\n<p style=\"margin: 0; line-height: 1.5;\">Cordialement,<br/>L'équipe $__global.productName</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "23284493657d2038406911978c38ce61ad0f3aa3399716e9163cc0a60788a093"
+}

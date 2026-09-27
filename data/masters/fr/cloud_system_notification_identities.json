@@ -1,0 +1,14 @@
+{
+  "key": "cloud_system_notification_identities",
+  "name": "Identity Errors",
+  "description": "Sent when identity processing causes 5% or more of identities to be in an error state. This is a system notification email.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "${PRODUCT_NAME} Notification : des identités sont en état d'erreur après un rafraîchissement",
+  "body": "<h2 style=\"color: __ISC_BRAND_NAVIGATION_COLOR__; margin: 0 0 16px 0; font-size: 20px; font-weight: 600;\">Identités en état d'erreur</h2>\n<p style=\"margin: 0 0 12px 0; line-height: 1.5;\">Bonjour,</p>\n<p style=\"margin: 0 0 16px 0; line-height: 1.5;\">Après un rafraîchissement des identités effectué à ${timestamp}, une part importante des identités de votre organisation se trouve en état d'erreur.</p>\n<div style=\"border-left: 4px solid __ISC_BRAND_ACTION_COLOR__; padding: 12px 16px; margin: 0 0 16px 0; background-color: #f7f7f7;\">\n<p style=\"margin: 0; line-height: 1.5;\"><strong style=\"color: __ISC_BRAND_NAVIGATION_COLOR__;\">Taux d'identités en erreur</strong><br/>${errorPercentage}&nbsp;%</p>\n</div>\n<p style=\"margin: 0 0 16px 0; line-height: 1.5;\">Cordialement,<br/>L'équipe ${PRODUCT_NAME}</p>\n<p style=\"margin: 0; line-height: 1.5; font-size: 12px; color: #666666;\">Vous recevez cet e-mail car votre adresse a été configurée pour recevoir les e-mails de notification ${PRODUCT_NAME}.</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "bba9a7d62598f3146e80f22c9c8e5fcdba12053eb67fe9b522a18662ca260074"
+}

@@ -1,0 +1,14 @@
+{
+  "key": "cloud_user_unlock_token",
+  "name": "Unlock User Code",
+  "description": "Sent when a user selects Unlock on the Sign In page to provide a code that is used to unlock the account.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Votre code de déverrouillage de compte est ${token}",
+  "body": "<h2 style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;margin:0 0 16px 0;font-size:20px;font-weight:600;\">Code de déverrouillage de compte</h2>\n<p style=\"margin:0 0 12px 0;line-height:1.5;\">Bonjour ${user.name},</p>\n<p style=\"margin:0 0 12px 0;line-height:1.5;\">Une demande a été effectuée pour déverrouiller votre compte ${PRODUCT_NAME}. Si vous êtes à l’origine de cette demande, copiez le code ci-dessous dans l’invite affichée dans ${PRODUCT_NAME} afin de vérifier votre identité&nbsp;:</p>\n<div style=\"margin:16px 0;padding:16px;border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f5f5f5;\">\n<p style=\"margin:0 0 4px 0;font-size:12px;color:#666666;text-transform:uppercase;letter-spacing:0.5px;\">Code de déverrouillage</p>\n<p style=\"margin:0;font-size:22px;font-weight:700;letter-spacing:2px;color:__ISC_BRAND_NAVIGATION_COLOR__;\">${token}</p>\n</div>\n<p style=\"margin:0 0 12px 0;line-height:1.5;\">Ce code expire dès qu’il est utilisé, ou le ${expires}.</p>\n<p style=\"margin:0 0 16px 0;line-height:1.5;\">Si vous n’êtes pas à l’origine de cette demande, contactez immédiatement votre administrateur informatique.</p>\n<p style=\"margin:0;line-height:1.5;\">Cordialement,<br/>L’équipe ${PRODUCT_NAME}</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "3ad204b93edc12b40f84f73d596c8f3b27013d154384171ef8c9c7245c14171f"
+}

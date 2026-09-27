@@ -1,0 +1,14 @@
+{
+  "key": "privilege_recommendation_review_notification",
+  "name": "Privileged Entitlement Recommendation Available for Review",
+  "description": "Sent to the entitlement or source owner to notify them that a privileged entitlement recommendation is available for their review.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Recommandation de droit privilégié disponible pour examen",
+  "body": "<h2 style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;margin:0 0 16px 0;font-size:20px;font-weight:600;\">Recommandation de droit privilégié à examiner</h2>\n<p style=\"margin:0 0 12px 0;line-height:1.5;\">Bonjour $__recipient.name,</p>\n<p style=\"margin:0 0 16px 0;line-height:1.5;\">Une recommandation de droit privilégié concernant <strong>${EntitlementName}</strong> est disponible pour votre examen.</p>\n<div style=\"border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f5f5f5;padding:12px 16px;margin:0 0 16px 0;\">\n<p style=\"margin:0;line-height:1.5;\">Vous pouvez l’examiner sur la page <a href=\"${__global.productUrl}${DeepLinkSuffix}\" style=\"color:__ISC_BRAND_ACTION_COLOR__;text-decoration:underline;\">Recommandations de droits privilégiés</a>.</p>\n</div>\n<p style=\"margin:0;line-height:1.5;\">Cordialement,<br/>L’équipe $__global.productName</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "233eb01c9aeb0ed6e4742b7b4019e4b2b1eb75fc3da25e1b94f578367444f3ae"
+}

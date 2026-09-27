@@ -1,0 +1,14 @@
+{
+  "key": "cloud_lifecycle_state_change",
+  "name": "Lifecycle State Change",
+  "description": "Sent to selected users when an identity's lifecycle state changes.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Changement d'état du cycle de vie pour ${identityName}",
+  "body": "<h2 style=\"color: __ISC_BRAND_NAVIGATION_COLOR__; margin: 0 0 16px 0; font-size: 20px; font-weight: 600;\">Changement d'état du cycle de vie</h2><p style=\"margin: 0 0 16px 0; line-height: 1.5; color: #333333;\">L'état du cycle de vie de l'utilisateur ${identityName} a été mis à jour.</p><div style=\"border-left: 4px solid __ISC_BRAND_ACTION_COLOR__; background-color: #f7f7f7; padding: 12px 16px; margin: 0 0 20px 0;\"><p style=\"margin: 0; line-height: 1.5; color: #333333;\"><strong style=\"color: __ISC_BRAND_NAVIGATION_COLOR__;\">Nouvel état :</strong> $newState</p></div><p style=\"margin: 0; line-height: 1.5; color: #333333;\">Cordialement,<br/>L'équipe ${PRODUCT_NAME}</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "d9e3bdd81cd651bf939a5e227dab3f4bd7dfebbc97412316b02ed6f710943f82"
+}

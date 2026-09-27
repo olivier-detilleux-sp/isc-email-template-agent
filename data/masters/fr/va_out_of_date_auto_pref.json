@@ -1,0 +1,14 @@
+{
+  "key": "va_out_of_date_auto_pref",
+  "name": "VA out of date for automatic preference",
+  "description": "Notifies when VA's CCG version is out of date.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "$PRODUCT_NAME Notification : l'appliance virtuelle $clusterName n'est plus à jour",
+  "body": "<h2 style=\"margin:0 0 16px 0;font-size:20px;line-height:1.3;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Appliance virtuelle non à jour</h2>\n<p style=\"margin:0 0 12px 0;font-size:14px;line-height:1.5;color:#333333;\">Bonjour,</p>\n<p style=\"margin:0 0 12px 0;font-size:14px;line-height:1.5;color:#333333;\">L'appliance virtuelle <b>$clusterName</b> comporte un ou plusieurs clients qui ne sont plus à jour.</p>\n<p style=\"margin:0 0 8px 0;font-size:14px;line-height:1.5;color:#333333;\">Les clients suivants exécutent des versions antérieures du processus <b>$processName</b>&nbsp;:</p>\n<ul style=\"margin:0 0 16px 0;padding-left:20px;font-size:14px;line-height:1.5;color:#333333;\">$clientListHtml</ul>\n<div style=\"margin:0 0 16px 0;padding:12px 16px;border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f7f7f7;\">\n<p style=\"margin:0;font-size:14px;line-height:1.5;color:#333333;\">La dernière version disponible de <b>$processName</b> est&nbsp;: <b style=\"color:__ISC_BRAND_ACTION_COLOR__;\">$latestCcgVersion</b>.</p>\n</div>\n<p style=\"margin:0 0 12px 0;font-size:14px;line-height:1.5;color:#333333;\">Sans mise à jour de ces clients, le support peut être limité, des vulnérabilités peuvent apparaître et certaines fonctionnalités peuvent être perdues.</p>\n<p style=\"margin:0 0 16px 0;font-size:14px;line-height:1.5;color:#333333;\">Un redémarrage de la VA peut être nécessaire. Pour plus de détails, consultez le <a href=\"https://community.sailpoint.com/t5/IdentityNow-Connectors/Virtual-Appliance-Troubleshooting-Guide/ta-p/78735\" target=\"_blank\" style=\"color:__ISC_BRAND_ACTION_COLOR__;text-decoration:underline;\">guide de dépannage VA</a>.</p>\n<p style=\"margin:0;font-size:14px;line-height:1.5;color:#333333;\">Cordialement,<br/>L'équipe $PRODUCT_NAME</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "4bd2b2341e1e7429348bb0cafae0d0cd0d07b1353700ab4dce9c02d77b773724"
+}

@@ -1,0 +1,14 @@
+{
+  "key": "resource_lifecycle_request_notification_failed",
+  "name": "Resource Lifecycle Request Failed",
+  "description": "Sent to a requester to notify that their resource lifecycle request has been failed.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "$data.sourceName – Échec de la demande $data.operationType pour $data.machineIdentityName",
+  "body": "<h2 style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;margin:0 0 16px 0;font-size:20px;font-weight:600;\">Échec de votre demande de cycle de vie</h2>\n<p style=\"margin:0 0 12px 0;line-height:1.5;\">Bonjour $data.requesterName,</p>\n<p style=\"margin:0 0 16px 0;line-height:1.5;\">Votre demande visant à $data.operationType.toLowerCase() le $data.machineIdentitySubtype.toLowerCase() $data.machineIdentityName sur $data.sourceName a échoué.</p>\n<div style=\"border-left:4px solid __ISC_BRAND_ACTION_COLOR__;padding:12px 16px;margin:0 0 16px 0;background-color:#f7f7f7;\">\n<p style=\"margin:0 0 8px 0;line-height:1.5;\"><strong style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;\">Motif de l'échec</strong></p>\n<p style=\"margin:0;line-height:1.5;\">$data.failureReason</p>\n</div>\n<p style=\"margin:0 0 16px 0;line-height:1.5;\">Veuillez contacter votre administrateur pour obtenir de l'aide.</p>\n<p style=\"margin:0;line-height:1.5;\">Cordialement,<br/>L'équipe $__global.productName</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "801910fe28a4514437e9e2409173fb6043cc0f326e17d0815aaa6fae9962f68a"
+}

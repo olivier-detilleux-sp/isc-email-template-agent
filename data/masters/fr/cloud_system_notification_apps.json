@@ -1,0 +1,14 @@
+{
+  "key": "cloud_system_notification_apps",
+  "name": "Application Health",
+  "description": "Sent when an application changes status. This is a system notification email.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "L'application '$name' est désormais dans #if ($healthy) un état sain #{else} un état dégradé #{end}.",
+  "body": "<h2 style=\"color: __ISC_BRAND_NAVIGATION_COLOR__; margin: 0 0 16px 0; font-size: 20px; font-weight: 600;\">État de l'application</h2>\n<p style=\"margin: 0 0 12px 0; font-size: 14px; line-height: 1.5; color: #333333;\">Bonjour,</p>\n<div style=\"border-left: 4px solid __ISC_BRAND_ACTION_COLOR__; background-color: #f7f7f7; padding: 12px 16px; margin: 0 0 16px 0;\">\n<p style=\"margin: 0; font-size: 14px; line-height: 1.5; color: #333333;\">L'application <strong>'$name'</strong> est dans #if ($healthy) un état sain #{else} un état dégradé #{end} #if ($since) depuis $since. #{end}</p>\n</div>\n<p style=\"margin: 0 0 16px 0; font-size: 14px; line-height: 1.5; color: #333333;\">Veuillez vous connecter à <span style=\"color: __ISC_BRAND_ACTION_COLOR__; font-weight: 600;\">$PRODUCT_NAME</span> pour plus d'informations.</p>\n<p style=\"margin: 0 0 8px 0; font-size: 14px; line-height: 1.5; color: #333333;\">Cordialement,<br/>L'équipe $PRODUCT_NAME</p>\n<p style=\"margin: 16px 0 0 0; font-size: 12px; line-height: 1.5; color: #666666;\">Vous recevez cet e-mail car votre adresse a été configurée pour recevoir les notifications $PRODUCT_NAME.</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "03b8567506dd7be04f5580f0dfa50ca8b4565fdb4e4fc51633c679ce91a3e7e9"
+}

@@ -1,0 +1,14 @@
+{
+  "key": "approval_completed_notification",
+  "name": "Approval Completed",
+  "description": "Send a notification to a requester indicating they have an approval request that has been completed.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Une demande d'approbation pour $approvalName a été $approvalStatus",
+  "body": "<h2 style=\"color: __ISC_BRAND_NAVIGATION_COLOR__; margin: 0 0 16px 0; font-size: 20px; font-weight: 600;\">Demande d'approbation finalisée</h2>\n<p style=\"margin: 0 0 16px 0; line-height: 1.5; color: #333333;\">Bonjour ${__recipient.name},</p>\n<p style=\"margin: 0 0 16px 0; line-height: 1.5; color: #333333;\">Une demande d'approbation concernant $approvalName, soumise #if($requestee.name && $requestee.name != '' && $requestee.identityID  == $__recipient.id) en votre nom par $requester.name #{else} par vous #{end}, a été $approvalStatus.toLowerCase().</p>\n<div style=\"border-left: 4px solid __ISC_BRAND_ACTION_COLOR__; background-color: #f7f9fc; padding: 12px 16px; margin: 0 0 20px 0;\">\n<p style=\"margin: 0; line-height: 1.5; color: #333333;\">Pour traiter vos demandes d'approbation ou en consulter le statut, rendez-vous à l'adresse suivante :</p>\n<p style=\"margin: 8px 0 0 0; line-height: 1.5;\"><a href=\"$__global.productUrl/ui/d/$requesterPath\" style=\"color: __ISC_BRAND_ACTION_COLOR__; text-decoration: underline;\">$__global.productUrl/ui/d/$requesterPath</a></p>\n</div>\n<p style=\"margin: 0; line-height: 1.5; color: #333333;\">Cordialement,<br/>L'équipe ${__global.productName}</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "222b15e786aa972441e4c8d9c98d964abcf71dd57b888f4bade3931647888ea5"
+}

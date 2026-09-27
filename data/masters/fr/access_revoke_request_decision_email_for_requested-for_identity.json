@@ -1,0 +1,14 @@
+{
+  "key": "access_revoke_request_decision_email_for_requested-for_identity",
+  "name": "Access Revoke Request Decision Email For Requested-For Identity",
+  "description": "Notifies a user when a reviewer has made a decision on their access in an access revoke request.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "La demande de révocation d'accès de ${requesterName} vous concernant a été #if($approved)approuvée#{else}refusée#{end}",
+  "body": "<h2 style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;margin:0 0 16px 0;font-size:20px;font-weight:600;\">Décision sur une demande de révocation d'accès</h2>\n<p style=\"margin:0 0 12px 0;font-size:14px;line-height:1.5;color:#333333;\">Bonjour ${user.name},</p>\n<div style=\"margin:0 0 16px 0;padding:12px 16px;border-left:4px solid __ISC_BRAND_NAVIGATION_COLOR__;background-color:#f7f7f7;\">\n<p style=\"margin:0;font-size:14px;line-height:1.5;color:#333333;\">La demande de $requesterName visant à retirer votre accès au $requestedObjectName <strong style=\"color:__ISC_BRAND_ACTION_COLOR__;\">$requestedObjectType</strong> a été <strong>#if ($approved)<span style=\"color:green;\">approuvée</span>#{else}<span style=\"color:red;\">refusée</span>#{end}</strong>.</p>\n</div>\n#if($removeDate)<div style=\"margin:0 0 16px 0;padding:12px 16px;border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f7f7f7;\">\n<p style=\"margin:0;font-size:14px;line-height:1.5;color:#333333;\">Votre accès à <strong>${requestedObjectName}</strong> est prévu pour prendre fin le <strong>${removeDate}</strong>.</p>\n</div>#{end}\n<p style=\"margin:0 0 16px 0;font-size:14px;line-height:1.5;color:#333333;\">Pour toute information complémentaire, veuillez contacter $requesterName.</p>\n<p style=\"margin:0;font-size:14px;line-height:1.5;color:#333333;\">Cordialement,<br/>L'équipe ${PRODUCT_NAME}</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "592ffc938e77a9ff4855b0c4621322fbf9f00ef18f377ad290ac6c044a74bd7d"
+}

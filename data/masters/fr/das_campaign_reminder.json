@@ -1,0 +1,14 @@
+{
+  "key": "das_campaign_reminder",
+  "name": "Data Access Security Campaign Reminder",
+  "description": "Sent to reviewers who still have outstanding items in an in-progress Data Access Security certification campaign, on the reminder schedule an administrator configures for it.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Rappel : une tâche de certification d'accès attend votre revue — échéance finale : $campaignReminder.dueDate",
+  "body": "<h2 style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;font-family:Calibri,Arial,sans-serif;font-size:18px;margin:0 0 16px 0;\">Rappel de certification d'accès</h2>\n<p style=\"font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;margin:0 0 12px 0;\">Bonjour,</p>\n<p style=\"font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;margin:0 0 12px 0;\">Une tâche de certification d'accès est en attente de votre revue. Elle doit être terminée au plus tard le <strong style=\"color:__ISC_BRAND_ACTION_COLOR__;\">$campaignReminder.dueDate</strong>.</p>\n<p style=\"font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;margin:0 0 16px 0;\">Veuillez suivre le <a href=\"$campaignReminder.url\" style=\"color:__ISC_BRAND_ACTION_COLOR__;text-decoration:underline;\">lien</a> pour consulter la tâche.</p>\n<div style=\"border-left:4px solid __ISC_BRAND_NAVIGATION_COLOR__;padding:12px 16px;margin:0 0 16px 0;background-color:#f7f7f7;\">\n<p style=\"font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;margin:0 0 8px 0;\"><strong style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;\">Détails de la tâche</strong></p>\n<ul style=\"font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.6;margin:0;padding-left:20px;\">\n<li style=\"margin-bottom:6px;\"><strong>Nom de la campagne :</strong> $campaignReminder.name</li>\n<li style=\"margin-bottom:6px;\"><strong>Description :</strong> $campaignReminder.description</li>\n<li style=\"margin-bottom:0;\"><strong>Instructions :</strong> $campaignReminder.instructions</li>\n</ul>\n</div>\n<p style=\"font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;margin:0;\">Cordialement,<br/>Data Access Security</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "81dfefce50a5ec71b94e57c60a63f3f9c466ae1f511a40fa26913628c6996088"
+}

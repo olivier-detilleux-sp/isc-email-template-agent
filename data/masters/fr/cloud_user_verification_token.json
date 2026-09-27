@@ -1,0 +1,14 @@
+{
+  "key": "cloud_user_verification_token",
+  "name": "Account Password Reset",
+  "description": "Sent when a user requests a password reset via email.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "#if (${sourcename})${sourcename} - Réinitialisation du mot de passe du compte#{else}${PRODUCT_NAME} - Réinitialisation du mot de passe#{end}",
+  "body": "<h2 style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;margin:0 0 16px 0;font-size:20px;font-weight:600;\">Réinitialisation du mot de passe</h2>\n<p style=\"margin:0 0 16px 0;line-height:1.5;\">Bonjour ${user.name},</p>\n#if (${sourcename})\n<p style=\"margin:0 0 16px 0;line-height:1.5;\">Une demande de réinitialisation du mot de passe de votre compte ${sourcename} a été effectuée. Si vous êtes à l'origine de cette demande, veuillez cliquer <a href=\"${verificationURL}\" style=\"color:__ISC_BRAND_ACTION_COLOR__;\">ici</a> pour vérifier votre identité et définir un nouveau mot de passe.</p>\n#{else}\n<p style=\"margin:0 0 16px 0;line-height:1.5;\">Une demande de réinitialisation de votre mot de passe ${PRODUCT_NAME} a été effectuée. Si vous êtes à l'origine de cette demande, veuillez cliquer <a href=\"${verificationURL}\" style=\"color:__ISC_BRAND_ACTION_COLOR__;\">ici</a> pour vérifier votre identité et définir un nouveau mot de passe.</p>\n#{end}\n<div style=\"border-left:3px solid __ISC_BRAND_NAVIGATION_COLOR__;padding:12px 16px;margin:0 0 16px 0;background-color:#f7f7f7;\">\n<p style=\"margin:0 0 8px 0;line-height:1.5;\">Si le lien ne fonctionne pas, copiez-collez l'adresse suivante dans votre navigateur :</p>\n<p style=\"margin:0;line-height:1.5;word-break:break-all;\"><a href=\"${verificationURL}\" style=\"color:__ISC_BRAND_ACTION_COLOR__;\">${verificationURL}</a></p>\n</div>\n<p style=\"margin:0 0 16px 0;line-height:1.5;\">Si vous n'êtes pas à l'origine de cette demande, contactez immédiatement votre administrateur informatique.</p>\n<p style=\"margin:0;line-height:1.5;\">Cordialement,<br/>L'équipe ${PRODUCT_NAME}</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "6645f82e614112fd25de1b3d687ad8837a9daac1824597eb8eb7fbefb6ce9968"
+}

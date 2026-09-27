@@ -1,0 +1,14 @@
+{
+  "key": "certification_due_reminder",
+  "name": "Certification Due Reminder",
+  "description": "Notify certification reviewers one week after a campaign starts and every seven days after that, until they sign off.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Rappel : une certification nécessite votre attention",
+  "body": "<h2 style=\"color: __ISC_BRAND_NAVIGATION_COLOR__; margin: 0 0 16px 0; font-size: 20px; font-weight: 600;\">Rappel de certification</h2>\n<p style=\"margin: 0 0 16px 0; line-height: 1.5; color: #333333;\">Bonjour $__recipient.name,</p>\n<p style=\"margin: 0 0 16px 0; line-height: 1.5; color: #333333;\">La certification <strong>$campaignName</strong> est toujours ouverte et doit être finalisée.</p>\n<div style=\"border-left: 4px solid __ISC_BRAND_ACTION_COLOR__; background-color: #f7f7f7; padding: 12px 16px; margin: 0 0 16px 0;\">\n<p style=\"margin: 0; line-height: 1.5; color: #333333;\">Cette certification doit être terminée au plus tard le <strong>$campaignDeadline</strong>.</p>\n</div>\n<p style=\"margin: 0 0 16px 0; line-height: 1.5; color: #333333;\">Pour la finaliser, <a href=\"$identityNowUrl/ui/d/certifications-review/certification/gov_${certificationId}\" style=\"color: __ISC_BRAND_ACTION_COLOR__; text-decoration: underline;\">cliquez ici</a>.</p>\n<p style=\"margin: 0; line-height: 1.5; color: #333333;\">Cordialement,<br/>L&apos;équipe Identity Security Cloud</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "83e30bd0d9960cb23aa5efd45b472da31cc932462ca1e93c6db3c90d8a5845bc"
+}

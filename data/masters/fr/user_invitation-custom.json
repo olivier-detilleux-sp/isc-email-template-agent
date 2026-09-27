@@ -1,0 +1,14 @@
+{
+  "key": "user_invitation-custom",
+  "name": "User Invitation",
+  "description": "Sent to invite a user to your SailPoint products.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Bienvenue sur $__global.productName",
+  "body": "<h2 style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;margin:0 0 16px 0;font-size:22px;font-weight:600;\">Invitation à rejoindre la plateforme</h2>\n<p style=\"margin:0 0 12px 0;font-size:15px;line-height:1.5;color:#333333;\">Bonjour ${__recipient.name},</p>\n<p style=\"margin:0 0 16px 0;font-size:15px;line-height:1.5;color:#333333;\">Vous êtes invité(e) à utiliser $__global.productName afin de soutenir et de renforcer la sécurité de votre organisation.</p>\n<div style=\"margin:0 0 16px 0;padding:12px 16px;border-left:4px solid __ISC_BRAND_NAVIGATION_COLOR__;background-color:#f5f7fa;\">\n<p style=\"margin:0;font-size:15px;line-height:1.5;color:#333333;\">Votre nom d'utilisateur&nbsp;: <span style=\"font-weight:bold;\">${__recipient.alias}</span></p>\n</div>\n<p style=\"margin:0 0 16px 0;font-size:15px;line-height:1.5;color:#333333;\">Pour commencer, veuillez vous enregistrer en cliquant sur le lien suivant&nbsp;:</p>\n<p style=\"margin:0 0 20px 0;\"><a href=\"${registrationUrl}\" style=\"display:inline-block;padding:10px 18px;background-color:__ISC_BRAND_ACTION_COLOR__;color:#ffffff;text-decoration:none;font-weight:600;font-size:15px;\">S'enregistrer maintenant</a></p>\n<p style=\"margin:0 0 20px 0;font-size:15px;line-height:1.5;color:#333333;\">Une fois votre enregistrement effectué, vous pourrez accéder à <a href=\"${__global.productUrl}\" style=\"color:__ISC_BRAND_ACTION_COLOR__;font-weight:600;text-decoration:underline;\">$__global.productName</a> via ce lien.</p>\n<p style=\"margin:0;font-size:15px;line-height:1.5;color:#333333;\">Cordialement,<br/>L'équipe $__global.productName</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "463a35e8d830675f65047d88b6a6240eab08e44f12da3161d951b80de5c8af4c"
+}

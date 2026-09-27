@@ -1,0 +1,14 @@
+{
+  "key": "create_account_policy_recommendation",
+  "name": "Create Account Policy Recommendations Complete",
+  "description": "Sent to the user when create account policy recommendations are complete.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Recommandations de politique de création de compte finalisées pour $sourceName",
+  "body": "<h2 style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;margin:0 0 16px 0;font-size:20px;font-weight:600;\">Recommandations de création de compte prêtes</h2>\n<p style=\"margin:0 0 12px 0;line-height:1.5;color:#333333;\">Bonjour $__recipient.name,</p>\n<p style=\"margin:0 0 16px 0;line-height:1.5;color:#333333;\">#set($url=$__global.productUrl + '/ui/a/admin/connections/sources/' + $sourceId + '/settings/account-provisioning')Les recommandations d'IA relatives aux attributs de création de compte ont été générées pour <strong style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;\">$sourceName</strong>.</p>\n<div style=\"border-left:4px solid __ISC_BRAND_ACTION_COLOR__;padding:12px 16px;margin:0 0 16px 0;background-color:#f7f9fc;\">\n<p style=\"margin:0;line-height:1.5;color:#333333;\">Accédez à la page <a href=\"$url\" style=\"color:__ISC_BRAND_ACTION_COLOR__;text-decoration:underline;\">Création de compte</a> pour examiner vos recommandations de création de compte.</p>\n</div>\n<p style=\"margin:0;line-height:1.5;color:#333333;\">Cordialement,<br/>L'équipe $__global.productName</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "e5a2c5267536e29fcd6d8c98a3c8be5694207f4c078932ed2e4de48f0e7db9ec"
+}

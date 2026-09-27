@@ -1,0 +1,14 @@
+{
+  "key": "bulk_reassignment",
+  "name": "Certification Reassignment (Legacy)",
+  "description": "Notifies a reviewer when they have been reassigned identities from an existing certification.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Nouvelle réaffectation de certification",
+  "body": "<h2 style=\"margin:0 0 16px 0;font-size:20px;line-height:1.3;color:__ISC_BRAND_NAVIGATION_COLOR__;font-weight:600;\">Réaffectation de certification</h2>\n<p style=\"margin:0 0 12px 0;font-size:14px;line-height:1.5;color:#333333;\">Bonjour ${user.name},</p>\n<p style=\"margin:0 0 16px 0;font-size:14px;line-height:1.5;color:#333333;\">${requesterName} vous a confié ${numNewIdentities} #if(${numNewIdentities} == 1) utilisateur #{else} utilisateurs #{end} à examiner dans le cadre d’une certification.</p>\n<div style=\"margin:0 0 16px 0;padding:12px 16px;border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f7f7f7;\">\n<p style=\"margin:0 0 8px 0;font-size:14px;line-height:1.5;color:#333333;\"><strong style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;\">Motif de la réaffectation</strong><br/>${description}</p>\n<p style=\"margin:0;font-size:14px;line-height:1.5;color:#333333;\"><strong style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;\">Échéance</strong><br/>Vous disposez jusqu’au $spTools.formatDate($certification.expiration,3,0) pour examiner ces utilisateurs et approuver, modifier ou révoquer leurs accès.</p>\n</div>\n<p style=\"margin:0 0 16px 0;font-size:14px;line-height:1.5;color:#333333;\">Pour examiner la certification, <a href=\"$identityNowUrl/ui/d/certifications-review/certification/${certification.id}\" style=\"color:__ISC_BRAND_ACTION_COLOR__;text-decoration:underline;\">cliquez ici</a>.</p>\n<p style=\"margin:0;font-size:14px;line-height:1.5;color:#333333;\">Cordialement,<br/>L’équipe Identity Security Cloud</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "43903716d9f6793f97996e15314887cc2b731d17e686f621067466f69ac75866"
+}

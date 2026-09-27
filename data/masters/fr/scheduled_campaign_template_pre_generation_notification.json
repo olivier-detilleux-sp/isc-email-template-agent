@@ -1,0 +1,14 @@
+{
+  "key": "scheduled_campaign_template_pre_generation_notification",
+  "name": "Scheduled Campaign Template Pre-Generation Notification",
+  "description": "Notify template owner one week prior to Campaign Template generation.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Rappel : votre campagne de certification est prévue pour démarrer dans 7 jours",
+  "body": "<h2 style=\"color: __ISC_BRAND_NAVIGATION_COLOR__; margin: 0 0 16px 0; font-size: 20px; font-weight: 600;\">Rappel : génération de campagne prévue</h2>\n<p style=\"margin: 0 0 12px 0; line-height: 1.5;\">Bonjour $__recipient.name,</p>\n<p style=\"margin: 0 0 16px 0; line-height: 1.5;\">La certification <strong style=\"color: __ISC_BRAND_NAVIGATION_COLOR__;\">$campaignTemplateName</strong> est programmée pour générer une campagne dans <strong>$remainingDays</strong> jours.</p>\n<div style=\"border-left: 4px solid __ISC_BRAND_ACTION_COLOR__; background-color: #f5f7fa; padding: 12px 16px; margin: 0 0 16px 0;\">\n<p style=\"margin: 0 0 8px 0; line-height: 1.5;\"><strong style=\"color: __ISC_BRAND_NAVIGATION_COLOR__;\">Action requise</strong></p>\n<p style=\"margin: 0; line-height: 1.5;\">Si vous devez apporter des modifications au contenu de cette campagne, veuillez le faire avant le <strong>$generationDate</strong>.</p>\n</div>\n<p style=\"margin: 0 0 16px 0; line-height: 1.5;\">Pour modifier la campagne, <a href=\"$identityNowUrl/ui/search/library/certifications/overview\" style=\"color: __ISC_BRAND_ACTION_COLOR__; text-decoration: underline;\">cliquez ici</a>.</p>\n<p style=\"margin: 0; line-height: 1.5;\">Cordialement,<br/>L'équipe $__global.productName</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "50259858bd3bf975ad88e2049fd28b9d3c38c41d3e711538f843fa19caee19e2"
+}

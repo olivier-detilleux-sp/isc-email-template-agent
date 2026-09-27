@@ -1,0 +1,14 @@
+{
+  "key": "resource_lifecycle_request_notification_completed",
+  "name": "Resource Lifecycle Request Completed",
+  "description": "Sent to a requester to notify that their resource lifecycle request has been completed successfully.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "$data.sourceName – Demande $data.operationType terminée avec succès pour $data.machineIdentityName",
+  "body": "<h2 style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;margin:0 0 16px 0;font-size:20px;font-weight:600;\">Demande de cycle de vie terminée</h2>\n<p style=\"margin:0 0 16px 0;line-height:1.5;\">Bonjour $data.requesterName,</p>\n<p style=\"margin:0 0 16px 0;line-height:1.5;\">Votre demande visant à $data.operationType.toLowerCase() le $data.machineIdentitySubtype.toLowerCase() $data.machineIdentityName sur la source $data.sourceName a été menée à bien.</p>\n<div style=\"border-left:4px solid __ISC_BRAND_ACTION_COLOR__;padding:12px 16px;margin:0 0 16px 0;background-color:#f7f7f7;\">\n<p style=\"margin:0;line-height:1.5;\"><strong style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;\">Statut :</strong> terminée avec succès</p>\n</div>\n<p style=\"margin:0 0 8px 0;line-height:1.5;\">Cordialement,</p>\n<p style=\"margin:0;line-height:1.5;\">L'équipe $__global.productName</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "c7e9914861bfd5991d6ae03457ef6c09045ed9958eb5b3f1c35eba48a9c76598"
+}

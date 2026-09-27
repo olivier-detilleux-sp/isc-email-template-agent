@@ -1,0 +1,14 @@
+{
+  "key": "va_error_state_resolved_notification",
+  "name": "VA Error State Resolved",
+  "description": "Notifies when an errors are resolved on the VA.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "$PRODUCT_NAME Notification : l'état de santé de l'appliance virtuelle $clusterName est : $state",
+  "body": "<h2 style=\"color: __ISC_BRAND_NAVIGATION_COLOR__; margin: 0 0 16px 0; font-size: 20px; font-weight: 600;\">État de santé de l'appliance virtuelle rétabli</h2>\n<p style=\"margin: 0 0 12px 0; line-height: 1.5; color: #333333;\">Bonjour,</p>\n<p style=\"margin: 0 0 16px 0; line-height: 1.5; color: #333333;\">L'appliance virtuelle <strong style=\"color: __ISC_BRAND_NAVIGATION_COLOR__;\">$clusterName</strong> présente désormais l'état de santé <strong style=\"color: __ISC_BRAND_ACTION_COLOR__;\">$state</strong>.</p>\n<p style=\"margin: 0 0 8px 0; line-height: 1.5; color: #333333;\">Les $type suivants ont été résolus :</p>\n<div style=\"border-left: 4px solid __ISC_BRAND_ACTION_COLOR__; padding: 12px 16px; margin: 0 0 20px 0; background-color: #f7f7f7;\">\n<div style=\"line-height: 1.5; color: #333333;\">$errorDetails</div>\n</div>\n<p style=\"margin: 0; line-height: 1.5; color: #333333;\">Cordialement,<br/>L'équipe $PRODUCT_NAME</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "0cd12f3e2097303578e514f23bc5d0a3bf37e335bde37c8f57657e165cbb4afd"
+}

@@ -1,0 +1,14 @@
+{
+  "key": "account_correlation_statistics_recommendation",
+  "name": "Account Correlation Test Complete",
+  "description": "Sent to the user when account correlation statistics have been generated.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Test de corrélation de comptes terminé pour $sourceName",
+  "body": "<h2 style=\"color: __ISC_BRAND_NAVIGATION_COLOR__; margin: 0 0 16px 0; font-size: 20px; font-weight: 600;\">Test de corrélation de comptes terminé</h2>\n<p style=\"margin: 0 0 16px 0; line-height: 1.5; color: #333333;\">Bonjour $__recipient.name,</p>\n<p style=\"margin: 0 0 16px 0; line-height: 1.5; color: #333333;\">#set($url=$__global.productUrl + '/ui/a/admin/connections/sources/' + $sourceId + '/settings/account-correlation')Les statistiques de corrélation de comptes ont été générées à partir de votre configuration de test de corrélation pour la source <strong style=\"color: __ISC_BRAND_NAVIGATION_COLOR__;\">$sourceName</strong>.</p>\n<div style=\"border-left: 4px solid __ISC_BRAND_ACTION_COLOR__; padding: 12px 16px; margin: 0 0 20px 0; background-color: #f7f7f7;\">\n<p style=\"margin: 0; line-height: 1.5; color: #333333;\">Consultez la page <a href=\"$url\" style=\"color: __ISC_BRAND_ACTION_COLOR__; text-decoration: underline;\">Corrélation de comptes</a> pour examiner les résultats du test de corrélation.</p>\n</div>\n<p style=\"margin: 0; line-height: 1.5; color: #333333;\">Cordialement,<br/>L'équipe $__global.productName</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "3201867c7d7b100aa26e1caf856807d69130b7eb6a10d393e9dfb9adae57c56d"
+}

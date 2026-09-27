@@ -1,0 +1,14 @@
+{
+  "key": "approval_request_timeout",
+  "name": "Approval Timed Out",
+  "description": "Sent to the approval requester and approvers when no resolution has been reached for an approval request since instantiation based on an admin-configured number of days.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Une demande d'approbation a dépassé le délai imparti",
+  "body": "<h2 style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;margin:0 0 16px 0;font-size:20px;font-weight:600;\">Demande d'approbation expirée</h2>\n<p style=\"margin:0 0 12px 0;line-height:1.5;\">Bonjour ${__recipient.name},</p>\n<p style=\"margin:0 0 12px 0;line-height:1.5;\">Une demande d'approbation concernant $approvalName, soumise #if($requestee.name && $requestee.name != '' && $requestee.identityID == $__recipient.id) en votre nom par $requester.name #elseif($requestee.name && $requestee.name != '') par $requestee.name #elseif($requester.identityID == $__recipient.id) par vous #{else} par $requester.name #{end}, a expiré faute de résolution dans un délai de $timeoutDays jours. Elle est désormais clôturée.</p>\n<div style=\"border-left:4px solid __ISC_BRAND_ACTION_COLOR__;padding:12px 16px;margin:0 0 16px 0;background-color:#f8f9fa;\">\n<p style=\"margin:0;line-height:1.5;\">#if($requestee.identityID == $__recipient.id || $requester.identityID == $__recipient.id) Pour consulter vos demandes d'approbation ou en créer une nouvelle, rendez-vous à l'adresse suivante&nbsp;: <a href=\"$__global.productUrl/ui/d/$requesterPath\" style=\"color:__ISC_BRAND_ACTION_COLOR__;\">$__global.productUrl/ui/d/$requesterPath</a>. #{else} Pour consulter les demandes d'approbation qui vous sont assignées, rendez-vous à l'adresse suivante&nbsp;: <a href=\"$__global.productUrl/ui/d/$approverPath\" style=\"color:__ISC_BRAND_ACTION_COLOR__;\">$__global.productUrl/ui/d/$approverPath</a>. #{end}</p>\n</div>\n<p style=\"margin:0;line-height:1.5;\">Cordialement,<br/>L'équipe ${__global.productName}</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "192cb1ee5243203d84cf60b01134af8e0e46ccb69de0ceb5a851a852d0388064"
+}

@@ -1,0 +1,14 @@
+{
+  "key": "access_request_for_identity_with_multiple_accounts_failed",
+  "name": "Access Request For Identity With Multiple Accounts Failed",
+  "description": "Sent to the requester if their access request failed because the user they requested access for has multiple accounts on the source.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Échec de la demande pour « ${requestItemName} »",
+  "body": "<h2 style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;margin:0 0 16px 0;font-size:20px;font-weight:600;\">Échec de votre demande d'accès</h2>\n<p style=\"margin:0 0 12px 0;line-height:1.5;\">Bonjour ${recipientName},</p>\n<p style=\"margin:0 0 12px 0;line-height:1.5;\">Votre demande concernant « ${requestItemName} » n'a pas pu aboutir.</p>\n<div style=\"border-left:4px solid __ISC_BRAND_ACTION_COLOR__;padding:12px 16px;margin:0 0 16px 0;background-color:#f5f7fa;\">\n<p style=\"margin:0;line-height:1.5;\">Motif : vous disposez de plusieurs comptes sur la source « ${sourceName} ».</p>\n</div>\n<p style=\"margin:0 0 16px 0;line-height:1.5;\">Veuillez contacter votre administrateur pour obtenir de l'aide.</p>\n<p style=\"margin:0;line-height:1.5;\">Cordialement,<br/>L'équipe ${PRODUCT_NAME}</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "062485c855dbe7907c40a9c89d6cac38b5295bf7807f1dbce9156d5b443f0fe6"
+}

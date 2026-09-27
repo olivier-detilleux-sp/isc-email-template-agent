@@ -1,0 +1,14 @@
+{
+  "key": "sod_conflicts_on_access_request_notification",
+  "name": "SOD Conflicts on Access Request Notification",
+  "description": "Sent to the identity a request was made for when their access request cannot be forwarded to an approver because of a separation of duties (SoD) conflict.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Votre demande d'accès nécessite votre attention",
+  "body": "<h2 style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;margin:0 0 16px 0;font-size:22px;font-weight:600;\">Conflit de séparation des tâches (SoD)</h2><p style=\"margin:0 0 12px 0;line-height:1.5;\">Bonjour $requesterName,</p><p style=\"margin:0 0 12px 0;line-height:1.5;\">Vous avez récemment demandé l'accès à #set($sep=\"\")#foreach($item in $accessRequestItems.split(\",\"))$sep<strong>$item.trim()</strong>#set($sep=\", \")#{end}. Nous n'avons pas encore pu transmettre cette demande à votre approbateur en raison d'un conflit de séparation des tâches (SoD).</p><p style=\"margin:0 0 16px 0;line-height:1.5;\">Certaines combinaisons d'accès ne sont pas autorisées par la politique de sécurité de votre entreprise. On parle alors de règle SoD&nbsp;: elle vise à empêcher qu'une même personne dispose d'un contrôle excessif sur un processus sensible.</p><div style=\"border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f7f7f7;padding:12px 16px;margin:0 0 16px 0;\"><p style=\"margin:0 0 8px 0;font-weight:600;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Détails de la demande</p><ul style=\"margin:0;padding-left:20px;line-height:1.6;\"><li>Demandée par&nbsp;: $accessRequestDetails.requestBy</li><li>Demandée pour&nbsp;: $accessRequestDetails.requestedFor</li><li>Date&nbsp;: $accessRequestDetails.date</li></ul></div><p style=\"margin:0 0 12px 0;line-height:1.5;\">Retournez dans SailPoint pour consulter plus de détails.</p><p style=\"margin:0 0 20px 0;\"><a href=\"${__global.productUrl}/ui/d/my-requests/access-requests\" style=\"color:__ISC_BRAND_ACTION_COLOR__;font-weight:600;text-decoration:underline;\">Examiner votre demande</a></p><p style=\"margin:0;line-height:1.5;\">Cordialement,<br/>L'équipe $__global.productName</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "d4963bcb7ebfdb99cc86426454f259b45981574d2aa8137253fa5f9a0ad7e3c3"
+}

@@ -1,0 +1,14 @@
+{
+  "key": "certification_end_date_modified_notification",
+  "name": "Access End Date Modified",
+  "description": "Sent to a user when their access expiration date has changed.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Date d'expiration de votre accès modifiée",
+  "body": "<h2 style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;margin:0 0 16px 0;font-size:20px;font-weight:600;\">Date d'expiration de votre accès modifiée</h2>\n<p style=\"margin:0 0 12px 0;line-height:1.5;\">Bonjour $__recipient.name,</p>\n<p style=\"margin:0 0 16px 0;line-height:1.5;\">La date d'expiration de votre accès a été mise à jour. Voici les informations principales :</p>\n<div style=\"border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f7f7f7;padding:12px 16px;margin:0 0 16px 0;\">\n<p style=\"margin:0 0 8px 0;line-height:1.5;\"><strong style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;\">Accès concerné :</strong> '$accessItemName' $accessItemType</p>\n<p style=\"margin:0;line-height:1.5;\"><strong style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;\">Nouvelle date d'expiration :</strong> $scheduledSunsetDate</p>\n</div>\n<p style=\"margin:0 0 12px 0;line-height:1.5;\">Si vous avez encore besoin d'accéder à '$accessItemName' après cette date, vous devrez en faire une nouvelle demande afin de prolonger la durée de cet accès.</p>\n<p style=\"margin:0 0 16px 0;line-height:1.5;\">Pour toute question, veuillez contacter l'administrateur $__global.productName.</p>\n<p style=\"margin:0;line-height:1.5;\">Cordialement,<br/>L'équipe $__global.productName</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "347a89d6182b90504d1746e28d285fa37f78363a3ea15474ee96696d5bb407fe"
+}

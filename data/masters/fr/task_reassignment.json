@@ -1,0 +1,14 @@
+{
+  "key": "task_reassignment",
+  "name": "Task Reassignment",
+  "description": "Sent when a user reassigns a provisioning task for a different user to complete.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Une tâche a été réaffectée",
+  "body": "<h2 style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;margin:0 0 16px 0;font-size:20px;font-weight:600;\">Réaffectation d'une tâche</h2>\n<p style=\"margin:0 0 16px 0;line-height:1.5;\">${requester} a réaffecté une tâche de ${previousOwner} à ${newOwner} pour le compte ${source} de ${userName}.</p>\n<div style=\"border-left:4px solid __ISC_BRAND_ACTION_COLOR__;padding:12px 16px;margin:0 0 16px 0;background-color:#f7f7f7;\">\n<p style=\"margin:0;line-height:1.5;\">${newOwner} peut consulter cette tâche dans le <a href=\"$identityNowUrl/ui/d/dashboard/task-manager\" style=\"color:__ISC_BRAND_ACTION_COLOR__;text-decoration:underline;\">Gestionnaire de tâches</a>.</p>\n</div>\n<p style=\"margin:0;line-height:1.5;\">Cordialement,<br/>L'équipe ${PRODUCT_NAME}</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "2829517b4134d158d523d798a637cec9625dfd29cfdadf6a0e544efb49a25049"
+}

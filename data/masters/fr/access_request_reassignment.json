@@ -1,0 +1,14 @@
+{
+  "key": "access_request_reassignment",
+  "name": "Access Request Reassignment",
+  "description": "Sent to a reviewer when they have had access requests reassigned to them.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Demande d'accès pour ${requesterName} prête à être examinée",
+  "body": "<h2 style=\"color: __ISC_BRAND_NAVIGATION_COLOR__; margin: 0 0 16px 0; font-size: 20px; font-weight: 600;\">Demande d'accès réaffectée</h2>\n<p style=\"margin: 0 0 12px 0; line-height: 1.5;\">Bonjour ${newOwnerName},</p>\n<p style=\"margin: 0 0 16px 0; line-height: 1.5;\">${previousOwnerName} vous a réaffecté la demande d'accès de ${requesterName} concernant ${requestedObjectName} #if(${requestedObjectType}==\"Role\") rôle #elseif(${requestedObjectType}==\"Entitlement\") droit #{else} profil d'accès #{end}.</p>\n#if($commentText)\n<div style=\"margin: 0 0 16px 0; padding: 12px 16px; border-left: 4px solid __ISC_BRAND_ACTION_COLOR__; background-color: #f7f7f7;\">\n<p style=\"margin: 0 0 8px 0; line-height: 1.5;\">${previousOwnerName} a indiqué le motif de réaffectation suivant&nbsp;:</p>\n<p style=\"margin: 0; line-height: 1.5; color: __ISC_BRAND_NAVIGATION_COLOR__;\">${commentText}</p>\n</div>\n#{end}\n#if($startDate)\n<p style=\"margin: 0 0 12px 0; line-height: 1.5;\">La date de début pour ${requestedObjectName} est le ${startDate}.</p>\n#{end}\n#if($removeDate)\n<p style=\"margin: 0 0 12px 0; line-height: 1.5;\">La date de fin pour ${requestedObjectName} est le ${removeDate}.</p>\n#{end}\n#if($requestedObjectType==\"Role\")\n#if($accessibleItems && $accessibleItems.size() > 0)\n<p style=\"margin: 0 0 8px 0; line-height: 1.5;\">Si vous approuvez cette demande, l'utilisateur obtiendra l'accès aux éléments suivants&nbsp;:</p>\n<ul style=\"margin: 0 0 16px 0; padding-left: 20px; line-height: 1.5;\">\n#foreach($item in $accessibleItems)\n<li style=\"margin: 0 0 4px 0;\">$item</li>\n#{end}\n</ul>\n#{end}\n#elseif($requestedObjectType==\"AccessProfile\")\n<p style=\"margin: 0 0 16px 0; line-height: 1.5;\">Si vous approuvez cette demande, ${requesterName} obtiendra l'accès à tous les droits de ${accessProfileName}.</p>\n#{end}\n<p style=\"margin: 16px 0 0 0; line-height: 1.5;\">Cordialement,<br/>L'équipe ${PRODUCT_NAME}</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "53b05fc53d36ac946cb5d2eb7a743e1f0e000812662ea0886caec220f457ea87"
+}

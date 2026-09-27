@@ -1,0 +1,14 @@
+{
+  "key": "source_config_collaboration_comments",
+  "name": "Source Collaboration Comment Notification",
+  "description": "Notifies a reviewer when they have been mentioned in a comment by a collaborator who is configuring a source",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "$author a commenté la configuration de la source $sourceName",
+  "body": "<h2 style=\"color: __ISC_BRAND_NAVIGATION_COLOR__; margin: 0 0 16px 0; font-size: 20px; font-weight: 600;\">Commentaire sur la configuration d'une source</h2><p style=\"margin: 0 0 12px 0; font-size: 14px; line-height: 1.5;\">Bonjour $__recipient.name,</p>#set($url=$__global.productUrl + '/ui/a' + $uri )<p style=\"margin: 0 0 12px 0; font-size: 14px; line-height: 1.5;\">$author a laissé le commentaire suivant sur la source $sourceName&nbsp;:</p><div style=\"border: 2px dotted __ISC_BRAND_NAVIGATION_COLOR__; padding: 12px 15px; margin: 0 0 16px 0;\"><strong>$author</strong>$comment</div><p style=\"margin: 0 0 16px 0; font-size: 14px; line-height: 1.5;\">Accédez à la page de configuration de <a href=\"$url\" style=\"color: __ISC_BRAND_ACTION_COLOR__; text-decoration: underline;\">$sourceName</a> ou connectez-vous à $__global.productName pour répondre à ce commentaire.</p><p style=\"margin: 0; font-size: 14px; line-height: 1.5;\">Cordialement,<br/>L'équipe $__global.productName</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "c42f6b9a9f1973f38f86f1743d2a187427753a9d648ed288807c5eee12ef6445"
+}

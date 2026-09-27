@@ -1,0 +1,14 @@
+{
+  "key": "remediation_work_item",
+  "name": "Remediation Work Item",
+  "description": "Sent to a user when a new remediation work item has been assigned to them.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Nouvelle demande de remédiation : $!workItemName",
+  "body": "<h2 style=\"color: __ISC_BRAND_NAVIGATION_COLOR__; margin: 0 0 16px 0; font-size: 20px; font-weight: 600;\">Nouvelle demande de remédiation</h2>\n<p style=\"margin: 0 0 16px 0; line-height: 1.5; color: #333333;\">$!requesterName vous a assigné un nouvel élément de travail de remédiation.</p>\n<div style=\"border-left: 4px solid __ISC_BRAND_ACTION_COLOR__; background-color: #f7f7f7; padding: 12px 16px; margin: 0 0 16px 0;\">\n<p style=\"margin: 0; line-height: 1.5; color: #333333;\"><strong>Élément concerné :</strong> $!workItemName</p>\n</div>\n<p style=\"margin: 0 0 8px 0; line-height: 1.5; color: #333333;\">Commentaires de $!requesterName :</p>\n<div style=\"border: 1px solid #e0e0e0; background-color: #fafafa; padding: 12px 16px; margin: 0 0 16px 0;\">\n<p style=\"margin: 0; line-height: 1.5; color: #333333;\">$!comments</p>\n</div>\n<p style=\"margin: 0 0 16px 0; line-height: 1.5; color: #333333;\">Connectez-vous et consultez votre boîte de réception des éléments de travail afin de traiter cette demande.</p>\n<p style=\"margin: 0; line-height: 1.5; color: #333333;\">Cordialement,</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "b7902543d8058a28ce448fd61cb5367c3e00512006e98356bec0e430d0044f85"
+}

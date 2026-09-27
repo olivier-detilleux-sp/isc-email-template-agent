@@ -1,0 +1,14 @@
+{
+  "key": "das_campaign_revocation_failure",
+  "name": "Data Access Security Campaign Revocation Failed",
+  "description": "Sent to a Data Access Security campaign's owner when its revocation processing finishes but one or more access items could not be removed, with a link to the campaign's revocation view.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "fr",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Action requise. Échec de la révocation des permissions rejetées.",
+  "body": "<h2 style=\"color: __ISC_BRAND_NAVIGATION_COLOR__; font-family: Calibri, Arial, sans-serif; margin: 0 0 16px 0;\">Échec de révocation</h2>\n<p style=\"font-family: Calibri, Arial, sans-serif; font-size: 14px; margin: 0 0 12px 0;\">Bonjour $__recipient.name,</p>\n<p style=\"font-family: Calibri, Arial, sans-serif; font-size: 14px; margin: 0 0 12px 0;\">La révocation automatique a été activée sur la campagne $campaign.campaignName. Certains enregistrements éligibles à la révocation n’ont pas pu être traités correctement.</p>\n<div style=\"border-left: 4px solid __ISC_BRAND_ACTION_COLOR__; padding: 12px 16px; margin: 0 0 16px 0; background-color: #f8f9fa;\">\n<p style=\"font-family: Calibri, Arial, sans-serif; font-size: 14px; margin: 0;\">Consultez les <a href=\"$campaign.url\" style=\"color: __ISC_BRAND_ACTION_COLOR__; text-decoration: underline;\">détails de la campagne</a> pour examiner l’état des révocations, puis réessayer ou ignorer les échecs.</p>\n</div>\n<p style=\"font-family: Calibri, Arial, sans-serif; font-size: 14px; margin: 16px 0 4px 0;\">Cordialement,</p>\n<p style=\"font-family: Calibri, Arial, sans-serif; font-size: 14px; margin: 0;\"><strong>L’équipe SailPoint – Data Access Security</strong></p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "8882326f39efc4ba2f5030143d858caff1b0fa2ac28d9de5f19af45da5fa1744"
+}
