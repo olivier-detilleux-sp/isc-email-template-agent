@@ -7,8 +7,8 @@ __pycache__/
 # Chosen on this machine by ./agent --init
 data/agent-config.json
 
-# Older French library. The style library is data/masters/en/.
-data/masters/fr/
+# Written only when a generation fails. Successful masters stay in Git.
+data/masters/**/_generation-failures.txt
 
 # Recreated on the first run against a tenant
 data/pull/

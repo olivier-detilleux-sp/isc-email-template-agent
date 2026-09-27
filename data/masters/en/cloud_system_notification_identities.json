@@ -1,0 +1,14 @@
+{
+  "key": "cloud_system_notification_identities",
+  "name": "Identity Errors",
+  "description": "Sent when identity processing causes 5% or more of identities to be in an error state. This is a system notification email.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "${PRODUCT_NAME} Notification: Identities Are in an Error State After a Refresh",
+  "body": "<h2 style=\"margin:0 0 16px 0;color:__ISC_BRAND_NAVIGATION_COLOR__;font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:600;line-height:1.3;\">Identity Errors</h2>\n<p style=\"margin:0 0 12px 0;color:#333333;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;\">Dear recipient,</p>\n<p style=\"margin:0 0 16px 0;color:#333333;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;\">After an identity refresh at ${timestamp}, a portion of the identities in your organization are in an Error state.</p>\n<div style=\"margin:0 0 16px 0;padding:12px 16px;border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f5f7fa;\">\n<p style=\"margin:0 0 4px 0;color:__ISC_BRAND_NAVIGATION_COLOR__;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:600;line-height:1.4;text-transform:uppercase;letter-spacing:0.02em;\">Error rate</p>\n<p style=\"margin:0;color:#333333;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:600;line-height:1.4;\">${errorPercentage}% of identities</p>\n</div>\n<p style=\"margin:0 0 16px 0;color:#333333;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;\">Thank you,<br/>The ${PRODUCT_NAME} Team</p>\n<p style=\"margin:0;color:#666666;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.5;\">You are receiving this email because your email address was configured to receive ${PRODUCT_NAME} notification emails.</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "bba9a7d62598f3146e80f22c9c8e5fcdba12053eb67fe9b522a18662ca260074"
+}

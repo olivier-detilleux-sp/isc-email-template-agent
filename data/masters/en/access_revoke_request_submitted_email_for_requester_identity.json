@@ -1,0 +1,14 @@
+{
+  "key": "access_revoke_request_submitted_email_for_requester_identity",
+  "name": "Access Revoke Request Submitted For Requester Identity",
+  "description": "Notifies a user that they successfully submitted an access revoke request.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Your access revoke request was submitted successfully",
+  "body": "<h2 style=\"color: __ISC_BRAND_NAVIGATION_COLOR__; font-size: 20px; font-weight: 600; margin: 0 0 16px 0;\">Access Revoke Request Submitted</h2>\n<p style=\"margin: 0 0 12px 0; font-size: 14px; line-height: 1.5;\">Dear ${requesterName},</p>\n<p style=\"margin: 0 0 16px 0; font-size: 14px; line-height: 1.5;\">Your request to revoke the following access items was submitted successfully. If approvals are required, you will be notified when a decision is made about this access.</p>\n#if(${requestedForIdentityNames.size()} > 0)\n<div style=\"border-left: 4px solid __ISC_BRAND_ACTION_COLOR__; padding: 12px 16px; margin: 0 0 16px 0;\">\n<p style=\"margin: 0 0 8px 0; font-size: 14px; font-weight: 600; color: __ISC_BRAND_NAVIGATION_COLOR__;\">Requested For</p>\n<ul style=\"margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.5;\">\n#foreach ( $name in ${requestedForIdentityNames} )\n<li style=\"margin: 0 0 4px 0;\">$name</li>\n#{end}\n</ul>\n</div>\n#{end}\n<div style=\"border-left: 4px solid __ISC_BRAND_ACTION_COLOR__; padding: 12px 16px; margin: 0 0 16px 0;\">\n<p style=\"margin: 0 0 8px 0; font-size: 14px; font-weight: 600; color: __ISC_BRAND_NAVIGATION_COLOR__;\">Type of Access</p>\n<ul style=\"margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.5;\">\n#foreach ( $type in ${requestedObjectDetailsByType.keySet()} )\n<li style=\"margin: 0 0 8px 0;\">$type:\n<ul style=\"margin: 4px 0 0 0; padding-left: 20px;\">\n#foreach ( $detail in ${requestedObjectDetailsByType.get($type)} )\n<li style=\"margin: 0 0 4px 0;\">${detail.name} #if($detail.removeDate) (Access Sunset Date: ${detail.removeDate}) #{end}</li>\n#{end}\n</ul>\n</li>\n#{end}\n</ul>\n</div>\n#if(${requestedForIdentityNames.size()} > 0)\n<p style=\"margin: 0 0 16px 0; font-size: 14px; line-height: 1.5;\">The employee has also been notified about your request.</p>\n#{end}\n<p style=\"margin: 0 0 16px 0; font-size: 14px; line-height: 1.5;\">If you need help with this request, please contact your ${PRODUCT_NAME} administrator.</p>\n<p style=\"margin: 0; font-size: 14px; line-height: 1.5;\">Thank you,<br/>The ${PRODUCT_NAME} Team</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "20396f3f21b02e89bb336149e27738da2a117819e150c65201408be17e895ad3"
+}

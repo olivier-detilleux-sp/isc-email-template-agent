@@ -1,0 +1,14 @@
+{
+  "key": "bulk_reassignment",
+  "name": "Certification Reassignment (Legacy)",
+  "description": "Notifies a reviewer when they have been reassigned identities from an existing certification.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Identities reassigned to you for certification review",
+  "body": "<h2 style=\"margin:0 0 16px 0;font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:bold;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Certification reassignment</h2>\n<p style=\"margin:0 0 12px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Dear ${user.name},</p>\n<p style=\"margin:0 0 16px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">${requesterName} has assigned ${numNewIdentities} #if(${numNewIdentities} == 1) user #{else} users #{end} to you for review in a certification.</p>\n<div style=\"margin:0 0 16px 0;padding:12px 16px;border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f7f7f7;\">\n<p style=\"margin:0 0 8px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\"><strong style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;\">Reason for reassignment</strong><br/>${description}</p>\n<p style=\"margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\"><strong style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;\">Review deadline</strong><br/>You have until $spTools.formatDate($certification.expiration,3,0) to review and either approve, change, or revoke access for these users.</p>\n</div>\n<p style=\"margin:0 0 16px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\"><a href=\"$identityNowUrl/ui/d/certifications-review/certification/${certification.id}\" style=\"color:__ISC_BRAND_ACTION_COLOR__;font-weight:bold;text-decoration:underline;\">Review the certification</a></p>\n<p style=\"margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Thank you for completing this review in Identity Security Cloud.</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "43903716d9f6793f97996e15314887cc2b731d17e686f621067466f69ac75866"
+}

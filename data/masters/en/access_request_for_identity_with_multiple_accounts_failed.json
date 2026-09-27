@@ -1,0 +1,14 @@
+{
+  "key": "access_request_for_identity_with_multiple_accounts_failed",
+  "name": "Access Request For Identity With Multiple Accounts Failed",
+  "description": "Sent to the requester if their access request failed because the user they requested access for has multiple accounts on the source.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Access request for '${requestItemName}' failed",
+  "body": "<h2 style=\"margin:0 0 16px 0;font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:bold;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Access request failed</h2>\n<p style=\"margin:0 0 12px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Dear ${recipientName},</p>\n<p style=\"margin:0 0 16px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Your access request for <strong style=\"color:__ISC_BRAND_ACTION_COLOR__;\">'${requestItemName}'</strong> could not be completed.</p>\n<div style=\"margin:0 0 16px 0;padding:12px 16px;border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f5f7fa;\">\n<p style=\"margin:0 0 8px 0;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:bold;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Why this failed</p>\n<p style=\"margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">The identity you requested access for has more than one account on the <strong>'${sourceName}'</strong> source.</p>\n</div>\n<p style=\"margin:0 0 16px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Please contact your administrator for assistance.</p>\n<p style=\"margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Thank you,<br/>The ${PRODUCT_NAME} Team</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "062485c855dbe7907c40a9c89d6cac38b5295bf7807f1dbce9156d5b443f0fe6"
+}

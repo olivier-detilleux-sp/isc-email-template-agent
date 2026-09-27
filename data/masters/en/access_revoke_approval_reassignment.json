@@ -1,0 +1,14 @@
+{
+  "key": "access_revoke_approval_reassignment",
+  "name": "Access Revoke Approval Reassignment",
+  "description": "Notifies a user when an access revoke request has been reassigned to them.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Access revoke request for ${requestedForIdentityName} ready for your review",
+  "body": "<h2 style=\"margin:0 0 16px 0;font-size:20px;font-weight:600;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Access revoke request reassigned to you</h2>\n<p style=\"margin:0 0 12px 0;font-size:14px;line-height:1.5;color:#333333;\">Dear ${newOwnerName},</p>\n<p style=\"margin:0 0 16px 0;font-size:14px;line-height:1.5;color:#333333;\">${previousOwnerName} has reassigned a request to remove ${requestedForIdentityName} from the ${requestedObjectName} #if(${requestedObjectType}==\"Role\") role #elseif(${requestedObjectType}==\"Entitlement\") entitlement #{else} access profile #{end} to you for approval.</p>\n#if($commentText)\n<div style=\"margin:0 0 16px 0;padding:12px 16px;border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f7f7f7;\">\n<p style=\"margin:0 0 8px 0;font-size:14px;line-height:1.5;color:#333333;\">${previousOwnerName} provided the following reason for reassigning this request to you:</p>\n<p style=\"margin:0;font-size:14px;line-height:1.5;color:#333333;\">${commentText}</p>\n</div>\n#{end}\n<div style=\"margin:0 0 16px 0;padding:12px 16px;border-left:4px solid __ISC_BRAND_NAVIGATION_COLOR__;background-color:#f7f7f7;\">\n<p style=\"margin:0;font-size:14px;line-height:1.5;color:#333333;\">If you approve this request, ${requestedForIdentityName} will lose the ${requestedObjectName} ${requestedObjectType} #if($requestedObjectType == \"Role\" || $requestedObjectType == \"AccessProfile\") and all associated entitlements #{end}.</p>\n</div>\n<p style=\"margin:0;font-size:14px;line-height:1.5;color:#333333;\">Thank you,<br/>The ${PRODUCT_NAME} Team</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "68c5c21318f6a1343c6b052c253aa44412c48fc945d22743ad37acb640713903"
+}

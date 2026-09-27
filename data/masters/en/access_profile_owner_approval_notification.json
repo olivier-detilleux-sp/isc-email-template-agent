@@ -1,0 +1,14 @@
+{
+  "key": "access_profile_owner_approval_notification",
+  "name": "Access Profile Owner Approval Notification",
+  "description": "Notify the owner of an Access Profile that it has been granted as a side effect of a Role request being approved.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "A user has been granted ${accessProfileName} through a role request",
+  "body": "<h2 style=\"margin:0 0 16px 0;color:__ISC_BRAND_NAVIGATION_COLOR__;font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:bold;\">Access Profile granted through a role request</h2>\n<p style=\"margin:0 0 12px 0;color:#333333;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;\">Dear ${user.name},</p>\n<p style=\"margin:0 0 12px 0;color:#333333;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;\">${requesterName}'s request for the role ${requestedRoleName}#if($requesterName != $requestedForIdentityName) for ${requestedForIdentityName}#{end} has been <b style=\"color:__ISC_BRAND_ACTION_COLOR__;\">approved</b>.</p>\n<div style=\"margin:0 0 16px 0;padding:12px 16px;border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f7f7f7;\">\n<p style=\"margin:0;color:#333333;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;\">${requestedForIdentityName} has been granted all Access Profiles contained in that role, including <b>${accessProfileName}</b>.</p>\n</div>\n#if($startDate)\n<div style=\"margin:0 0 12px 0;padding:12px 16px;border-left:4px solid __ISC_BRAND_NAVIGATION_COLOR__;background-color:#f7f7f7;\">\n<p style=\"margin:0;color:#333333;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;\">${requestedForIdentityName}'s access to ${accessProfileName} is scheduled to start on <b>${startDate}</b>.</p>\n</div>\n#{end}\n#if($removeDate)\n<div style=\"margin:0 0 12px 0;padding:12px 16px;border-left:4px solid __ISC_BRAND_NAVIGATION_COLOR__;background-color:#f7f7f7;\">\n<p style=\"margin:0;color:#333333;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;\">${requestedForIdentityName}'s access to ${accessProfileName} is scheduled to end on <b>${removeDate}</b>.</p>\n</div>\n#{end}\n<p style=\"margin:0 0 12px 0;color:#333333;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;\">You are receiving this email because you are listed as the owner of ${accessProfileName}.</p>\n<p style=\"margin:0;color:#333333;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;\">Thank you,<br/>The ${PRODUCT_NAME} Team</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "82876c15a708841e080d932979815771a1739cb382d44f5aa3103aaae6885c72"
+}

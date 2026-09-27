@@ -2,8 +2,10 @@ from __future__ import annotations
 
 import sys
 import unittest
+from io import StringIO
 from pathlib import Path
 from tempfile import TemporaryDirectory
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
@@ -12,15 +14,21 @@ from brand_tokens import apply_branding_tokens, tokenize_branding
 from branding import Branding
 from llm_translate import (
     TOKEN_RE,
+    LlmTranslationError,
     _drop_unmatched_closings,
     _protect,
     _restore,
     _validate_directive_tree,
 )
 from agent import (
+    available_master_languages,
+    fallback_agent_config,
     load_agent_config,
+    main,
+    missing_master_keys,
     resolve_configured_languages,
     save_agent_config,
+    warn_if_cursor_key_missing,
 )
 from masters import filter_catalog_masters, validate_masters
 from sailpoint import _json_from_output
@@ -174,6 +182,33 @@ class AgentConfigTest(unittest.TestCase):
         self.assertEqual(["es"], seen)
         self.assertEqual(("fr", "es"), (base, language))
 
+    def test_committed_masters_replace_a_missing_local_config(self):
+        self.assertEqual(
+            {"baseLanguage": "en", "language": "en"},
+            fallback_agent_config(["fr", "en"]),
+        )
+        self.assertEqual(
+            {"baseLanguage": "fr", "language": "fr"},
+            fallback_agent_config(["fr"]),
+        )
+        self.assertIsNone(fallback_agent_config([]))
+
+    def test_init_only_sees_keys_that_are_not_already_masters(self):
+        existing = {"alpha", "beta"}
+        required = {"alpha", "beta", "gamma"}
+        self.assertEqual({"gamma"}, missing_master_keys(existing, required))
+        self.assertEqual(set(), missing_master_keys(existing, {"alpha", "beta"}))
+
+    def test_available_languages_are_directories_that_contain_masters(self):
+        with TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "en").mkdir()
+            (root / "fr").mkdir()
+            (root / "de").mkdir()
+            (root / "en" / "one.json").write_text("{}", encoding="utf-8")
+            (root / "fr" / "one.json").write_text("{}", encoding="utf-8")
+            self.assertEqual(["en", "fr"], available_master_languages(root))
+
     def test_config_roundtrip(self):
         with TemporaryDirectory() as tmp:
             path = Path(tmp) / "agent-config.json"
@@ -182,6 +217,31 @@ class AgentConfigTest(unittest.TestCase):
                 {"baseLanguage": "fr", "language": "nl"},
                 load_agent_config(path),
             )
+
+
+class CursorKeyLaunchTest(unittest.TestCase):
+    def test_missing_key_prints_a_warning(self):
+        message = "No Cursor API key found."
+        with (
+            patch("agent.resolve_api_key", side_effect=LlmTranslationError(message)),
+            patch.object(sys, "argv", ["agent", "--prepare-only"]),
+        ):
+            sink = StringIO()
+            with patch.object(sys, "stderr", sink):
+                code = main()
+        self.assertEqual(1, code)
+        self.assertIn(f"Warning: {message}", sink.getvalue())
+        self.assertNotIn("Error:", sink.getvalue())
+
+    def test_present_key_does_not_warn(self):
+        sink = StringIO()
+        with (
+            patch("agent.resolve_api_key", return_value="test-key"),
+            patch.object(sys, "stderr", sink),
+        ):
+            missing = warn_if_cursor_key_missing()
+        self.assertFalse(missing)
+        self.assertEqual("", sink.getvalue())
 
 
 class SailOutputTest(unittest.TestCase):

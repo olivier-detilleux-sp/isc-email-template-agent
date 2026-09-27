@@ -1,0 +1,14 @@
+{
+  "key": "campaign_template_pregen_notification",
+  "name": "Campaign Template Pre-Generation Notification",
+  "description": "Sent out one week prior to Campaign Template generation.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Reminder: Your Certification Campaign Is Scheduled to Generate in 7 Days",
+  "body": "<h2 style=\"margin:0 0 16px 0;font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:bold;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Certification Campaign Generation Reminder</h2>\n<p style=\"margin:0 0 12px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Dear ${__recipient.name},</p>\n<p style=\"margin:0 0 16px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">The certification <strong>$campaignTemplateName</strong> is scheduled to generate a campaign in 7 days.</p>\n<div style=\"margin:0 0 16px 0;padding:12px 16px;border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f5f7fa;\">\n<p style=\"margin:0 0 8px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\"><strong style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;\">Certification</strong><br/>$campaignTemplateName</p>\n<p style=\"margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\"><strong style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;\">Make changes before</strong><br/>${generationDate}</p>\n</div>\n<p style=\"margin:0 0 16px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">If you need to make any changes or updates to the contents of this campaign, please complete them before ${generationDate}.</p>\n<p style=\"margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Thank you,<br/>The $__global.productName Team</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "bd243343a7db397ea51b78f0ee5800927245c1f8255ed5e3194f3f6d0869f825"
+}

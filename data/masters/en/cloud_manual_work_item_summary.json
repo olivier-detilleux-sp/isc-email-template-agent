@@ -1,0 +1,14 @@
+{
+  "key": "cloud_manual_work_item_summary",
+  "name": "Pending Task Daily Digest",
+  "description": "If enabled sent to users daily when they have incomplete tasks in their Task Manager.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "#set($numberOfPendingTasks = $__numberTool.integer($numberOfPendingTasks))#set($taskTasks = \"#if($numberOfPendingTasks == 1)task#{else}tasks#{end}\")You have $numberOfPendingTasks $taskTasks to complete in ${__global.productName}.",
+  "body": "<h2 style=\"margin:0 0 16px 0;font-size:20px;line-height:1.3;font-weight:600;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Pending tasks in your Task Manager</h2>\n<p style=\"margin:0 0 12px 0;font-size:14px;line-height:1.5;color:#333333;\">Dear $__recipient.name,</p>\n<p style=\"margin:0 0 16px 0;font-size:14px;line-height:1.5;color:#333333;\">There $isAre $numberOfPendingTasks $taskTasks waiting for you in your $__global.productName Task Manager.</p>\n<div style=\"margin:0 0 16px 0;padding:12px 16px;border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f7f9fc;\">\n<p style=\"margin:0 0 8px 0;font-size:13px;line-height:1.4;font-weight:600;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Task summary</p>\n#set($numberOfPendingTasks = $__numberTool.integer($numberOfPendingTasks))\n#set($isAre = \"#if( $numberOfPendingTasks == 1)is#{else}are#{end}\")\n#set($taskTasks = \"#if( $numberOfPendingTasks == 1)task#{else}tasks#{end}\")\n#set($url = \"${__global.productUrl}/ui/d/dashboard/task-manager\")\n</div>\n<p style=\"margin:0 0 12px 0;font-size:14px;line-height:1.5;color:#333333;\">Use each task’s details to finish the work on the source, then mark it as complete in ${__global.productName}.</p>\n<p style=\"margin:0 0 16px 0;font-size:14px;line-height:1.5;color:#333333;\">To continue, open Task Manager <a href=\"$url\" target=\"_blank\" style=\"color:__ISC_BRAND_ACTION_COLOR__;text-decoration:underline;\">here</a>, or copy and paste this link into your browser: $url</p>\n<p style=\"margin:0;font-size:14px;line-height:1.5;color:#333333;\">Thank you,<br/>The $__global.productName Team</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "266944102954112feb2e848aa74166e8b94107baf9a40eca63022626d0b06eeb"
+}

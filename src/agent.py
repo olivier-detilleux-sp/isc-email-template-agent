@@ -11,13 +11,12 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from branding import Branding  # noqa: E402
-from llm_translate import LlmTranslationError  # noqa: E402
+from llm_translate import LlmTranslationError, resolve_api_key  # noqa: E402
 from masters import (  # noqa: E402
     assemble_payloads,
     build_base_masters,
     filter_catalog_masters,
     load_json,
-    translate_masters,
     validate_masters,
     validate_payloads,
 )
@@ -65,9 +64,9 @@ DEFAULT_BASE_LANGUAGE = "en"
 DEFAULT_PUBLICATION_LANGUAGE = "en"
 
 INIT_INTRO = (
-    "Style library language. Masters are rebuilt in this language.\n"
-    "Press Enter for English. Uploaded templates use this library when "
-    "you do not pass a different --language."
+    "Language to add to the style library.\n"
+    "Press Enter for English. Masters already stored for that language "
+    "are kept. Use this for a language that is not in data/masters/ yet."
 )
 RUN_INTRO = "Language for uploaded email subjects and bodies:"
 
@@ -111,6 +110,30 @@ def save_agent_config(
         + "\n",
         encoding="utf-8",
     )
+
+
+def available_master_languages(root: Path = ROOT / "data" / "masters") -> list[str]:
+    """Languages that already have committed or local master files."""
+    if not root.is_dir():
+        return []
+    return sorted(
+        path.name
+        for path in root.iterdir()
+        if path.is_dir() and any(path.glob("*.json"))
+    )
+
+
+def fallback_agent_config(available: list[str]) -> dict[str, str] | None:
+    """Default languages when masters are already in the repository."""
+    if not available:
+        return None
+    language = "en" if "en" in available else available[0]
+    return {"baseLanguage": language, "language": language}
+
+
+def missing_master_keys(existing: set[str], required: set[str]) -> set[str]:
+    """Catalog keys that do not yet have a master file."""
+    return required - existing
 
 
 def resolve_configured_languages(
@@ -185,6 +208,16 @@ def logo_padding_payload(custom: dict) -> dict | None:
     }
 
 
+def warn_if_cursor_key_missing() -> bool:
+    """Warn at startup when Cursor cannot be called. Return True if missing."""
+    try:
+        resolve_api_key()
+    except LlmTranslationError as exc:
+        print(f"Warning: {exc}", file=sys.stderr)
+        return True
+    return False
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(
         description="Prepare, translate, brand, and publish ISC EMAIL templates."
@@ -204,20 +237,23 @@ def main() -> int:
     parser.add_argument("--model", default="auto", help="Cursor SDK model")
     parser.add_argument(
         "--base-language",
-        help="Language of the style library. Default: the language saved by --init.",
+        help=(
+            "Language of the style library to generate or publish. "
+            "Default: the saved language, or English when those masters exist."
+        ),
     )
     parser.add_argument(
         "--init",
         action="store_true",
         help=(
-            "Set the default language and rebuild the style library "
-            "from the tenant catalog. Does not publish."
+            "Generate masters for a language that is not already in "
+            "data/masters/. Existing masters are kept. Does not publish."
         ),
     )
     parser.add_argument(
         "--rebuild-masters",
         action="store_true",
-        help="Rebuild the base styles with the LLM",
+        help="Regenerate masters for the selected language, including existing files",
     )
     parser.add_argument(
         "--prepare-only",
@@ -236,22 +272,20 @@ def main() -> int:
         help="Limit the run to one template key (repeatable)",
     )
     args = parser.parse_args()
-    if args.init and args.only:
-        print(
-            "--init rebuilds the whole style library. Remove --only.",
-            file=sys.stderr,
-        )
+    if warn_if_cursor_key_missing():
         return 1
 
     config = load_agent_config()
     if not args.init and config is None:
-        print("This agent is not initialized.", file=sys.stderr)
-        print(
-            "Set the default language and rebuild the style library first:",
-            file=sys.stderr,
-        )
-        print("  ./agent --init", file=sys.stderr)
-        return 1
+        config = fallback_agent_config(available_master_languages())
+        if config is None:
+            print("No email masters are available.", file=sys.stderr)
+            print(
+                "Generate the first language, then commit data/masters/<language>/:",
+                file=sys.stderr,
+            )
+            print("  ./agent --init", file=sys.stderr)
+            return 1
 
     def ask(default: str) -> str:
         if args.yes or not sys.stdin.isatty():
@@ -280,12 +314,8 @@ def main() -> int:
             flush=True,
         )
         print(f"Uploaded content language: {language}", flush=True)
-        if language != base_language:
-            print(
-                f"Style library: {base_language}. "
-                f"Uploads are translated into {language}.",
-                flush=True,
-            )
+        library_language = base_language if args.init else language
+        print(f"Masters: data/masters/{library_language}/", flush=True)
 
         branding_items, defaults, customs = pull_all(
             environment, ROOT / "data/pull"
@@ -300,55 +330,87 @@ def main() -> int:
 
         curated_path = ROOT / "data/curated-keys.json"
         curated_keys = set(load_json(curated_path)) if curated_path.exists() else set()
-        base_dir = ROOT / "data/masters" / base_language
+        library_dir = ROOT / "data/masters" / library_language
         default_keys = {
             item["key"] for item in defaults if not only or item["key"] in only
         }
-        existing_keys = {path.stem for path in base_dir.glob("*.json")}
-        need_base = (
-            args.init
-            or args.rebuild_masters
-            or not default_keys.issubset(existing_keys)
-        )
-        if need_base:
+        existing_keys = {path.stem for path in library_dir.glob("*.json")}
+        missing = missing_master_keys(existing_keys, default_keys)
+        if not args.init and not args.rebuild_masters and not existing_keys:
+            print(
+                f"No {library_language} masters in data/masters/{library_language}/.",
+                file=sys.stderr,
+            )
+            print(
+                "Generate that language once, then commit the directory:",
+                file=sys.stderr,
+            )
+            print(
+                f"  ./agent --init --base-language {library_language}",
+                file=sys.stderr,
+            )
+            return 1
+        if args.rebuild_masters or (args.init and missing):
             build_base_masters(
                 defaults=defaults,
                 customs=customs,
                 curated_keys=curated_keys,
                 branding=branding,
-                target_language=base_language,
+                target_language=library_language,
                 model=args.model,
-                output_dir=base_dir,
+                output_dir=library_dir,
                 cache_dir=ROOT / "data/llm-cache",
                 only=only,
-                force=args.init or args.rebuild_masters,
+                force=args.rebuild_masters,
             )
         if args.init:
             save_agent_config(base_language, language)
-            print(
-                f"Initialized. Style library: {base_language}. "
-                f"Default publication language: {language}.",
-                flush=True,
-            )
+            if missing and not args.rebuild_masters:
+                print(
+                    f"Masters for {library_language} are in "
+                    f"data/masters/{library_language}/.",
+                    flush=True,
+                )
+                print(
+                    "Commit that directory so the next run keeps them.",
+                    flush=True,
+                )
+            elif not args.rebuild_masters:
+                print(
+                    f"Masters for {library_language} are already available "
+                    f"({len(existing_keys)} templates). Nothing was regenerated.",
+                    flush=True,
+                )
+                print(
+                    "Choose another language to generate one that is not "
+                    "in data/masters/ yet.",
+                    flush=True,
+                )
+            else:
+                print(
+                    f"Rebuilt masters for {library_language}.",
+                    flush=True,
+                )
             print("Next, prepare without publishing:", flush=True)
             print("  ./agent --prepare-only", flush=True)
             return 0
-
-        if language == base_language:
-            master_paths = sorted(base_dir.glob("*.json"))
-            if only:
-                master_paths = [p for p in master_paths if p.stem in only]
-        else:
-            translated_dir = ROOT / "data/translations" / language
-            master_paths = translate_masters(
-                source_dir=base_dir,
-                target_dir=translated_dir,
-                source_language=base_language,
-                target_language=language,
-                model=args.model,
-                cache_dir=ROOT / "data/llm-cache",
-                only=default_keys,
+        if missing:
+            print(
+                f"{len(missing)} template(s) have no {library_language} master yet.",
+                flush=True,
             )
+            print(
+                "Generate the missing ones with:",
+                flush=True,
+            )
+            print(
+                f"  ./agent --init --base-language {library_language}",
+                flush=True,
+            )
+
+        master_paths = sorted(library_dir.glob("*.json"))
+        if only:
+            master_paths = [path for path in master_paths if path.stem in only]
 
         master_paths, skipped = filter_catalog_masters(master_paths, defaults)
         if skipped:

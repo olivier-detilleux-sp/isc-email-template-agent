@@ -1,0 +1,14 @@
+{
+  "key": "certification_end_date_modified_notification",
+  "name": "Access End Date Modified",
+  "description": "Sent to a user when their access expiration date has changed.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Access End Date Modified",
+  "body": "<h2 style=\"margin:0 0 16px 0;font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:bold;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Access End Date Modified</h2>\n<p style=\"margin:0 0 12px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Dear $__recipient.name,</p>\n<p style=\"margin:0 0 16px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">The end date for your access has been changed. Your access is now scheduled to expire as shown below.</p>\n<div style=\"margin:0 0 16px 0;padding:12px 16px;border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f5f7fa;\">\n<p style=\"margin:0 0 8px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\"><strong style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;\">Access:</strong> '$accessItemName' $accessItemType</p>\n<p style=\"margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\"><strong style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;\">New expiration date:</strong> $scheduledSunsetDate</p>\n</div>\n<p style=\"margin:0 0 12px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">If you still need access to '$accessItemName' after this date, you will need to request it again to extend the duration of the access.</p>\n<p style=\"margin:0 0 16px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Please contact the $__global.productName administrator if you have any questions.</p>\n<p style=\"margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Thank you,<br/>The $__global.productName Team</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "347a89d6182b90504d1746e28d285fa37f78363a3ea15474ee96696d5bb407fe"
+}
