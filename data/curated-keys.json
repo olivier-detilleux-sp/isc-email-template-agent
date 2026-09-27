@@ -1,0 +1,8 @@
+[
+  "access_request_decision",
+  "access_request_decision_email_for_requested-for_identity",
+  "access_request_reviewer",
+  "access_request_submitted_email_for_requested-for_identity",
+  "access_request_submitted_email_for_requester_after_validation",
+  "pending_access_request_cancelled"
+]

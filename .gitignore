@@ -1,0 +1,26 @@
+.DS_Store
+.venv/
+.env
+__pycache__/
+*.pyc
+
+# Chosen on this machine by ./agent --init
+data/agent-config.json
+
+# Older French library. The style library is data/masters/en/.
+data/masters/fr/
+
+# Recreated on the first run against a tenant
+data/pull/
+data/payloads/
+data/translations/
+data/llm-cache/
+data/reports/
+data/.sdk-agent-store/
+
+# Older local snapshots. The agent does not read these paths.
+data/branding/
+data/defaults/
+data/custom/
+data/backups/
+data/preview/
