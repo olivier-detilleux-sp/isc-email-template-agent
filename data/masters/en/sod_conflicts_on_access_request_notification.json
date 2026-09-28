@@ -1,0 +1,14 @@
+{
+  "key": "sod_conflicts_on_access_request_notification",
+  "name": "SOD Conflicts on Access Request Notification",
+  "description": "Sent to the identity a request was made for when their access request cannot be forwarded to an approver because of a separation of duties (SoD) conflict.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Your access request was blocked by an SoD conflict",
+  "body": "<h2 style=\"color:__ISC_BRAND_ACTION_COLOR__;margin:0 0 20px 0\">Access request blocked by an SoD conflict</h2><p style=\"margin:0 0 20px 0;font-size:16px;color:#333333;line-height:1.5\">Hello $requesterName,</p><p style=\"margin:0 0 20px 0;font-size:16px;color:#333333;line-height:1.5\">You recently requested access to #set($sep=\"\")#foreach($item in $accessRequestItems.split(\",\"))$sep<strong>$item.trim()</strong>#set($sep=\", \")#end.</p><div style=\"padding:15px;background-color:#fef5f5;border-left:4px solid __ISC_BRAND_ACTION_COLOR__\"><p style=\"margin:0;font-size:16px\">We were unable to forward this access request to an approver because of a separation of duties (SoD) conflict. Your request has been <strong style=\"color:__ISC_BRAND_ACTION_COLOR__\">blocked</strong>.</p></div><p style=\"margin:20px 0;font-size:16px;color:#333333;line-height:1.5\">Some combinations of access are not allowed under your organization's security policy. An SoD rule is designed to prevent one person from having too much control over a sensitive process.</p><div style=\"margin-bottom:20px;padding:15px;background-color:#f9f9f9;border-left:4px solid __ISC_BRAND_NAVIGATION_COLOR__\"><p style=\"margin:0 0 10px 0;font-size:16px;color:#333\">Request details</p><ul style=\"margin: 0; padding-left: 20px;\"><li style=\"font-size: 15px; color: #555; margin-bottom: 5px;\"><strong>Requested by:</strong> $accessRequestDetails.requestBy</li><li style=\"font-size: 15px; color: #555; margin-bottom: 5px;\"><strong>Requested for:</strong> $accessRequestDetails.requestedFor</li><li style=\"font-size: 15px; color: #555; margin-bottom: 5px;\"><strong>Date:</strong> $accessRequestDetails.date</li></ul></div><p style=\"margin:0 0 20px 0;font-size:16px;color:#333333;line-height:1.5\">Return to $__global.productName to view more details.</p><table style=\"margin-top: 30px;\"><tbody><tr><td><a style=\"background-color:__ISC_BRAND_NAVIGATION_COLOR__;color:#ffffff;padding:12px 25px;text-decoration:none;border-radius:5px;font-weight:bold\" href=\"${__global.productUrl}/ui/d/my-requests/access-requests\">Review your request</a></td></tr></tbody></table><p style=\"margin-top:30px;font-size:16px;color:#333\">Best regards,<br />The $__global.productName Team</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "d4963bcb7ebfdb99cc86426454f259b45981574d2aa8137253fa5f9a0ad7e3c3"
+}

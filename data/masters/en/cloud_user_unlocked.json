@@ -1,0 +1,14 @@
+{
+  "key": "cloud_user_unlocked",
+  "name": "User Unlocked",
+  "description": "Sent after the Unlock User Code email to confirm that the account was unlocked successfully.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Your ${PRODUCT_NAME} account has been unlocked",
+  "body": "<h2 style=\"margin:0 0 16px 0;font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:bold;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Account unlocked</h2>\n<p style=\"margin:0 0 12px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Dear ${user.name},</p>\n<p style=\"margin:0 0 16px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Your ${PRODUCT_NAME} account has been unlocked.</p>\n<div style=\"margin:0 0 16px 0;padding:12px 16px;border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f5f7fa;\">\n<p style=\"margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">If you think someone else was trying to use your account, please contact your administrator immediately.</p>\n</div>\n<p style=\"margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Thank you for using ${PRODUCT_NAME}.</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "9084b2bc0f1686a6a7df36c87142000d8847d9381aee96d5ee4454c515ea4e27"
+}

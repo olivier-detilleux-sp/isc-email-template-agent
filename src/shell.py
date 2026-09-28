@@ -33,6 +33,14 @@ def strip_existing_shell(body: str) -> str:
     """If body is already our branded table, return the inner content cell."""
     if not body:
         return ""
+    content_cell = re.search(
+        r'<td style="padding: ?30px 25px;?[^"]*">(.*?)</td>\s*</tr>\s*'
+        r'<tr[^>]*>\s*<td style="background-color',
+        body,
+        flags=re.S,
+    )
+    if content_cell:
+        return content_cell.group(1).strip()
     m = re.search(
         r"<img[^>]+(?:Logo|logo)[^>]*>.*?</td>\s*</tr>\s*<tr>\s*<td[^>]*>(.*)</td>\s*</tr>\s*<tr>\s*<td[^>]*>.*?e-mail automatique",
         body,

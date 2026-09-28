@@ -1,0 +1,14 @@
+{
+  "key": "approval_request_timeout",
+  "name": "Approval Timed Out",
+  "description": "Sent to the approval requester and approvers when no resolution has been reached for an approval request since instantiation based on an admin-configured number of days.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "An approval request has timed out",
+  "body": "<h2 style=\"color:__ISC_BRAND_ACTION_COLOR__;margin:0 0 20px 0\">Approval request timed out</h2><p style=\"margin:0 0 20px 0;font-size:16px;color:#333333;line-height:1.5\">Hello ${__recipient.name},</p><p style=\"margin:0 0 20px 0;font-size:16px;color:#333333;line-height:1.5\">An approval request for <strong>$approvalName</strong> that was submitted #if($requestee.name && $requestee.name != '' && $requestee.identityID == $__recipient.id) on your behalf by $requester.name #elseif($requestee.name && $requestee.name != '') by $requestee.name #elseif($requester.identityID == $__recipient.id) by you #else by $requester.name #end has timed out. No resolution was reached within $timeoutDays days, and the request is now closed.</p><div style=\"padding:15px;background-color:#fef5f5;border-left:4px solid __ISC_BRAND_ACTION_COLOR__\"><p style=\"margin:0;font-size:16px\">This approval request is <strong style=\"color:__ISC_BRAND_ACTION_COLOR__\">closed</strong> — timed out with no resolution.</p></div>#if($requestee.identityID == $__recipient.id || $requester.identityID == $__recipient.id)<p style=\"margin:0 0 20px 0;font-size:16px;color:#333333;line-height:1.5\">To review your approval requests or to create a new one, use the link below.</p><table style=\"margin-top: 30px;\"><tbody><tr><td><a style=\"background-color:__ISC_BRAND_NAVIGATION_COLOR__;color:#ffffff;padding:12px 25px;text-decoration:none;border-radius:5px;font-weight:bold\" href=\"$__global.productUrl/ui/d/$requesterPath\">Review approval requests</a></td></tr></tbody></table> #else<p style=\"margin:0 0 20px 0;font-size:16px;color:#333333;line-height:1.5\">To review approval requests that are assigned to you, use the link below.</p><table style=\"margin-top: 30px;\"><tbody><tr><td><a style=\"background-color:__ISC_BRAND_NAVIGATION_COLOR__;color:#ffffff;padding:12px 25px;text-decoration:none;border-radius:5px;font-weight:bold\" href=\"$__global.productUrl/ui/d/$approverPath\">Review approval requests</a></td></tr></tbody></table> #end<p style=\"margin-top:30px;font-size:16px;color:#333\">Thank you,<br />The ${__global.productName} Team</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "192cb1ee5243203d84cf60b01134af8e0e46ccb69de0ceb5a851a852d0388064"
+}

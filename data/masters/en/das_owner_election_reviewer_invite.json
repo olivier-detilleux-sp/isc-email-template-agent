@@ -1,0 +1,14 @@
+{
+  "key": "das_owner_election_reviewer_invite",
+  "name": "Data Access Security Data Owner Election Review Task",
+  "description": "Sent to a resource's reviewers when voting on it closes, for data owner elections configured to require manual review and to send invitations.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Action required: Review a data owner election",
+  "body": "<h2 style=\"margin:0 0 16px 0;font-family:Calibri,Arial,sans-serif;font-size:20px;font-weight:bold;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Data owner election review</h2>\n<p style=\"margin:0 0 12px 0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Hi $__recipient.name,</p>\n<p style=\"margin:0 0 12px 0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">As part of our efforts to improve our organization's data security posture and the governance of sensitive data access, we have initiated a campaign to identify owners for sensitive data assets.</p>\n<p style=\"margin:0 0 16px 0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">The data owner election process has been completed and requires your approval to finalize.</p>\n<div style=\"margin:0 0 16px 0;padding:12px 16px;border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f5f7fa;\">\n<p style=\"margin:0 0 8px 0;font-family:Calibri,Arial,sans-serif;font-size:14px;font-weight:bold;line-height:1.5;color:__ISC_BRAND_NAVIGATION_COLOR__;\">What you need to do</p>\n<ul style=\"margin:0;padding-left:18px;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">\n<li style=\"margin-bottom:6px;\">Review the completed data owner election.</li>\n<li style=\"margin-bottom:0;\">Approve the results to finalize the process in Data Access Security.</li>\n</ul>\n</div>\n<p style=\"margin:0 0 12px 0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Use this link to view your data ownership election review tasks in Data Access Security: <a href=\"$election.taskUrl\" style=\"color:__ISC_BRAND_ACTION_COLOR__;font-weight:bold;text-decoration:underline;\">View Data Ownership Election Tasks</a></p>\n<p style=\"margin:0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Thank you for supporting data ownership governance with Data Access Security.</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "fc56dceb6de6bcb212156fdb26cd31aed8904db2a2e124af116e7fab49e4dd96"
+}

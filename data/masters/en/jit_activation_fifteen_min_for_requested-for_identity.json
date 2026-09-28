@@ -1,0 +1,14 @@
+{
+  "key": "jit_activation_fifteen_min_for_requested-for_identity",
+  "name": "Just-In-Time Activation - 15 Minute Reminder for Requested-For Identity",
+  "description": "Notifies a manager, owner, or other interested party that a Just-In-Time activation initiated by another identity expires in 15 minutes.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Just-In-Time access for ${requestedForIdentityName} expires in 15 minutes",
+  "body": "<h2 style=\"color: __ISC_BRAND_NAVIGATION_COLOR__; margin: 0 0 16px 0; font-size: 20px; font-weight: 600;\">Just-In-Time Activation Reminder</h2>\n<p style=\"margin: 0 0 12px 0;\">Dear $__recipient.name,</p>\n<p style=\"margin: 0 0 16px 0;\">The Just-In-Time access window that ${requestedForIdentityName} initiated for ${entitlementName} will expire in <strong style=\"color: __ISC_BRAND_ACTION_COLOR__;\">15 minutes</strong>.</p>\n#if($applicationName)\n<div style=\"border-left: 4px solid __ISC_BRAND_ACTION_COLOR__; padding: 12px 16px; margin: 0 0 16px 0;\">\n<p style=\"margin: 0;\"><strong>Application:</strong> $applicationName</p>\n</div>\n#end\n<p style=\"margin: 16px 0 0 0;\">Thank you,<br/>The $__global.productName Team</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "d68a23917b22436858ce846908a552cda153ce157cba6baf365f3bb8199f3621"
+}

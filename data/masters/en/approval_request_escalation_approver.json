@@ -1,0 +1,14 @@
+{
+  "key": "approval_request_escalation_approver",
+  "name": "Approval Request Escalated (Approver)",
+  "description": "Sent to the approvers that an approval request was escalated from and to when no actions have been taken on an approval request for an admin-configured amount of time.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "An approval request has been escalated#if($previousApprover.identityID == $__recipient.id) from you to another user#else to you for review#end",
+  "body": "<h2 style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;margin:0 0 20px 0\">Approval request escalated</h2><p style=\"margin:0 0 20px 0;font-size:16px;color:#333333;line-height:1.5\">Hello ${__recipient.name},</p><p style=\"margin:0 0 20px 0;font-size:16px;color:#333333;line-height:1.5\">An approval request for <strong>$approvalName</strong> was submitted by #if($requestee.name && $requestee.name != '') <strong>$requester.name</strong> for <strong>$requestee.name</strong> #else <strong>$requester.name</strong> #end.</p><div style=\"margin-bottom:20px;padding:15px;background-color:#f9f9f9;border-left:4px solid __ISC_BRAND_NAVIGATION_COLOR__\"><p style=\"margin:0;font-size:16px;color:#333\">This request has been escalated #if($previousApprover.identityID == $__recipient.id) from you to <strong>$escalatedApprover.name</strong> because no action was taken #else for your review after the previous approver #if($previousApprover.name && $previousApprover.name != ''), <strong>$previousApprover.name</strong>, did not take action #else did not take action #end#end on the request for <strong>$escalationDelay</strong>.</p></div><table style=\"margin-top: 30px;\"><tbody><tr><td><a style=\"background-color:__ISC_BRAND_NAVIGATION_COLOR__;color:#ffffff;padding:12px 25px;text-decoration:none;border-radius:5px;font-weight:bold\" href=\"$__global.productUrl/ui/d/$approverPath\">Review your approval requests</a></td></tr></tbody></table><p style=\"margin-top:30px;font-size:16px;color:#333\">Best regards,<br />The ${__global.productName} Team</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "1b11648c4aeff71c3c241d25c3a6ae2f4cceb7d9bf7b52889e8adcdccd80710e"
+}

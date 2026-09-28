@@ -1,0 +1,14 @@
+{
+  "key": "das_owner_election_invite",
+  "name": "Data Access Security Data Owner Election Campaign Task Waiting",
+  "description": "Sent to each voter when a data owner election configured to send invitations starts, telling them how many resources are waiting for their vote.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Action required: Pending data owner election campaign tasks",
+  "body": "<h2 style=\"margin:0 0 16px 0;font-family:Calibri,Arial,sans-serif;font-size:20px;font-weight:bold;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Data owner election campaign task</h2>\n<p style=\"margin:0 0 12px 0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Hi $__recipient.name,</p>\n<p style=\"margin:0 0 12px 0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">As part of our efforts to strengthen our organization’s data security posture and the governance of sensitive data access, we have launched a campaign to identify owners for sensitive data assets.</p>\n<p style=\"margin:0 0 16px 0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">You have been identified as one of the business stakeholders most active on one or more of these data assets.</p>\n<div style=\"margin:0 0 16px 0;padding:12px 16px;border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f7f7f7;\">\n<p style=\"margin:0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">You currently have <strong style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;\">$election.taskCount</strong> activities awaiting your input.</p>\n</div>\n<p style=\"margin:0 0 8px 0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Please use the following link to view your data ownership election tasks in Data Access Security:</p>\n<p style=\"margin:0 0 16px 0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;\"><a href=\"$election.taskUrl\" style=\"color:__ISC_BRAND_ACTION_COLOR__;font-weight:bold;text-decoration:underline;\">Pending Data Ownership Election Tasks</a></p>\n<p style=\"margin:0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Thank you. This is an automatic message from <strong>Data Access Security</strong>; please do not reply.</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "ad784f42617b2bf14769ed0d03f7c217fa73f30e41cb1730b567cb981e371bf6"
+}

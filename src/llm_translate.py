@@ -325,19 +325,20 @@ def _protect_directives(text: str, replace) -> str:
 def _restore(text: str, mapping: dict[str, str]) -> str:
     out = text
     for token, original in mapping.items():
-        normalized = original
-        if original.strip().lower() == "#else":
-            normalized = original.replace("#else", "#{else}")
-        elif original.strip().lower() == "#end":
-            normalized = original.replace("#end", "#{end}")
-        out = out.replace(token, normalized)
+        out = out.replace(token, original)
     return _canonicalize_simple_directives(out)
 
 
 def _canonicalize_simple_directives(value: str) -> str:
-    """Brace simple directives so adjacent translated text cannot absorb them."""
-    value = re.sub(r"#else(?!if|\})", "#{else}", value, flags=re.I)
-    value = re.sub(r"#end(?!\})", "#{end}", value, flags=re.I)
+    """Brace #else/#end only when the next character would be absorbed.
+
+    `#endchanged` is not a directive, so it must become `#{end}changed`.
+    `#end`, `#end.`, `#end</p>` and `#end"` stay unbraced: that is the form
+    used by the stock ISC templates, and a braced closer inside a #set string
+    is printed literally.
+    """
+    value = re.sub(r"#else(?!if|\})(?=\w)", "#{else}", value, flags=re.I)
+    value = re.sub(r"#end(?!\})(?=\w)", "#{end}", value, flags=re.I)
     return value
 
 
@@ -514,6 +515,7 @@ def _cache_path(
     style: str,
     source_language: str,
     target_language: str,
+    notes: str = "",
 ) -> Path:
     digest = hashlib.sha256(
         json.dumps(
@@ -526,6 +528,7 @@ def _cache_path(
                 "sourceLanguage": source_language,
                 "targetLanguage": target_language,
                 "tokenFormatVersion": 3,
+                **({"styleNotes": notes} if notes else {}),
             },
             ensure_ascii=False,
             sort_keys=True,
@@ -549,6 +552,7 @@ def translate_with_cursor(
     palette: dict[str, str] | None = None,
     source_language: str = "en",
     target_language: str = "en",
+    style_notes: str = "",
 ) -> tuple[str, str]:
     """Translate one ISC template with Cursor and strict preservation checks."""
     api_key = resolve_api_key()
@@ -567,6 +571,7 @@ def translate_with_cursor(
         style,
         source_language,
         target_language,
+        style_notes,
     )
     cached.parent.mkdir(parents=True, exist_ok=True)
     if cached.exists():
@@ -591,6 +596,9 @@ def translate_with_cursor(
         target_language=target_language,
         palette=palette,
     )
+
+    if style_notes:
+        instructions = f"{instructions}\n{style_notes}\n"
 
     base_prompt = f"""\
 {instructions}

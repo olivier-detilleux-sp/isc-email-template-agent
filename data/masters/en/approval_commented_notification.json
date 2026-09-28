@@ -1,0 +1,14 @@
+{
+  "key": "approval_commented_notification",
+  "name": "Approval Commented",
+  "description": "Send a notification to the requester and approvers indicating they have an approval request that has been commented on.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "An approval request for $approvalName has been commented on",
+  "body": "<h2 style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;margin:0 0 20px 0\">Approval request commented</h2><p style=\"margin:0 0 20px 0;font-size:16px;color:#333333;line-height:1.5\">Dear ${__recipient.name},</p><p style=\"margin:0 0 20px 0;font-size:16px;color:#333333;line-height:1.5\">An approval request for <strong>$approvalName</strong> that was submitted #if($requestee.name && $requestee.name != '' && $requestee.identityID  == $__recipient.id) on your behalf by <strong>$requester.name</strong> #elseif($requestee.name && $requestee.name != '') by <strong>$requestee.name</strong> #elseif($requester.identityID == $__recipient.id) by you #else by <strong>$requester.name</strong> #end has been commented on.</p>#if($requestee.identityID == $__recipient.id || $requester.identityID == $__recipient.id)<p style=\"margin:0 0 20px 0;font-size:16px;color:#333333;line-height:1.5\">To take action on or view the status of your approval requests:</p><table style=\"margin-top: 30px;\"><tbody><tr><td><a style=\"background-color:__ISC_BRAND_NAVIGATION_COLOR__;color:#ffffff;padding:12px 25px;text-decoration:none;border-radius:5px;font-weight:bold\" href=\"$__global.productUrl/ui/d/$requesterPath\">View approval requests</a></td></tr></tbody></table>#else<p style=\"margin:0 0 20px 0;font-size:16px;color:#333333;line-height:1.5\">To review approval requests that are assigned to you:</p><table style=\"margin-top: 30px;\"><tbody><tr><td><a style=\"background-color:__ISC_BRAND_NAVIGATION_COLOR__;color:#ffffff;padding:12px 25px;text-decoration:none;border-radius:5px;font-weight:bold\" href=\"$__global.productUrl/ui/d/$approverPath\">Review approval requests</a></td></tr></tbody></table>#end<p style=\"margin-top:30px;font-size:16px;color:#333\">Best regards,<br />The ${__global.productName} Team</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "7a3d0f8e1826f2ed1ead477271564491272cad68a4ff42b90be6f8580b50cd03"
+}

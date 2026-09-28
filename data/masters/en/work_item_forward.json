@@ -1,0 +1,14 @@
+{
+  "key": "work_item_forward",
+  "name": "Work Item Forward",
+  "description": "Sent to the user whose work is being forwarded and the user receiving the forwarded work assignment.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Work item \"$workItemName\" has been forwarded",
+  "body": "<h2 style=\"color: __ISC_BRAND_NAVIGATION_COLOR__; margin: 0 0 16px 0; font-size: 20px; font-weight: 600;\">Work item forwarded</h2>\n<p style=\"margin: 0 0 16px 0; font-size: 14px; line-height: 1.5; color: #333333;\">$requester forwarded work item \"$workItemName\".</p>\n<div style=\"border-left: 4px solid __ISC_BRAND_ACTION_COLOR__; padding: 12px 16px; margin: 0 0 16px 0; background-color: #f7f7f7;\">\n<p style=\"margin: 0 0 8px 0; font-size: 14px; line-height: 1.5; color: #333333;\"><strong style=\"color: __ISC_BRAND_NAVIGATION_COLOR__;\">From:</strong> $previousOwner</p>\n<p style=\"margin: 0 0 8px 0; font-size: 14px; line-height: 1.5; color: #333333;\"><strong style=\"color: __ISC_BRAND_NAVIGATION_COLOR__;\">To:</strong> $newOwner</p>\n<p style=\"margin: 0; font-size: 14px; line-height: 1.5; color: #333333;\"><strong style=\"color: __ISC_BRAND_NAVIGATION_COLOR__;\">Date:</strong> $spTools.formatDate($forwardDate,3,1)</p>\n</div>\n<p style=\"margin: 0 0 16px 0; font-size: 14px; line-height: 1.5; color: #333333;\">Additional information included with this forward: $!commentText</p>\n<p style=\"margin: 0; font-size: 14px; line-height: 1.5; color: #333333;\">This notification was sent by SailPoint Identity Security Cloud.</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "282f61cd32107076b95b06d90f339241605cea7ffdd31e0406e1f0803ca1c588"
+}

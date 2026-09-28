@@ -1,0 +1,14 @@
+{
+  "key": "das_owner_election_reminder",
+  "name": "Data Access Security Data Owner Election New Task",
+  "description": "Sent to voters and reviewers who still have outstanding work in a running data owner election, on the election's configured reminder schedule or on demand by an administrator.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Reminder: Data Owner Election tasks await your input",
+  "body": "<h2 style=\"margin:0 0 16px 0;font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:bold;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Data Owner Election tasks await your input</h2>\n<p style=\"margin:0 0 12px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Hi $__recipient.name,</p>\n<p style=\"margin:0 0 16px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">You still have outstanding work in a Data Owner Election that requires your attention.</p>\n<div style=\"margin:0 0 16px 0;padding:12px 16px;border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f5f7fa;\">\n<p style=\"margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">You currently have <strong>$election.taskCount</strong> Data Owner Election tasks awaiting your input.</p>\n</div>\n<p style=\"margin:0 0 16px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Use the link below to view your pending data ownership election tasks in Data Access Security: <a href=\"$election.taskUrl\" style=\"color:__ISC_BRAND_ACTION_COLOR__;font-weight:bold;text-decoration:underline;\">View Pending Data Ownership Election Tasks</a>.</p>\n<p style=\"margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Thank you for your attention. This is an automated message from <strong>Data Access Security</strong>; please do not reply.</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "2dd1a1809f75d07001f7baad0fb20848717ad61adc1711649289dcbdfe33c80f"
+}

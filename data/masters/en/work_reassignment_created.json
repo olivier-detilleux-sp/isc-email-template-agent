@@ -1,0 +1,14 @@
+{
+  "key": "work_reassignment_created",
+  "name": "Work Reassignment Created",
+  "description": "Sent to the user whose work is being reassigned and the user receiving the work when a new work reassignment configuration is created.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "New automatic work reassignment for ${reassignedFromName}",
+  "body": "<h2 style=\"margin:0 0 16px 0;font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:bold;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Work Reassignment Created</h2>\n<p style=\"margin:0 0 16px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Dear $__recipient.name,</p>\n#set($_startDate = $__dateTool.toDate(\"yyyy-MM-dd'T'HH:mm:ss\", ${startDate}))\n#set($_formattedStartDate = $__dateTool.format(\"EEEEE, MMMMM dd, YYYY\", $_startDate))\n#set($_endDate = $__dateTool.toDate(\"yyyy-MM-dd'T'HH:mm:ss\", ${endDate}))\n#set($_formattedEndDate = $__dateTool.format(\"EEEEE, MMMMM dd, YYYY\", $_endDate))\n<p style=\"margin:0 0 16px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">${modifiedByName} has configured automatic reassignment of ${configType} from ${reassignedFromName} to ${reassignedToName}.</p>\n<div style=\"margin:0 0 16px 0;padding:12px 16px;border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f5f7fa;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">\n<p style=\"margin:0 0 8px 0;font-weight:bold;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Reassignment schedule</p>\n<p style=\"margin:0;\">Starting on ${_formattedStartDate} #if( ${endDate} != \"0001-01-01T00:00:00Z\") and ending on ${_formattedEndDate}. #{else} with no end date. #end</p>\n</div>\n<p style=\"margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Thank you,<br/>The $__global.productName Team</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "287b916824d84179b9229f1c2b09df0e76ebcbd68b1f9d8a14edc551b0208abb"
+}

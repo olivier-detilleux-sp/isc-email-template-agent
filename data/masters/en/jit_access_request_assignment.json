@@ -1,0 +1,14 @@
+{
+  "key": "jit_access_request_assignment",
+  "name": "Just-In-Time Access Request Assignment",
+  "description": "Sent to the identity who made an access request that was automatically approved and assigned.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Your access request for ${requestedObjectName} has been assigned",
+  "body": "<h2 style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;margin:0 0 20px 0\">Just-In-Time access assigned</h2><p style=\"margin:0 0 20px 0;font-size:16px;color:#333333\">Hello ${__recipient.name},</p><p style=\"margin:0 0 20px 0;font-size:16px;color:#333333;line-height:1.5\">Your request for the <strong>${requestedObjectName}</strong> entitlement has been assigned.</p><div style=\"margin-top:25px;padding:15px;background-color:#fff8e1;border-left:4px solid #ffab00\"><p style=\"margin:0;font-size:15px;color:#333\"><strong>This entitlement requires activation before each use. To activate it, go to MySailPoint &gt; Launchpad &gt; Just-In-Time Access.</strong></p></div>#if ($removeDate)<p style=\"margin-top:20px;font-size:14px;color:#666\">Your access to ${requestedObjectName} is scheduled to end on ${removeDate}.</p>#end<p style=\"margin-top:30px;font-size:16px;color:#333\">Best regards,<br />The ${__global.productName} Team</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "f292ffed96c0dadc0c2a1f31b7eeb08fa7a7de22a64507109962461e6fb3561b"
+}

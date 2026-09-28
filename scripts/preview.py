@@ -40,7 +40,7 @@ def render(body: str) -> str:
 
     # Resolve #if(...) blocks: keep content when the condition looks "true".
     def resolve_blocks(text: str) -> str:
-        pattern = re.compile(r"#if\s*\(([^)]*)\)(.*?)#end", re.S)
+        pattern = re.compile(r"#if\s*\(([^)]*)\)(.*?)(?:#\{end\}|#end\b)", re.S)
         while True:
             match = pattern.search(text)
             if not match:
@@ -60,7 +60,7 @@ def render(body: str) -> str:
 
     for name, value in SAMPLE.items():
         out = out.replace("${%s}" % name, value).replace("$%s" % name, value)
-    out = re.sub(r"#\{?else\}?|#end\b", "", out)
+    out = re.sub(r"#\{else\}|#\{end\}|#else(?!if)\b|#end\b", "", out)
     return out
 
 

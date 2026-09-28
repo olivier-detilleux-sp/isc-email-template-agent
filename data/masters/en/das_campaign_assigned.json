@@ -1,0 +1,14 @@
+{
+  "key": "das_campaign_assigned",
+  "name": "Data Access Security Campaign Assigned To Reviewers",
+  "description": "Sent to a reviewer when a Data Access Security certification campaign configured to notify its assignees starts, and again when the campaign advances to a review level that first asks them to respond.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "New certification review task for $campaignAssigned.name",
+  "body": "<h2 style=\"color: __ISC_BRAND_NAVIGATION_COLOR__; margin: 0 0 16px 0; font-family: Calibri, Arial, sans-serif; font-size: 20px;\">Certification review assigned</h2>\n<p style=\"font-family: Calibri, Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 0 0 12px 0;\">Hello,</p>\n<p style=\"font-family: Calibri, Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 0 0 16px 0;\">A certification review task is waiting for your response.</p>\n<div style=\"border-left: 4px solid __ISC_BRAND_ACTION_COLOR__; background-color: #f7f7f7; padding: 12px 16px; margin: 0 0 16px 0;\">\n<p style=\"font-family: Calibri, Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 0;\">Final due date: <strong>$campaignAssigned.dueDate</strong></p>\n</div>\n<p style=\"font-family: Calibri, Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 0 0 16px 0;\">Please follow this <a href=\"$campaignAssigned.url\" style=\"color: __ISC_BRAND_ACTION_COLOR__; text-decoration: underline;\">link</a> to open the task.</p>\n<div style=\"border: 1px solid #e0e0e0; padding: 12px 16px; margin: 0 0 16px 0;\">\n<p style=\"font-family: Calibri, Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 0 0 10px 0; color: __ISC_BRAND_NAVIGATION_COLOR__;\"><strong>Additional task details</strong></p>\n<ul style=\"font-family: Calibri, Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 0; padding-left: 20px;\">\n<li style=\"margin-bottom: 8px;\"><strong>Campaign name:</strong> $campaignAssigned.name</li>\n<li style=\"margin-bottom: 8px;\"><strong>Description:</strong> $campaignAssigned.description</li>\n<li style=\"margin-bottom: 0;\"><strong>Instructions:</strong> $campaignAssigned.instructions</li>\n</ul>\n</div>\n<p style=\"font-family: Calibri, Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 0;\">Thank you for your attention to this review in Data Access Security.</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "e2fb9efd90cbc4083121def6989a1ca0d9cf591547932fa95f3256e5bbb35fab"
+}

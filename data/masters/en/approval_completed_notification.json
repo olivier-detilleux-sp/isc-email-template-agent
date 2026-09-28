@@ -1,0 +1,14 @@
+{
+  "key": "approval_completed_notification",
+  "name": "Approval Completed",
+  "description": "Send a notification to a requester indicating they have an approval request that has been completed.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "An approval request for $approvalName has been $approvalStatus",
+  "body": "<h2 style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;margin:0 0 20px 0\">Approval request completed</h2><p style=\"margin:0 0 20px 0;font-size:16px;color:#333333;line-height:1.5\">Dear ${__recipient.name},</p><p style=\"margin:0 0 20px 0;font-size:16px;color:#333333;line-height:1.5\">An approval request for <strong>$approvalName</strong> that was submitted #if($requestee.name && $requestee.name != '' && $requestee.identityID  == $__recipient.id) on your behalf by <strong>$requester.name</strong> #else by you #end has been <strong>$approvalStatus.toLowerCase()</strong>.</p><table style=\"margin-top: 30px;\"><tbody><tr><td><a style=\"background-color:__ISC_BRAND_NAVIGATION_COLOR__;color:#ffffff;padding:12px 25px;text-decoration:none;border-radius:5px;font-weight:bold\" href=\"$__global.productUrl/ui/d/$requesterPath\">View your approval requests</a></td></tr></tbody></table><p style=\"margin-top:30px;font-size:16px;color:#333\">Best regards,<br />The ${__global.productName} Team</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "222b15e786aa972441e4c8d9c98d964abcf71dd57b888f4bade3931647888ea5"
+}

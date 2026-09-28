@@ -1,0 +1,14 @@
+{
+  "key": "pending_access_request_cancelled",
+  "name": "Access Request Cancelled",
+  "description": "Sent to users when a pending access request is canceled before it has been approved and provisioned.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "#if($emailRecipientName == $requesterName)Your access request#{else}An access request concerning you#end has been cancelled",
+  "body": "<h2 style=\"color:__ISC_BRAND_ACTION_COLOR__;margin:0 0 20px 0\">Access request cancelled</h2><p style=\"margin:0 0 20px 0;font-size:16px;color:#333333\">Hello $emailRecipientName,</p><p style=\"font-size:16px;color:#333333;line-height:1.5;margin:0 0 20px 0\">#if($emailRecipientName == $requesterName)Your pending access request#{else}The pending access request#end#if($isRobo) for #if($emailRecipientName == $requestedForName)you#{else}<strong>${requestedForName}</strong>#end#end for the following item(s) has been <strong>cancelled</strong>#if($cancelerName != $emailRecipientName) by <strong>${cancelerName}</strong>#end.</p>#foreach ( $type in ${requestedObjectDetailsByType.keySet()} )<div style=\"margin-bottom:20px\"><p style=\"margin:0 0 5px 0;font-size:17px;color:#333;border-bottom:1px solid #eeeeee;padding-bottom:5px\">$type :</p><ul style=\"margin-top: 10px; padding-left: 20px;\">#foreach ( $detail in ${requestedObjectDetailsByType.get($type)} )<li style=\"font-size: 15px; color: #555; margin-bottom: 8px;\">${detail.name} #if($detail.startDate) (Start date: ${detail.startDate}) #end#if($detail.removeDate) (End date: ${detail.removeDate}) #end</li>#end</ul></div>#end#if($cancelComment)<div style=\"margin-top:20px;padding:15px;background-color:#fef5f5;border-left:4px solid __ISC_BRAND_ACTION_COLOR__\"><p style=\"margin:0;font-size:15px;color:#333\">#if($emailRecipientName == $cancelerName)You provided the following reason#{else}${cancelerName} provided the following reason#end : <br /><strong>\"$cancelComment\"</strong></p></div>#end#if($emailRecipientName != $cancelerName)<p style=\"margin-top:25px;font-size:16px;color:#333\">Please contact ${cancelerName} if you have any questions.</p>#end<p style=\"margin-top:30px;font-size:16px;color:#333\">Best regards,<br />The ${PRODUCT_NAME} Team</p>",
+  "origin": "curated",
+  "sourceDigest": "71816b98ce34211ccd7818703aa37fd20897a9630bd0c8de1732501e27e8d97d"
+}

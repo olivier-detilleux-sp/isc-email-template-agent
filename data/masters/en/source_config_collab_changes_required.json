@@ -1,0 +1,14 @@
+{
+  "key": "source_config_collab_changes_required",
+  "name": "Source Collaboration Changes Required",
+  "description": "Notifies the assignee when the administrator requests additional changes to a source that is in review",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Additional changes required for the $referenceName source",
+  "body": "<h2 style=\"margin:0 0 16px 0;font-size:20px;font-weight:600;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Additional changes required</h2>\n<p style=\"margin:0 0 12px 0;font-size:14px;line-height:1.5;color:#333333;\">Dear $__recipient.name,</p>\n<p style=\"margin:0 0 16px 0;font-size:14px;line-height:1.5;color:#333333;\">$owner has reviewed your changes to the $referenceName source and has assigned additional changes to you.</p>\n<div style=\"margin:0 0 16px 0;padding:12px 16px;border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f5f7fa;\">\n<p style=\"margin:0 0 8px 0;font-size:14px;line-height:1.5;color:#333333;\"><span style=\"font-weight:600;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Source:</span> $referenceName</p>\n<p style=\"margin:0;font-size:14px;line-height:1.5;color:#333333;\"><span style=\"font-weight:600;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Reviewed by:</span> $owner</p>\n</div>\n<p style=\"margin:0 0 16px 0;font-size:14px;line-height:1.5;color:#333333;\">Go to the <a href=\"$deepLink\" style=\"color:__ISC_BRAND_ACTION_COLOR__;text-decoration:underline;\">$referenceName configuration page</a> to continue onboarding this source.</p>\n<p style=\"margin:0;font-size:14px;line-height:1.5;color:#333333;\">Thank you,<br/>The $__global.productName Team</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "c96732d81f0e2040354bd150a94d58cfe2e6c200b51dd9cd751e5bd8aca02aaa"
+}

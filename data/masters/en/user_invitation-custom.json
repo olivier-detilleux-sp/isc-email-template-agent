@@ -1,0 +1,14 @@
+{
+  "key": "user_invitation-custom",
+  "name": "User Invitation",
+  "description": "Sent to invite a user to your SailPoint products.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Welcome to $__global.productName",
+  "body": "<h2 style=\"margin:0 0 16px 0;font-size:22px;line-height:1.3;font-weight:600;color:__ISC_BRAND_NAVIGATION_COLOR__;\">You're invited</h2>\n<p style=\"margin:0 0 12px 0;font-size:14px;line-height:1.5;color:#333333;\">Hello ${__recipient.name},</p>\n<p style=\"margin:0 0 16px 0;font-size:14px;line-height:1.5;color:#333333;\">You have been invited to use $__global.productName to support and advance your organization's security.</p>\n<div style=\"margin:0 0 16px 0;padding:12px 16px;background-color:#f5f7fa;border-left:4px solid __ISC_BRAND_NAVIGATION_COLOR__;\">\n<p style=\"margin:0;font-size:14px;line-height:1.5;color:#333333;\">Your username: <span style=\"font-weight:bold;\">${__recipient.alias}</span></p>\n</div>\n<p style=\"margin:0 0 16px 0;font-size:14px;line-height:1.5;\">\n<a href=\"${registrationUrl}\" style=\"display:inline-block;padding:10px 20px;background-color:__ISC_BRAND_ACTION_COLOR__;color:#ffffff;text-decoration:none;font-weight:600;font-size:14px;\">Register now</a>\n</p>\n<p style=\"margin:0 0 16px 0;font-size:14px;line-height:1.5;color:#333333;\">Once you have registered, use this link to access <a href=\"${__global.productUrl}\" style=\"color:__ISC_BRAND_ACTION_COLOR__;text-decoration:underline;\">$__global.productName</a>.</p>\n<p style=\"margin:0;font-size:14px;line-height:1.5;color:#333333;\">Thank you,<br/>The $__global.productName Team</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "463a35e8d830675f65047d88b6a6240eab08e44f12da3161d951b80de5c8af4c"
+}

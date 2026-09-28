@@ -1,0 +1,14 @@
+{
+  "key": "saf_onboarding_source_assigned",
+  "name": "Agentic Fabric Source Assignment for Onboarding",
+  "description": "Sent to an assignee when an admin assigns them a source to onboard.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "$data.adminName has assigned you a source for onboarding",
+  "body": "<h2 style=\"margin:0 0 16px 0;font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:600;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Source assigned for onboarding</h2>\n<p style=\"margin:0 0 12px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Dear $data.userName,</p>\n<p style=\"margin:0 0 16px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">$data.adminName has assigned the <strong>$data.sourceName</strong> source to you to onboard within $__global.productName.</p>\n<div style=\"margin:0 0 16px 0;padding:12px 16px;border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f5f7fa;\">\n<p style=\"margin:0 0 8px 0;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:600;line-height:1.4;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Assignment details</p>\n<ul style=\"margin:0;padding:0 0 0 18px;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">\n<li style=\"margin:0 0 6px 0;\">Onboarding $data.sourceName allows your organization to configure and manage data from that source.</li>\n<li style=\"margin:0;\">When you have finished configuring $data.sourceName, submit it to complete setup.</li>\n</ul>\n</div>\n<div style=\"margin:0 0 16px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">#set($assignedSourcesUrl = \"${__global.productUrl}${data.deepLink}\") #if($data.deepLink && $data.deepLink.startsWith('http')) #set($assignedSourcesUrl = $data.deepLink) #end</div>\n<p style=\"margin:0 0 16px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Go to your <a href=\"$assignedSourcesUrl\" style=\"color:__ISC_BRAND_ACTION_COLOR__;text-decoration:underline;\">assigned sources</a> to begin configuring the $data.sourceName source. Contact your administrator with any questions, or refer to the <a href=\"https://documentation.sailpoint.com/saas/help/\" style=\"color:__ISC_BRAND_ACTION_COLOR__;text-decoration:underline;\">$__global.productName documentation</a>.</p>\n<p style=\"margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Thank you,<br/>The $__global.productName Team</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "adb0dc5acb83a92a51a5af8e3f8bee54602b48bc2b73d4163cd8bc767c29bbd8"
+}

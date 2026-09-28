@@ -1,0 +1,14 @@
+{
+  "key": "account_request_failed",
+  "name": "Account Request Failed",
+  "description": "Sent to a requester to confirm that their account delete request has been failed.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "$data.sourceName – $data.operationType request failed for $data.accountName",
+  "body": "<h2 style=\"margin:0 0 16px 0;font-size:20px;font-weight:600;line-height:1.3;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Account Request Failed</h2>\n<p style=\"margin:0 0 12px 0;font-size:14px;line-height:1.5;color:#333333;\">Hello $data.requesterName,</p>\n<p style=\"margin:0 0 16px 0;font-size:14px;line-height:1.5;color:#333333;\">The account $data.operationType.toLowerCase() request for $data.accountName on the $data.sourceName source could not be completed.</p>\n<div style=\"margin:0 0 16px 0;padding:12px 16px;border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f7f7f7;\">\n<p style=\"margin:0 0 8px 0;font-size:13px;font-weight:600;line-height:1.4;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Error details</p>\n<p style=\"margin:0;font-size:14px;line-height:1.5;color:#333333;\">The request failed because of the following error: $data.failureReason</p>\n</div>\n<p style=\"margin:0 0 16px 0;font-size:14px;line-height:1.5;color:#333333;\">Please contact your administrator for assistance.</p>\n<p style=\"margin:0;font-size:14px;line-height:1.5;color:#333333;\">Thank you,<br/>The $__global.productName Team</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "248624795289d8a415191f5854c585690490185ee4428b65da72e0306a3f8caf"
+}

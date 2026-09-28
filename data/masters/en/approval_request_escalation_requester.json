@@ -1,0 +1,14 @@
+{
+  "key": "approval_request_escalation_requester",
+  "name": "Approval Request Escalated (Requester)",
+  "description": "Sent to the approval requester when an approver (or approvers) have not actioned on an approval request for an admin-configured amount of time.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "An approval request#if($requestee.name && $requestee.name != '' && $requester.identityID  != $__recipient.id) submitted on your behalf#else you submitted#end has been escalated",
+  "body": "<h2 style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;margin:0 0 20px 0\">Approval request escalated</h2><p style=\"margin:0 0 20px 0;font-size:16px;color:#333333;line-height:1.5\">Hello ${__recipient.name},</p><p style=\"margin:0 0 20px 0;font-size:16px;color:#333333;line-height:1.5\">An approval request for <strong>$approvalName</strong> was submitted #if($requestee.name && $requestee.name != '' && $requester.identityID != $__recipient.id) on your behalf by <strong>$requester.name</strong> #else by you #end and has not been actioned for $escalationDelay. This approval request has now been escalated #if($previousApprover.name && $previousApprover.name != '') from <strong>$previousApprover.name</strong> #end to <strong>$escalatedApprover.name</strong>.</p><div style=\"margin-bottom:20px;padding:15px;background-color:#f9f9f9;border-left:4px solid __ISC_BRAND_NAVIGATION_COLOR__\"><ul style=\"margin: 0; padding-left: 20px;\"><li style=\"font-size: 15px; color: #555; margin-bottom: 5px;\"><strong>Request:</strong> $approvalName</li><li style=\"font-size: 15px; color: #555; margin-bottom: 5px;\"><strong>Time without action:</strong> $escalationDelay</li><li style=\"font-size: 15px; color: #555; margin-bottom: 5px;\"><strong>Escalated to:</strong> $escalatedApprover.name</li></ul></div><p style=\"margin:0 0 20px 0;font-size:16px;color:#333333;line-height:1.5\">To take action or view the status of your approval requests, use the button below.</p><table style=\"margin-top: 30px;\"><tbody><tr><td><a style=\"background-color:__ISC_BRAND_NAVIGATION_COLOR__;color:#ffffff;padding:12px 25px;text-decoration:none;border-radius:5px;font-weight:bold\" href=\"$__global.productUrl/ui/d/$requesterPath\">View approval requests</a></td></tr></tbody></table><p style=\"margin-top:30px;font-size:16px;color:#333\">Best regards,<br />The ${__global.productName} Team</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "15ae5d3bcd3f8d8f24ba827d48710d2d48b3e65dd5ef7b1ba66514279b4e4fca"
+}

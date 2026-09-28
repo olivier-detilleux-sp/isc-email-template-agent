@@ -17,6 +17,7 @@ from masters import (  # noqa: E402
     build_base_masters,
     filter_catalog_masters,
     load_json,
+    translate_masters,
     validate_masters,
     validate_payloads,
 )
@@ -65,8 +66,8 @@ DEFAULT_PUBLICATION_LANGUAGE = "en"
 
 INIT_INTRO = (
     "Language to add to the style library.\n"
-    "Press Enter for English. Masters already stored for that language "
-    "are kept. Use this for a language that is not in data/masters/ yet."
+    "Press Enter for English. An existing language is translated as-is: "
+    "the layout is not redesigned. Masters already stored are kept."
 )
 RUN_INTRO = "Language for uploaded email subjects and bodies:"
 
@@ -134,6 +135,14 @@ def fallback_agent_config(available: list[str]) -> dict[str, str] | None:
 def missing_master_keys(existing: set[str], required: set[str]) -> set[str]:
     """Catalog keys that do not yet have a master file."""
     return required - existing
+
+
+def source_library_language(target: str, available: list[str]) -> str | None:
+    """Language whose masters are translated, without restyling, into target."""
+    candidates = [code for code in available if code != target]
+    if "en" in candidates:
+        return "en"
+    return candidates[0] if candidates else None
 
 
 def resolve_configured_languages(
@@ -246,19 +255,23 @@ def main() -> int:
         "--init",
         action="store_true",
         help=(
-            "Generate masters for a language that is not already in "
-            "data/masters/. Existing masters are kept. Does not publish."
+            "Add a language that is not already in data/masters/ by translating "
+            "an existing language. The layout is kept. Does not publish."
         ),
     )
     parser.add_argument(
         "--rebuild-masters",
         action="store_true",
-        help="Regenerate masters for the selected language, including existing files",
+        help=(
+            "Rewrite masters for the selected language, including existing "
+            "files. Curated keys are translated from the tenant custom; "
+            "other keys are redesigned."
+        ),
     )
     parser.add_argument(
         "--prepare-only",
         action="store_true",
-        help="Generate and validate without offering to publish",
+        help="Write branded payloads and validate them without publishing",
     )
     parser.add_argument(
         "--yes",
@@ -350,7 +363,7 @@ def main() -> int:
                 file=sys.stderr,
             )
             return 1
-        if args.rebuild_masters or (args.init and missing):
+        if args.rebuild_masters:
             build_base_masters(
                 defaults=defaults,
                 customs=customs,
@@ -361,8 +374,60 @@ def main() -> int:
                 output_dir=library_dir,
                 cache_dir=ROOT / "data/llm-cache",
                 only=only,
-                force=args.rebuild_masters,
+                force=True,
             )
+        elif args.init and missing:
+            source_language = source_library_language(
+                library_language, available_master_languages()
+            )
+            source_dir = (
+                ROOT / "data" / "masters" / source_language
+                if source_language
+                else None
+            )
+            source_keys = (
+                {path.stem for path in source_dir.glob("*.json")}
+                if source_dir
+                else set()
+            )
+            to_translate = missing & source_keys
+            if to_translate:
+                print(
+                    f"Translating {len(to_translate)} master(s) from "
+                    f"{source_language}. The layout is kept.",
+                    flush=True,
+                )
+                translate_masters(
+                    source_dir=source_dir,
+                    target_dir=library_dir,
+                    source_language=source_language,
+                    target_language=library_language,
+                    model=args.model,
+                    cache_dir=ROOT / "data/llm-cache",
+                    only=to_translate,
+                )
+            still_missing = missing - to_translate
+            if still_missing and not source_language:
+                build_base_masters(
+                    defaults=defaults,
+                    customs=customs,
+                    curated_keys=curated_keys,
+                    branding=branding,
+                    target_language=library_language,
+                    model=args.model,
+                    output_dir=library_dir,
+                    cache_dir=ROOT / "data/llm-cache",
+                    only=still_missing,
+                    force=False,
+                )
+            elif still_missing:
+                print(
+                    f"{len(still_missing)} template(s) have no "
+                    f"{source_language} master to translate:",
+                    flush=True,
+                )
+                for key in sorted(still_missing):
+                    print(f"  - {key}", flush=True)
         if args.init:
             save_agent_config(base_language, language)
             if missing and not args.rebuild_masters:

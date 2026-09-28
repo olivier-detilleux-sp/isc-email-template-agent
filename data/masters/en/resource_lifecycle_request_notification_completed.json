@@ -1,0 +1,14 @@
+{
+  "key": "resource_lifecycle_request_notification_completed",
+  "name": "Resource Lifecycle Request Completed",
+  "description": "Sent to a requester to notify that their resource lifecycle request has been completed successfully.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "$data.sourceName – $data.operationType request completed successfully for $data.machineIdentityName",
+  "body": "<h2 style=\"margin: 0 0 16px 0; font-size: 20px; font-weight: 600; color: __ISC_BRAND_NAVIGATION_COLOR__;\">Resource Lifecycle Request Completed</h2>\n<p style=\"margin: 0 0 12px 0; font-size: 14px; line-height: 1.5; color: #333333;\">Hello $data.requesterName,</p>\n<p style=\"margin: 0 0 16px 0; font-size: 14px; line-height: 1.5; color: #333333;\">Your resource lifecycle request was completed successfully. A summary of the completed request is provided below.</p>\n<div style=\"margin: 0 0 16px 0; padding: 12px 16px; border-left: 4px solid __ISC_BRAND_ACTION_COLOR__; background-color: #f5f7fa;\">\n<p style=\"margin: 0 0 8px 0; font-size: 14px; line-height: 1.5; color: #333333;\"><span style=\"font-weight: 600; color: __ISC_BRAND_NAVIGATION_COLOR__;\">Requested action:</span> $data.operationType.toLowerCase()</p>\n<p style=\"margin: 0 0 8px 0; font-size: 14px; line-height: 1.5; color: #333333;\"><span style=\"font-weight: 600; color: __ISC_BRAND_NAVIGATION_COLOR__;\">Resource:</span> $data.machineIdentitySubtype.toLowerCase() $data.machineIdentityName</p>\n<p style=\"margin: 0; font-size: 14px; line-height: 1.5; color: #333333;\"><span style=\"font-weight: 600; color: __ISC_BRAND_NAVIGATION_COLOR__;\">Source:</span> $data.sourceName</p>\n</div>\n<p style=\"margin: 0; font-size: 14px; line-height: 1.5; color: #333333;\">Thank you for using $__global.productName.</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "c7e9914861bfd5991d6ae03457ef6c09045ed9958eb5b3f1c35eba48a9c76598"
+}

@@ -35,6 +35,8 @@ def tokenize_branding(value: str, branding: Branding) -> str:
     if branding.action_color.lower() == branding.link_color.lower():
         replacements.pop(branding.link_color.lower(), None)
         replacements[branding.action_color.lower()] = ACTION_COLOR
+    if branding.navigation_color.lower() == branding.link_color.lower():
+        replacements[branding.navigation_color.lower()] = NAVIGATION_COLOR
     for old, token in replacements.items():
         output = output.replace(old, token).replace(old.upper(), token)
     return output

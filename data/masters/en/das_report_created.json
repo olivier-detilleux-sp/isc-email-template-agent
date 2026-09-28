@@ -1,0 +1,14 @@
+{
+  "key": "das_report_created",
+  "name": "Data Access Security Report Created",
+  "description": "Sent to everyone on a Data Access Security report's recipient list, including the person who requested it, when the report finishes running, whether on demand or on a schedule.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Your Data Access Security report is ready: $report.name ($report.type)",
+  "body": "<h2 style=\"color: __ISC_BRAND_NAVIGATION_COLOR__; font-family: Arial, Helvetica, sans-serif; font-size: 20px; font-weight: 600; margin: 0 0 16px 0;\">Data Access Security report ready</h2>\n<p style=\"font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 1.5; color: #333333; margin: 0 0 12px 0;\">Hello,</p>\n<p style=\"font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 1.5; color: #333333; margin: 0 0 16px 0;\">A Data Access Security report has been created and is available for you to review.</p>\n<div style=\"border-left: 4px solid __ISC_BRAND_ACTION_COLOR__; background-color: #f5f7fa; padding: 12px 16px; margin: 0 0 16px 0;\">\n<p style=\"font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 1.5; color: #333333; margin: 0 0 8px 0;\"><strong>Report name:</strong> $report.name</p>\n<p style=\"font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 1.5; color: #333333; margin: 0 0 8px 0;\"><strong>Report type:</strong> $report.type</p>\n<p style=\"font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 1.5; color: #333333; margin: 0 0 8px 0;\"><strong>Created by:</strong> $report.createdByDisplayName</p>\n<p style=\"font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 1.5; color: #333333; margin: 0;\"><strong>Created at:</strong> $report.createDate (UTC)</p>\n</div>\n<p style=\"font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 1.5; color: #333333; margin: 0 0 16px 0;\"><a href=\"$report.url\" style=\"color: __ISC_BRAND_ACTION_COLOR__; font-weight: 600; text-decoration: underline;\">View the report in Data Access Security</a></p>\n<p style=\"font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 1.5; color: #666666; margin: 0;\">This is an automated message from Data Access Security. Please do not reply.</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "8f31876cea2925aaae1c797649904561d5b21d45ce451f647ce273f3e17cffcd"
+}

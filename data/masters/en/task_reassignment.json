@@ -1,0 +1,14 @@
+{
+  "key": "task_reassignment",
+  "name": "Task Reassignment",
+  "description": "Sent when a user reassigns a provisioning task for a different user to complete.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "A task has been reassigned",
+  "body": "<h2 style=\"margin:0 0 16px 0;font-size:20px;line-height:1.3;font-weight:600;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Task reassignment</h2>\n<p style=\"margin:0 0 12px 0;font-size:14px;line-height:1.5;color:#333333;\">${requester} has reassigned a task from ${previousOwner} to ${newOwner} for ${userName}'s ${source} account.</p>\n<div style=\"margin:0 0 16px 0;padding:12px 16px;border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f7f7f7;\">\n<p style=\"margin:0 0 8px 0;font-size:14px;line-height:1.5;color:#333333;\"><strong style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;\">Previous assignee:</strong> ${previousOwner}</p>\n<p style=\"margin:0 0 8px 0;font-size:14px;line-height:1.5;color:#333333;\"><strong style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;\">New assignee:</strong> ${newOwner}</p>\n<p style=\"margin:0;font-size:14px;line-height:1.5;color:#333333;\"><strong style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;\">Account:</strong> ${userName}'s ${source} account</p>\n</div>\n<p style=\"margin:0 0 16px 0;font-size:14px;line-height:1.5;color:#333333;\">${newOwner} can find this task in the <a href=\"$identityNowUrl/ui/d/dashboard/task-manager\" style=\"color:__ISC_BRAND_ACTION_COLOR__;text-decoration:underline;\">Task Manager</a>.</p>\n<p style=\"margin:0;font-size:14px;line-height:1.5;color:#333333;\">Thank you,<br />The ${PRODUCT_NAME} Team</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "2829517b4134d158d523d798a637cec9625dfd29cfdadf6a0e544efb49a25049"
+}

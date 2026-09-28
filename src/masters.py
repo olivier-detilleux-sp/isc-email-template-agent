@@ -17,6 +17,7 @@ from brand_tokens import (
 from branding import Branding
 from llm_translate import (
     TOKEN_RE,
+    LlmTranslationError,
     _directive_kind,
     _drop_unmatched_closings,
     _protect,
@@ -24,6 +25,12 @@ from llm_translate import (
     translate_with_cursor,
 )
 from shell import apply_branding_to_existing, strip_existing_shell, wrap_body
+from style_guide import (
+    REFERENCE_KEY,
+    detect_language,
+    normalize_curated_body,
+    style_notes,
+)
 
 
 def _digest(*values: str) -> str:
@@ -47,21 +54,29 @@ def build_base_masters(
     only: set[str] | None = None,
     force: bool = False,
 ) -> list[Path]:
-    """Create styled masters from defaults; preserve explicitly curated content."""
+    """Create styled masters from defaults; preserve explicitly curated content.
+
+    Curated keys come from the tenant's customized template, in whatever
+    language it is written, and are translated literally into the target
+    language so the layout survives. Other keys are redesigned from the stock
+    default, guided by the current master and the house style.
+    """
     custom_by_key = {item["key"]: item for item in customs}
     output_dir.mkdir(parents=True, exist_ok=True)
     written: list[Path] = []
     failures: list[str] = []
 
     selected = [d for d in defaults if not only or d["key"] in only]
+    # Curated masters first: they provide the style reference for the others.
+    selected.sort(key=lambda d: d["key"] not in curated_keys)
     for index, default in enumerate(selected, 1):
         key = default["key"]
         path = output_dir / f"{key}.json"
         source_digest = _digest(
             default.get("subject") or "", default.get("body") or ""
         )
-        if path.exists() and not force:
-            current = load_json(path)
+        current = load_json(path) if path.exists() else None
+        if current and not force:
             if (
                 current.get("sourceDigest") == source_digest
                 and current.get("language") == target_language
@@ -69,23 +84,53 @@ def build_base_masters(
                 print(f"[{index}/{len(selected)}] master {key} (cached)", flush=True)
                 written.append(path)
                 continue
+        if (
+            current
+            and key in curated_keys
+            and key not in custom_by_key
+            and current.get("origin") == "curated"
+        ):
+            print(
+                f"[{index}/{len(selected)}] master {key} "
+                "(curated, no tenant custom: kept)",
+                flush=True,
+            )
+            written.append(path)
+            continue
         print(f"[{index}/{len(selected)}] master {key}", flush=True)
 
         try:
-            # The curated list belongs to the original French library. Do not
-            # copy that wording into a library built in another language.
-            if (
-                target_language == "fr"
-                and key in curated_keys
-                and key in custom_by_key
-            ):
+            if key in curated_keys and key in custom_by_key:
                 custom = custom_by_key[key]
                 subject = custom.get("subject") or default.get("subject") or ""
                 branded = apply_branding_to_existing(custom.get("body") or "", branding)
                 inner_body = strip_existing_shell(branded)
-                inner_body = tokenize_branding(inner_body, branding)
+                inner_body = normalize_curated_body(
+                    tokenize_branding(inner_body, branding)
+                )
+                subject = normalize_curated_body(subject)
+                custom_language = detect_language(inner_body)
+                if custom_language != target_language:
+                    subject, inner_body = translate_with_cursor(
+                        key=key,
+                        name=default.get("name") or key,
+                        description=default.get("description"),
+                        subject=subject,
+                        body=inner_body,
+                        model=model,
+                        cache_dir=cache_dir,
+                        style="literal",
+                        source_language=custom_language,
+                        target_language=target_language,
+                    )
                 origin = "curated"
             else:
+                reference_path = output_dir / f"{REFERENCE_KEY}.json"
+                reference = (
+                    load_json(reference_path).get("body")
+                    if reference_path.exists() and key != REFERENCE_KEY
+                    else None
+                )
                 subject, inner_body = translate_with_cursor(
                     key=key,
                     name=default.get("name") or key,
@@ -101,6 +146,11 @@ def build_base_masters(
                         "navigation": NAVIGATION_COLOR,
                         "action": ACTION_COLOR,
                     },
+                    style_notes=style_notes(
+                        key,
+                        reference_body=reference,
+                        current_body=(current or {}).get("body"),
+                    ),
                 )
                 origin = "cursor-redesign"
         except LlmTranslationError as exc:

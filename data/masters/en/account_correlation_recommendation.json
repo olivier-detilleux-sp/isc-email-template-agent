@@ -1,0 +1,14 @@
+{
+  "key": "account_correlation_recommendation",
+  "name": "Correlation Recommendations Complete",
+  "description": "Sent to the user when account correlation recommendations are complete.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Account Correlation Recommendations Complete for $sourceName",
+  "body": "<h2 style=\"margin:0 0 16px 0;font-size:20px;font-weight:600;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Correlation Recommendations Complete</h2>\n<p style=\"margin:0 0 12px 0;font-size:14px;line-height:1.5;color:#333333;\">Dear $__recipient.name,</p>\n<p style=\"margin:0 0 16px 0;font-size:14px;line-height:1.5;color:#333333;\">#set($url=$__global.productUrl + '/ui/a/admin/connections/sources/' + $sourceId + '/settings/account-correlation')AI recommendations for account correlation configurations have been generated for <strong>$sourceName</strong>.</p>\n<div style=\"margin:0 0 16px 0;padding:12px 16px;border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f5f7fa;\">\n<p style=\"margin:0;font-size:14px;line-height:1.5;color:#333333;\">Go to the <a href=\"$url\" style=\"color:__ISC_BRAND_ACTION_COLOR__;text-decoration:underline;\">Account Correlation</a> page to review your correlation recommendations.</p>\n</div>\n<p style=\"margin:0;font-size:14px;line-height:1.5;color:#333333;\">Thank you,<br/>The $__global.productName Team</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "d60ff15602d86684c6c85650f4f8e8e379b5027d46296b10f1fbe6df2facad6b"
+}

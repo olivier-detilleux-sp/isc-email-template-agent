@@ -1,0 +1,14 @@
+{
+  "key": "das_owner_election_assignment",
+  "name": "Data Access Security Data Owner Identified",
+  "description": "Sent to each user chosen as an owner when a data owner election finishes for a resource, for elections configured to assign owners automatically and to send invitations.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "You have been identified as a data owner",
+  "body": "<h2 style=\"margin:0 0 16px 0;font-family:Calibri,Arial,sans-serif;font-size:20px;font-weight:bold;color:__ISC_BRAND_NAVIGATION_COLOR__;\">You have been identified as a data owner</h2>\n<p style=\"margin:0 0 12px 0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Hello $__recipient.name,</p>\n<p style=\"margin:0 0 12px 0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">As part of an election to identify data owners for sensitive data assets, your peers have selected you as the data owner for the resource below.</p>\n<div style=\"margin:0 0 16px 0;padding:12px 16px;border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f5f5f5;\">\n<p style=\"margin:0 0 8px 0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\"><strong style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;\">Application:</strong> $assignment.appName</p>\n<p style=\"margin:0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\"><strong style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;\">Resource:</strong> $assignment.resourcePath</p>\n</div>\n<p style=\"margin:0 0 12px 0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">As a data owner, you will take a more active role in protecting sensitive information and governing the data assets you own. You may be asked to initiate or participate in governance processes such as reviewing inappropriate access and suspicious activity, reviewing and certifying currently assigned access, or approving new access requests.</p>\n<p style=\"margin:0 0 12px 0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Thank you in advance for helping ensure secure access to critical information.</p>\n<p style=\"margin:0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">This automated message was sent by <strong>Data Access Security</strong>. Please do not reply.</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "453a118cd0d5dbd9a6b145e406cd8da8eb17e9854e48f3628665b84bfcedd8dc"
+}

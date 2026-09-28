@@ -1,0 +1,14 @@
+{
+  "key": "work_reassignment_updated",
+  "name": "Work Reassignment Updated",
+  "description": "Sent to the user whose work is being reassigned and the user receiving the work when a new work reassignment configuration is created that overrides an existing work reassignment.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Updated Automatic Work Reassignment for ${newConfig.reassignedFromName}",
+  "body": "<h2 style=\"margin:0 0 16px 0;font-size:20px;line-height:1.3;font-weight:600;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Work Reassignment Updated</h2>\n<p style=\"margin:0 0 12px 0;font-size:14px;line-height:1.5;color:#333333;\">Dear $__recipient.name,</p>\n<div style=\"margin:0 0 16px 0;font-size:14px;line-height:1.5;color:#333333;\">#set($_startDate = $__dateTool.toDate(\"yyyy-MM-dd'T'HH:mm:ss\", ${newConfig.startDate})) #set($_formattedStartDate = $__dateTool.format(\"EEEEE, MMMMM dd, YYYY\", $_startDate)) #set($_endDate = $__dateTool.toDate(\"yyyy-MM-dd'T'HH:mm:ss\", ${newConfig.endDate})) #set($_formattedEndDate = $__dateTool.format(\"EEEEE, MMMMM dd, YYYY\", $_endDate))</div>\n<div style=\"margin:0 0 16px 0;padding:14px 16px;border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f7f9fc;\">\n<p style=\"margin:0;font-size:14px;line-height:1.5;color:#333333;\"><span style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;font-weight:600;\">${newConfig.modifiedByName}</span> has configured automatic reassignment of <span style=\"font-weight:600;\">${newConfig.configType}</span> from <span style=\"font-weight:600;\">${newConfig.reassignedFromName}</span> to <span style=\"font-weight:600;\">${newConfig.reassignedToName}</span>, starting on <span style=\"font-weight:600;\">${_formattedStartDate}</span> #if( ${newConfig.endDate} != \"0001-01-01T00:00:00Z\") and ending on <span style=\"font-weight:600;\">${_formattedEndDate}</span>. #{else} with no end date. #end</p>\n</div>\n<p style=\"margin:0;font-size:14px;line-height:1.5;color:#333333;\">Thank you,<br/>The $__global.productName Team</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "08f3c19f9883f0ba145875d4a44c81c35ccfce16fb1cacb1b2cda84068e27f33"
+}

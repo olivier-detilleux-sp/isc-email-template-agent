@@ -1,0 +1,14 @@
+{
+  "key": "das_campaign_revocation_success",
+  "name": "Data Access Security Campaign Revocation Successful",
+  "description": "Sent to a Data Access Security campaign's owner when its revocation processing finishes and every access item marked for removal was revoked successfully.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Rejected permissions successfully revoked",
+  "body": "<h2 style=\"margin:0 0 16px 0;font-family:Calibri,Arial,sans-serif;font-size:20px;font-weight:bold;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Campaign revocation successful</h2>\n<p style=\"margin:0 0 12px 0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Dear $__recipient.name,</p>\n<p style=\"margin:0 0 16px 0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Automatic revocation was enabled on $campaign.campaignName. All access items that qualified for revocation were revoked successfully.</p>\n<div style=\"margin:0 0 16px 0;padding:12px 16px;border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f5f7fa;\">\n<p style=\"margin:0 0 8px 0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\"><strong style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;\">Campaign</strong><br />$campaign.campaignName</p>\n<p style=\"margin:0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\"><strong style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;\">Status</strong><br />Revocation completed successfully</p>\n</div>\n<p style=\"margin:0 0 16px 0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">You can review the campaign revocation details here: <a href=\"$campaign.url\" style=\"color:__ISC_BRAND_ACTION_COLOR__;text-decoration:underline;\">View Campaign Details</a>.</p>\n<p style=\"margin:0 0 12px 0;font-family:Calibri,Arial,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Thank you,<br />The SailPoint Team</p>\n<p style=\"margin:0;font-family:Calibri,Arial,sans-serif;font-size:12px;line-height:1.5;color:#666666;\">This is an automatic message sent by <strong>Data Access Security</strong>. Please do not reply.</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "782117f4395de9f3d5ea65bdcd7614e0517d6d90d90afdaab506b12a413ed73a"
+}

@@ -1,0 +1,14 @@
+{
+  "key": "das_campaign_revocation_failure",
+  "name": "Data Access Security Campaign Revocation Failed",
+  "description": "Sent to a Data Access Security campaign's owner when its revocation processing finishes but one or more access items could not be removed, with a link to the campaign's revocation view.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "Action required: Some permissions could not be revoked",
+  "body": "<h2 style=\"margin:0 0 16px 0;font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:bold;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Campaign revocation incomplete</h2>\n<p style=\"margin:0 0 12px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Dear $__recipient.name,</p>\n<p style=\"margin:0 0 16px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Automatic revocation was enabled for your campaign. One or more access items that qualify for revocation were not removed successfully.</p>\n<div style=\"margin:0 0 16px 0;padding:12px 16px;border-left:4px solid __ISC_BRAND_ACTION_COLOR__;background-color:#f7f7f7;\">\n<p style=\"margin:0 0 8px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\"><strong style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;\">Campaign:</strong> $campaign.campaignName</p>\n<p style=\"margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Open the <a href=\"$campaign.url\" style=\"color:__ISC_BRAND_ACTION_COLOR__;text-decoration:underline;\">campaign details</a> to review the revocation status and retry or ignore the failures.</p>\n</div>\n<p style=\"margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#333333;\">Thank you for using Data Access Security.</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "8882326f39efc4ba2f5030143d858caff1b0fa2ac28d9de5f19af45da5fa1744"
+}

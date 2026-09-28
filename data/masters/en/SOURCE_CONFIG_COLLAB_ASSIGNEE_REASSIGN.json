@@ -1,0 +1,14 @@
+{
+  "key": "SOURCE_CONFIG_COLLAB_ASSIGNEE_REASSIGN",
+  "name": "Source Collaboration Reassigned By Current Assignee",
+  "description": "Notifies the admin when a source that has been reassigned by current assignee to another user.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "The $referenceName configuration has been reassigned to another user",
+  "body": "<h2 style=\"margin:0 0 16px 0;font-size:20px;font-weight:600;color:__ISC_BRAND_NAVIGATION_COLOR__;\">Source configuration reassigned</h2>\n<p style=\"margin:0 0 12px 0;font-size:14px;line-height:1.5;color:#333333;\">Dear $__recipient.name,</p>\n<p style=\"margin:0 0 16px 0;font-size:14px;line-height:1.5;color:#333333;\">$assignedByUser has reassigned the $referenceName source onboarding to $assignedUser. $assignedByUser no longer have access to this source.</p>\n#if(!$assignedUserHasAccess)\n<div style=\"border-left:4px solid __ISC_BRAND_ACTION_COLOR__;padding:12px 16px;margin:0 0 16px 0;background-color:#f5f7fa;\">\n<p style=\"margin:0 0 8px 0;font-size:14px;line-height:1.5;color:#333333;\"><strong style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;\">Action required</strong></p>\n<p style=\"margin:0;font-size:14px;line-height:1.5;color:#333333;\">$assignedUser needs the Source Configuration Assignee user level to configure this source. To grant this user level to $assignedUser, go to their <a href=\"$deepLink\" style=\"color:__ISC_BRAND_ACTION_COLOR__;text-decoration:underline;\">identity</a> and enable the Source Configuration Assignee user level.</p>\n</div>\n#end#if($revokeLastAssignedAccess)\n<div style=\"border-left:4px solid __ISC_BRAND_ACTION_COLOR__;padding:12px 16px;margin:0 0 16px 0;background-color:#f5f7fa;\">\n<p style=\"margin:0 0 8px 0;font-size:14px;line-height:1.5;color:#333333;\"><strong style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;\">User level cleanup</strong></p>\n<p style=\"margin:0;font-size:14px;line-height:1.5;color:#333333;\">$assignedByUser does not have any other sources assigned to them and the Source Configuration Assignee user level should be revoked. Go to their <a href=\"$assignerDeepLink\" style=\"color:__ISC_BRAND_ACTION_COLOR__;text-decoration:underline;\">identity</a> to remove this user level.</p>\n</div>\n#end\n<p style=\"margin:16px 0 0 0;font-size:14px;line-height:1.5;color:#333333;\">Thank you,<br>The $__global.productName Team</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "64dff0a943b255e4575c4af7b8620291192e0ece2b768505856e1f34375e4b6d"
+}

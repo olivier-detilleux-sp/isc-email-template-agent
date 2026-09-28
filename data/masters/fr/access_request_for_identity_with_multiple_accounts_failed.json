@@ -7,8 +7,8 @@
   "language": "fr",
   "from": "$__global.emailFromAddress",
   "replyTo": "$__global.emailFromAddress",
-  "subject": "Échec de la demande pour « ${requestItemName} »",
-  "body": "<h2 style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;margin:0 0 16px 0;font-size:20px;font-weight:600;\">Échec de votre demande d'accès</h2>\n<p style=\"margin:0 0 12px 0;line-height:1.5;\">Bonjour ${recipientName},</p>\n<p style=\"margin:0 0 12px 0;line-height:1.5;\">Votre demande concernant « ${requestItemName} » n'a pas pu aboutir.</p>\n<div style=\"border-left:4px solid __ISC_BRAND_ACTION_COLOR__;padding:12px 16px;margin:0 0 16px 0;background-color:#f5f7fa;\">\n<p style=\"margin:0;line-height:1.5;\">Motif : vous disposez de plusieurs comptes sur la source « ${sourceName} ».</p>\n</div>\n<p style=\"margin:0 0 16px 0;line-height:1.5;\">Veuillez contacter votre administrateur pour obtenir de l'aide.</p>\n<p style=\"margin:0;line-height:1.5;\">Cordialement,<br/>L'équipe ${PRODUCT_NAME}</p>",
-  "origin": "cursor-redesign",
+  "subject": "Échec de la demande d'accès pour '${requestItemName}'",
+  "body": "<h2 style=\"color:__ISC_BRAND_ACTION_COLOR__;margin:0 0 20px 0\">Échec de la demande d'accès</h2>\n<p style=\"margin:0 0 20px 0;font-size:16px;color:#333333;line-height:1.5\">Bonjour ${recipientName},</p>\n<p style=\"margin:0 0 20px 0;font-size:16px;color:#333333;line-height:1.5\">Votre demande d'accès pour <strong>${requestItemName}</strong> n'a pas pu être traitée.</p>\n<div style=\"padding:15px;background-color:#fef5f5;border-left:4px solid __ISC_BRAND_ACTION_COLOR__\"><p style=\"margin:0;font-size:16px\">Votre demande d'accès a <strong style=\"color:__ISC_BRAND_ACTION_COLOR__\">échoué</strong> car l'identité pour laquelle vous avez demandé un accès dispose de plus d'un compte sur la source <strong>${sourceName}</strong>.</p></div>\n<p style=\"margin:0 0 20px 0;font-size:16px;color:#333333;line-height:1.5;margin-top:20px\">Veuillez contacter votre administrateur pour obtenir de l'aide.</p>\n<p style=\"margin-top:30px;font-size:16px;color:#333\">Cordialement,<br />L'équipe ${PRODUCT_NAME}</p>",
+  "origin": "cursor-translation-from-en",
   "sourceDigest": "062485c855dbe7907c40a9c89d6cac38b5295bf7807f1dbce9156d5b443f0fe6"
 }

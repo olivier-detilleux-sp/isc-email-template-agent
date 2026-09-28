@@ -1,0 +1,14 @@
+{
+  "key": "approval_request_notification",
+  "name": "Approval Request Assigned",
+  "description": "Send a notification to a user indicating they have an approval request that they need to review.",
+  "medium": "EMAIL",
+  "tenantLocale": "en",
+  "language": "en",
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "subject": "An approval request is awaiting your review",
+  "body": "<h2 style=\"color:__ISC_BRAND_NAVIGATION_COLOR__;margin:0 0 20px 0\">Approval Request Assigned</h2><p style=\"margin:0 0 20px 0;font-size:16px;color:#333333;line-height:1.5\">Dear ${__recipient.name},</p><p style=\"margin:0 0 20px 0;font-size:16px;color:#333333;line-height:1.5\">You have $__contentJson.batchSize approval #if($__contentJson.batchSize==1) request #else requests #end awaiting your review.</p><p style=\"margin:0 0 20px 0;font-size:16px;color:#333333;line-height:1.5\">To review approval requests that are assigned to you, use the button below.</p><table style=\"margin-top: 30px;\"><tbody><tr><td><a style=\"background-color:__ISC_BRAND_NAVIGATION_COLOR__;color:#ffffff;padding:12px 25px;text-decoration:none;border-radius:5px;font-weight:bold\" href=\"$__global.productUrl/ui/d/$approverPath\">Review approval requests</a></td></tr></tbody></table><p style=\"margin-top:30px;font-size:16px;color:#333\">Thank you,<br />The ${__global.productName} Team</p>",
+  "origin": "cursor-redesign",
+  "sourceDigest": "bc356e4dbd1f454908686bd2494d2d5bdcef62e5dc923962d7f4af8fff3f611f"
+}

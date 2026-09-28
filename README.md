@@ -1,13 +1,14 @@
 # SailPoint Email Template Agent
 
 Local agent that prepares and publishes ISC email templates for a tenant. It
-loads a versioned style library, translates subjects and bodies with the
-Cursor SDK when needed, applies the tenant logo and colors from the active
-SailPoint CLI environment, then asks before publishing.
+loads a versioned style library from `data/masters/<language>/`, applies the
+tenant logo and colors from the active SailPoint CLI environment, then asks
+before publishing.
 
-On a new computer, prepare and publish use the masters already stored in
-`data/masters/<language>/`. Run `./agent --init` only to generate a language
-that is not in that directory yet.
+English and French masters are already in the repository. A normal run does
+not call Cursor. Run `./agent --init` only to add a language that is not in
+`data/masters/` yet. That command translates an existing language and keeps
+its HTML layout.
 
 ## Installation
 
@@ -23,8 +24,9 @@ These steps are enough to run the agent on a new computer.
     https://github.com/sailpoint-oss/sailpoint-cli/releases
 - A SailPoint ISC tenant, and a Personal Access Token for a user who can read
   branding and create notification templates
-- A Cursor User API key. Generating a new master language calls Cursor, so
-  the key is required before `./agent --init`.
+- A Cursor User API key. Adding a language and rebuilding masters call
+  Cursor, so the key is required before `./agent --init` or
+  `./agent --rebuild-masters`. Prepare and publish do not call Cursor.
 
 ### 2. Clone and install Python dependencies
 
@@ -69,7 +71,7 @@ one environment without changing the active one.
 ### 4. Store a Cursor API key
 
 Create a User API key at https://cursor.com/dashboard/api. Adding a language
-calls Cursor once per missing template, so store the key before
+calls Cursor once per missing template. Store the key before
 `./agent --init`.
 One of these sources is enough:
 
@@ -91,29 +93,47 @@ English and French masters live in `data/masters/en/` and `data/masters/fr/`.
 When those directories are already in the repository, `./agent` uses them.
 It does not call Cursor again.
 
-`./agent --init` generates one language that is not already covered, then
-stops. It does not publish, and it does not replace masters that already
-exist. Templates already written for that language are left in place.
+`./agent --init` adds one language that is not already covered, then stops.
+It translates an existing language (English when it is present) and keeps
+the HTML layout. It does not redesign, it does not publish, and it does not
+replace masters that already exist.
 
 ```bash
 ./agent --init
 ```
 
-Press Enter to fill any missing English masters, or choose another language
-such as French. The choice of the default publication language is saved in
+Press Enter to fill any missing English masters from another language, or
+choose a new language such as German. The translation keeps the existing
+layout. The choice of the default publication language is saved in
 `data/agent-config.json` (ignored by Git). Commit the new
 `data/masters/<language>/` directory so the next machine does not generate
 it again.
 
-For a script:
+For a script, add German by translating the English masters:
 
 ```bash
-./agent --init --base-language fr --env my-tenant
+./agent --init --base-language de --env my-tenant
 ```
 
-`--rebuild-masters` is the only command that regenerates masters that
-already exist. A template that cannot be produced is left unchanged on the
-tenant.
+`--base-language` is the language being added. English is the translation
+source when `data/masters/en/` exists. Otherwise the agent uses the other
+language already stored. If the requested language is already complete,
+nothing is translated.
+
+`--rebuild-masters` is the only command that rewrites masters that already
+exist. It reads the target tenant, then:
+
+- keys listed in `data/curated-keys.json` are copied from that tenant's
+  custom template, in the language they are written in, and translated
+  literally when the target library language is different. The HTML layout
+  is kept. If the tenant has no custom for that key, the existing master
+  is left as it is;
+- every other key is redesigned from the stock default. Access-request and
+  approval templates follow the house style below, and the current master
+  is passed in as the layout to keep.
+
+A template that fails validation is not uploaded. The copy already on the
+tenant stays in place.
 
 ### 6. Prepare, then publish
 
@@ -135,15 +155,21 @@ When the payloads look right, publish them:
 ```
 
 The agent asks you to type `PUSH` before it sends anything. Publication
-updates only templates whose subject or body differs from the tenant, and
-those templates are English. To publish another language once, pass
-`--language`. The saved default stays English.
+updates only templates whose subject or body differs from the tenant.
+English is the default library. Pass `--language fr` to upload the French
+masters instead.
+
+ISC stores one EMAIL body per template key and catalog locale. The locale
+on the uploaded template is the catalog locale, usually `en`, not the
+language of the prose. Publishing French therefore replaces the English
+body of the same template. Publish one language at a time, on the tenant
+where that language should be the live text.
 
 ## Usage
 
 ```bash
-# Add a language that is not already in data/masters/
-./agent --init --base-language fr
+# Add German by translating the English masters. Layout is unchanged.
+./agent --init --base-language de
 
 # Prepare the English templates without publishing
 ./agent --prepare-only
@@ -165,12 +191,13 @@ Offered languages: French, English, German, Spanish, Italian, Dutch, and
 Portuguese. A number from the menu or a two-letter BCP 47 code can also be
 passed with `--language`.
 
-`--language` selects `data/masters/<language>/`. English is the default when
-those masters exist. If that directory is missing, the agent stops and tells
-you to generate it with `./agent --init --base-language <language>`.
+`--language` selects `data/masters/<language>/` for prepare and publish.
+English is the default when those masters exist. If that directory is
+missing, the agent stops and tells you to add it with
+`./agent --init --base-language <language>`.
 
-`--rebuild-masters` regenerates the selected language, including files that
-already exist. Use `--init` to add a language, not to replace one.
+`--init` translates. `--rebuild-masters` rewrites an existing language.
+Do not use `--init` to restyle masters that are already there.
 
 To preview one generated payload in a browser:
 
@@ -189,8 +216,8 @@ Commit the code and the style library. Everything else is recreated locally.
 | Path | In Git | Why |
 |---|---|---|
 | `src/`, `tests/`, `scripts/preview.py`, `agent`, `requirements.txt` | yes | the agent |
-| `data/masters/<language>/*.json` | yes | style library for that language; generate a missing language with `./agent --init` |
-| `data/curated-keys.json` | yes | templates whose hand-written wording is kept on a rebuild |
+| `data/masters/<language>/*.json` | yes | style library for that language; add a missing language with `./agent --init` |
+| `data/curated-keys.json` | yes | templates copied from the tenant custom on `--rebuild-masters`, then translated literally |
 | `data/agent-config.json` | no | style library and upload language saved by `./agent --init` |
 | `data/pull/{env}/` | no | live branding, defaults, and custom templates |
 | `data/payloads/{env}/{lang}/` | no | branded payloads for one tenant |
@@ -205,13 +232,14 @@ Commit the code and the style library. Everything else is recreated locally.
 them. They are gitignored and can be deleted on this machine.
 
 `./agent --init` calls Cursor only for templates that are not already in
-`data/masters/<language>/`. English and French masters are both kept in Git.
-`--rebuild-masters` is what regenerates an existing language.
+`data/masters/<language>/`, and only to translate them. English and French
+masters are both kept in Git. `--rebuild-masters` is what rewrites an
+existing language.
 
 ## Flow
 
 1. Load styled masters from `data/masters/<language>/`
-2. `./agent --init` generates a language that is not already there
+2. `./agent --init` translates a language that is not already there, keeping the layout
 3. Read branding: `GET /brandings/v1`
 4. Read EMAIL defaults: `GET /notification-template-defaults/v1`
 5. Read existing customs: `GET /notification-templates/v1`
@@ -228,8 +256,8 @@ Specs: `api-specs/idn/apis/branding/`, `api-specs/idn/apis/notifications/`.
 |---|---|
 | `standardLogoURL` | `<img src=...>` |
 | `navigationColor` | titles / primary links |
-| `actionButtonColor` | accents / negative states |
-| `activeLinkColor` | links |
+| `actionButtonColor` | rejection bands, negative titles, accent borders |
+| `activeLinkColor` | links. When it equals the navigation color, titles and primary borders use the navigation token |
 | `productName` | signature / footer |
 
 The tenant branding must have a `standardLogoURL`. The agent stops if that
@@ -241,7 +269,21 @@ Masters use tenant-independent tokens:
 - `__ISC_BRAND_ACTION_COLOR__`
 - `__ISC_BRAND_LINK_COLOR__`
 
-They are replaced only after translation, when the payload is assembled.
+They are replaced only when the payload is assembled, not inside the masters.
+
+Some colors are fixed and must not be replaced by a brand token:
+
+| Use | Background | Border or text |
+|---|---|---|
+| Approved outcome | `#f0f7f0` | `#2e7d32` |
+| Denied or cancelled outcome | `#fef5f5` | the action color |
+| Just-in-time activation notice | `#fff8e1` | `#ffab00` |
+| Comment or dimension details | `#f9f9f9` | navigation color on the left border, when the box is informational |
+
+Access-request and approval masters use these boxes, a short title, and a
+button (a styled `<a>`, never `<button>`) when the message sends the reader
+to review or approve. Dimension attributes and just-in-time text stay inside
+their `#if`, so a tenant without that data does not show an empty box.
 
 ## Notes
 
@@ -254,11 +296,16 @@ They are replaced only after translation, when the payload is assembled.
 - The result is rejected if a variable, URL, directive, or link is lost,
   invented, or unbalanced.
 - The syntaxes `#end`, `#{end}`, `#else`, `#{else}`, and `#elseif` are
-  supported. Known structural defects in the source catalog are repaired
-  deterministically before translation.
+  supported. Masters keep the stock form `#end`. `#{end}` is written only
+  when the next character would otherwise stick to the directive name, as in
+  `#{end}changed`. Inside a `#set("...")` string, keep `#end` before the
+  closing quote. A braced closer there is printed as text.
+- Known structural defects in a source template are repaired before
+  translation when the template is redesigned.
 - LLM replies are cached so an identical translation is not paid for twice.
   The cache still requires a Cursor API key to be configured, because the
   key is resolved before the cache is read.
-- Keys listed in `data/curated-keys.json` preserve tenant wording only when
-  rebuilding a French library; they do not inject French into English masters.
+- Keys listed in `data/curated-keys.json` are taken from the target tenant's
+  custom template on `--rebuild-masters`, whichever language that custom is
+  written in, and translated literally into the library language.
 - Publication is idempotent: only payloads that differ from the tenant are sent.

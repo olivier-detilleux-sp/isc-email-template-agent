@@ -27,6 +27,7 @@ from agent import (
     main,
     missing_master_keys,
     resolve_configured_languages,
+    source_library_language,
     save_agent_config,
     warn_if_cursor_key_missing,
 )
@@ -41,10 +42,23 @@ class VelocityProtectionTest(unittest.TestCase):
         protected, mapping = _protect(source, "BODY")
         tokens = TOKEN_RE.findall(protected)
         self.assertEqual(3, len(tokens))
+        self.assertEqual(source, _restore(protected, mapping))
+
+    def test_end_is_braced_only_when_the_next_character_would_stick(self):
+        from llm_translate import _canonicalize_simple_directives
+
+        self.assertEqual("#end has", _canonicalize_simple_directives("#end has"))
+        self.assertEqual("#end</p>", _canonicalize_simple_directives("#end</p>"))
+        self.assertEqual('#end"', _canonicalize_simple_directives('#end"'))
         self.assertEqual(
-            "$shownIds#if($remainingCount > 0), more#{end}",
-            _restore(protected, mapping),
+            '#set($taskTasks = "#if($n == 1)task#{else}tasks#end")',
+            _canonicalize_simple_directives(
+                '#set($taskTasks = "#if($n == 1)task#{else}tasks#end")'
+            ),
         )
+        self.assertEqual("#{end}changed", _canonicalize_simple_directives("#endchanged"))
+        self.assertEqual("#{else}access", _canonicalize_simple_directives("#elseaccess"))
+        self.assertEqual("#elseif($x)", _canonicalize_simple_directives("#elseif($x)"))
 
     def test_quiet_references_are_protected(self):
         source = "$!count $!{optionalName} $normal"
@@ -192,6 +206,11 @@ class AgentConfigTest(unittest.TestCase):
             fallback_agent_config(["fr"]),
         )
         self.assertIsNone(fallback_agent_config([]))
+
+    def test_init_translates_from_english_when_it_exists(self):
+        self.assertEqual("en", source_library_language("de", ["fr", "en"]))
+        self.assertEqual("fr", source_library_language("en", ["fr", "en"]))
+        self.assertIsNone(source_library_language("en", ["en"]))
 
     def test_init_only_sees_keys_that_are_not_already_masters(self):
         existing = {"alpha", "beta"}
