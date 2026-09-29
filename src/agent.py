@@ -66,8 +66,10 @@ DEFAULT_PUBLICATION_LANGUAGE = "en"
 
 INIT_INTRO = (
     "Language to add to the style library.\n"
-    "Press Enter for English. An existing language is translated as-is: "
-    "the layout is not redesigned. Masters already stored are kept."
+    "English and French are already stored. Choose a language that is not "
+    "there yet. It is translated from an existing library, and the layout "
+    "is kept. Masters already stored are not replaced, and the tenant "
+    "catalog is not used to create them."
 )
 RUN_INTRO = "Language for uploaded email subjects and bodies:"
 
@@ -247,8 +249,9 @@ def main() -> int:
     parser.add_argument(
         "--base-language",
         help=(
-            "Language of the style library to generate or publish. "
-            "Default: the saved language, or English when those masters exist."
+            "Style library under data/masters/. With --init, the language "
+            "to add by translating an existing library. Default: the saved "
+            "language, or English when those masters exist."
         ),
     )
     parser.add_argument(
@@ -256,7 +259,8 @@ def main() -> int:
         action="store_true",
         help=(
             "Add a language that is not already in data/masters/ by translating "
-            "an existing language. The layout is kept. Does not publish."
+            "an existing language. The layout is kept. Does not publish, and "
+            "does not create masters from the tenant catalog."
         ),
     )
     parser.add_argument(
@@ -285,7 +289,7 @@ def main() -> int:
         help="Limit the run to one template key (repeatable)",
     )
     args = parser.parse_args()
-    if warn_if_cursor_key_missing():
+    if (args.init or args.rebuild_masters) and warn_if_cursor_key_missing():
         return 1
 
     config = load_agent_config()
@@ -294,10 +298,18 @@ def main() -> int:
         if config is None:
             print("No email masters are available.", file=sys.stderr)
             print(
-                "Generate the first language, then commit data/masters/<language>/:",
+                "This repository already contains data/masters/en/ and "
+                "data/masters/fr/. Restore those directories from Git.",
                 file=sys.stderr,
             )
-            print("  ./agent --init", file=sys.stderr)
+            print(
+                "To write a new library from the tenant catalog, use:",
+                file=sys.stderr,
+            )
+            print(
+                "  ./agent --rebuild-masters --base-language en",
+                file=sys.stderr,
+            )
             return 1
 
     def ask(default: str) -> str:
@@ -355,7 +367,8 @@ def main() -> int:
                 file=sys.stderr,
             )
             print(
-                "Generate that language once, then commit the directory:",
+                "Add that language by translating one that is already stored. "
+                "This does not read the tenant catalog:",
                 file=sys.stderr,
             )
             print(
@@ -408,18 +421,21 @@ def main() -> int:
                 )
             still_missing = missing - to_translate
             if still_missing and not source_language:
-                build_base_masters(
-                    defaults=defaults,
-                    customs=customs,
-                    curated_keys=curated_keys,
-                    branding=branding,
-                    target_language=library_language,
-                    model=args.model,
-                    output_dir=library_dir,
-                    cache_dir=ROOT / "data/llm-cache",
-                    only=still_missing,
-                    force=False,
+                print(
+                    "--init only translates a language that is already in "
+                    "data/masters/. It does not create masters from the "
+                    "tenant catalog.",
+                    file=sys.stderr,
                 )
+                print(
+                    "To write a library from the tenant, use:",
+                    file=sys.stderr,
+                )
+                print(
+                    f"  ./agent --rebuild-masters --base-language {library_language}",
+                    file=sys.stderr,
+                )
+                return 1
             elif still_missing:
                 print(
                     f"{len(still_missing)} template(s) have no "
@@ -465,7 +481,8 @@ def main() -> int:
                 flush=True,
             )
             print(
-                "Generate the missing ones with:",
+                "Translate the missing ones from a language already in "
+                "data/masters/. This does not read the tenant catalog:",
                 flush=True,
             )
             print(

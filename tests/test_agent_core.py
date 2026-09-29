@@ -243,7 +243,7 @@ class CursorKeyLaunchTest(unittest.TestCase):
         message = "No Cursor API key found."
         with (
             patch("agent.resolve_api_key", side_effect=LlmTranslationError(message)),
-            patch.object(sys, "argv", ["agent", "--prepare-only"]),
+            patch.object(sys, "argv", ["agent", "--init"]),
         ):
             sink = StringIO()
             with patch.object(sys, "stderr", sink):

@@ -5,10 +5,15 @@ loads a versioned style library from `data/masters/<language>/`, applies the
 tenant logo and colors from the active SailPoint CLI environment, then asks
 before publishing.
 
-English and French masters are already in the repository. A normal run does
-not call Cursor. Run `./agent --init` only to add a language that is not in
-`data/masters/` yet. That command translates an existing language and keeps
-its HTML layout.
+English and French masters are already in the repository. The first run is
+`./agent --prepare-only`, then `./agent`. Neither command creates masters,
+and neither reads the tenant catalog to rebuild them.
+
+`./agent --init` is not part of that first run. Use it only to add a language
+that is not in `data/masters/` yet. It translates an existing language and
+keeps its HTML layout. It does not replace masters that are already stored,
+and it does not create them from the tenant catalog. The command that reads
+the tenant and rewrites an existing library is `./agent --rebuild-masters`.
 
 ## Installation
 
@@ -24,9 +29,8 @@ These steps are enough to run the agent on a new computer.
     https://github.com/sailpoint-oss/sailpoint-cli/releases
 - A SailPoint ISC tenant, and a Personal Access Token for a user who can read
   branding and create notification templates
-- A Cursor User API key. Adding a language and rebuilding masters call
-  Cursor, so the key is required before `./agent --init` or
-  `./agent --rebuild-masters`. Prepare and publish do not call Cursor.
+- A Cursor User API key, only if you add a language or rebuild masters.
+  Prepare and publish do not call Cursor and do not need the key.
 
 ### 2. Clone and install Python dependencies
 
@@ -68,11 +72,12 @@ those values, `~/.sailpoint/config.yaml`, or a `config.json`.
 uses that environment for every API call. Pass `--env my-tenant` to target
 one environment without changing the active one.
 
-### 4. Store a Cursor API key
+### 4. Store a Cursor API key when you need one
 
-Create a User API key at https://cursor.com/dashboard/api. Adding a language
-calls Cursor once per missing template. Store the key before
-`./agent --init`.
+Skip this step for a normal prepare or publish. Create a User API key at
+https://cursor.com/dashboard/api only before `./agent --init` or
+`./agent --rebuild-masters`. Adding a language calls Cursor once per missing
+template.
 One of these sources is enough:
 
 1. Environment variable: `export CURSOR_API_KEY='...'`
@@ -87,55 +92,11 @@ One of these sources is enough:
 If a key is compromised, revoke it at https://cursor.com/dashboard/api,
 create a new one, and replace it in the source you chose.
 
-### 5. Add a language that is not in the masters yet
+### 5. Prepare, then publish
 
 English and French masters live in `data/masters/en/` and `data/masters/fr/`.
-When those directories are already in the repository, `./agent` uses them.
-It does not call Cursor again.
-
-`./agent --init` adds one language that is not already covered, then stops.
-It translates an existing language (English when it is present) and keeps
-the HTML layout. It does not redesign, it does not publish, and it does not
-replace masters that already exist.
-
-```bash
-./agent --init
-```
-
-Press Enter to fill any missing English masters from another language, or
-choose a new language such as German. The translation keeps the existing
-layout. The choice of the default publication language is saved in
-`data/agent-config.json` (ignored by Git). Commit the new
-`data/masters/<language>/` directory so the next machine does not generate
-it again.
-
-For a script, add German by translating the English masters:
-
-```bash
-./agent --init --base-language de --env my-tenant
-```
-
-`--base-language` is the language being added. English is the translation
-source when `data/masters/en/` exists. Otherwise the agent uses the other
-language already stored. If the requested language is already complete,
-nothing is translated.
-
-`--rebuild-masters` is the only command that rewrites masters that already
-exist. It reads the target tenant, then:
-
-- keys listed in `data/curated-keys.json` are copied from that tenant's
-  custom template, in the language they are written in, and translated
-  literally when the target library language is different. The HTML layout
-  is kept. If the tenant has no custom for that key, the existing master
-  is left as it is;
-- every other key is redesigned from the stock default. Access-request and
-  approval templates follow the house style below, and the current master
-  is passed in as the layout to keep.
-
-A template that fails validation is not uploaded. The copy already on the
-tenant stays in place.
-
-### 6. Prepare, then publish
+`./agent` loads them. It does not call Cursor, and it does not require
+`./agent --init`.
 
 Prepare the English templates and stop before publication:
 
@@ -146,7 +107,9 @@ Prepare the English templates and stop before publication:
 This reads branding and the EMAIL catalog, loads the English style library,
 writes a snapshot under `data/pull/{environment}/`, and writes branded
 payloads under `data/payloads/{environment}/en/`. The command prints how many
-templates would change. Nothing is sent to the tenant.
+templates would change. Nothing is sent to the tenant. The catalog is used
+to know which templates exist on the tenant. It is not used to rewrite the
+masters.
 
 When the payloads look right, publish them:
 
@@ -165,17 +128,55 @@ language of the prose. Publishing French therefore replaces the English
 body of the same template. Publish one language at a time, on the tenant
 where that language should be the live text.
 
+### 6. Add a language, or rebuild from a tenant
+
+`./agent --init` adds one language that is not already covered, then stops.
+It translates an existing language (English when it is present) and keeps
+the HTML layout. It does not redesign, it does not publish, it does not
+replace masters that already exist, and it does not create masters from the
+tenant catalog.
+
+```bash
+./agent --init --base-language de
+```
+
+`--base-language` is the language being added. English is the translation
+source when `data/masters/en/` exists. Otherwise the agent uses the other
+language already stored. If the requested language is already complete,
+nothing is translated. Commit the new `data/masters/<language>/` directory
+so the next machine does not translate it again. The default publication
+language is saved in `data/agent-config.json` (ignored by Git) only when
+`--init` runs. A normal prepare or publish does not need that file: English
+is used when `data/masters/en/` is present.
+
+`--rebuild-masters` is the only command that rewrites masters that already
+exist, and the only one that creates them from the tenant catalog. It reads
+the target tenant, then:
+
+- keys listed in `data/curated-keys.json` are copied from that tenant's
+  custom template, in the language they are written in, and translated
+  literally when the target library language is different. The HTML layout
+  is kept. If the tenant has no custom for that key, the existing master
+  is left as it is;
+- every other key is redesigned from the stock default. Access-request and
+  approval templates follow the house style below, and the current master
+  is passed in as the layout to keep.
+
+A template that fails validation is not uploaded. The copy already on the
+tenant stays in place.
+
 ## Usage
 
 ```bash
-# Add German by translating the English masters. Layout is unchanged.
-./agent --init --base-language de
-
-# Prepare the English templates without publishing
+# Prepare the English templates without publishing. No --init step.
 ./agent --prepare-only
 
 # Publish the English templates. Type PUSH when asked.
 ./agent
+
+# Add German by translating the English masters. Layout is unchanged.
+# This does not read the tenant catalog.
+./agent --init --base-language de
 
 # Target one environment and one template
 ./agent \
@@ -194,10 +195,13 @@ passed with `--language`.
 `--language` selects `data/masters/<language>/` for prepare and publish.
 English is the default when those masters exist. If that directory is
 missing, the agent stops and tells you to add it with
-`./agent --init --base-language <language>`.
+`./agent --init --base-language <language>`. That command translates a
+library already in the repository. It does not rebuild the missing language
+from the tenant catalog.
 
-`--init` translates. `--rebuild-masters` rewrites an existing language.
-Do not use `--init` to restyle masters that are already there.
+`--init` translates a missing language. `--rebuild-masters` rewrites an
+existing language from the tenant. Do not use `--init` to restyle masters
+that are already there, and do not use it on the first run.
 
 To preview one generated payload in a browser:
 
@@ -216,7 +220,7 @@ Commit the code and the style library. Everything else is recreated locally.
 | Path | In Git | Why |
 |---|---|---|
 | `src/`, `tests/`, `scripts/preview.py`, `agent`, `requirements.txt` | yes | the agent |
-| `data/masters/<language>/*.json` | yes | style library for that language; add a missing language with `./agent --init` |
+| `data/masters/<language>/*.json` | yes | style library already in Git for English and French; add another language with `./agent --init`, which translates and does not read the tenant catalog |
 | `data/curated-keys.json` | yes | templates copied from the tenant custom on `--rebuild-masters`, then translated literally |
 | `data/agent-config.json` | no | style library and upload language saved by `./agent --init` |
 | `data/pull/{env}/` | no | live branding, defaults, and custom templates |
@@ -232,21 +236,25 @@ Commit the code and the style library. Everything else is recreated locally.
 them. They are gitignored and can be deleted on this machine.
 
 `./agent --init` calls Cursor only for templates that are not already in
-`data/masters/<language>/`, and only to translate them. English and French
-masters are both kept in Git. `--rebuild-masters` is what rewrites an
-existing language.
+`data/masters/<language>/`, and only to translate them from another language
+in that directory. English and French masters are both kept in Git.
+`--rebuild-masters` is what rewrites an existing language from the tenant
+catalog. A first prepare or publish does not run either command.
 
 ## Flow
 
 1. Load styled masters from `data/masters/<language>/`
-2. `./agent --init` translates a language that is not already there, keeping the layout
-3. Read branding: `GET /brandings/v1`
-4. Read EMAIL defaults: `GET /notification-template-defaults/v1`
-5. Read existing customs: `GET /notification-templates/v1`
-6. Substitute the live tenant logo and colors
-7. Validate Velocity, variables, URLs, links, HTML, and branding
-8. Show the diff and ask for `PUSH`
-9. Publish: `POST /notification-templates/v1`
+2. Read branding: `GET /brandings/v1`
+3. Read EMAIL defaults: `GET /notification-template-defaults/v1`
+4. Read existing customs: `GET /notification-templates/v1`
+5. Substitute the live tenant logo and colors
+6. Validate Velocity, variables, URLs, links, HTML, and branding
+7. Show the diff and ask for `PUSH`
+8. Publish: `POST /notification-templates/v1`
+
+Adding a language is separate from this flow. `./agent --init --base-language de`
+translates `data/masters/en/` into `data/masters/de/` and stops before
+publication.
 
 Specs: `api-specs/idn/apis/branding/`, `api-specs/idn/apis/notifications/`.
 
